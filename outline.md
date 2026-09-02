@@ -33,7 +33,7 @@ Consequence: the GUI is not the point, it's a consequence.
 ⚠ *The lego image recruits the low-code pitch whether you invite it or not. One
 clause somewhere — the bricks are things you write, in R — keeps it out.*
 
-## Beats (270 s)
+## Beats (275 s)
 
 ### 1 · Situation — 35 s
 - Shiny has always been a framework for rapid prototyping. You get something
@@ -106,11 +106,15 @@ clause somewhere — the bricks are things you write, in R — keeps it out.*
 - ⚠ *Danger zone: this is where the "look how nice it is" pitch smuggles itself back
   in and eats the clock.*
 
-### 7 · Ask + close — 25 s
+### 7 · Ask + close — 30 s
 - The assistant assembles. Someone still has to author the parts.
 - Your turn: build a block — with a coding assistant or without, however you prefer.
 - ⚠ *Say "coding assistant" here rather than just "assistant". The line before it is
   about the board assistant, and the two blur badly under one word.*
+- And look out for what you *don't* have to decide — that's normally the expensive
+  part of making something reusable.
+- ⚠ *Prospective, not retrospective. As a claim you make for them it needs believing;
+  as something to watch for, they verify it themselves and you've promised nothing.*
 - Testimony, honestly bounded: this worked for us. YMMV — but keep the epistemic
   humility and drop the shrug.
 - Landing: that's the five minutes, and there's no Q&A. There's a lot more to show,
@@ -134,5 +138,8 @@ controlled comparison rather than two stock images.
 
 ## Budget check
 
-270 s at conference pace ≈ 620–670 spoken words. Roughly 1.5 pages double-spaced.
+275 s at conference pace ≈ 630–680 spoken words. Roughly 1.5 pages double-spaced.
+Still inside the 4:30–4:45 window, with nothing to spare.
 Seven beats is already at the limit — every beat added costs one that exists.
+If beat 7 runs long, the testimony line is the cut: "look out for what you don't have
+to decide" is already testimony, in the imperative.
