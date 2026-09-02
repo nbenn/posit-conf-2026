@@ -2,12 +2,12 @@
 
 ## Lodestar
 
-**Question:** How do you stop a Shiny data app from rotting as it grows?
+**Question:** How do you keep a Shiny data app maintainable as it grows?
 
 **Answer:** By imposing restrictions — like the ones blockr imposes. Not the only
 solution, not necessarily the best one, but one that has worked really well for us.
 
-**Axis:** rot (problem) → reuse + a small stable API (mechanism) → restrictions (cause).
+**Axis:** maintenance cost (problem) → reuse + a small stable API (mechanism) → restrictions (cause).
 
 ## Three-layer goal
 
@@ -28,8 +28,9 @@ Consequence: the GUI is not the point, it's a consequence.
 
 ### 1 · Situation — 40 s
 - Shiny lets you build something impressive in an afternoon.
-- Most of us are not software engineers by trade. We arrived via scripting data
-  analyses — simple, procedural code.
+- Many of us have a stats/data science background rather than software
+  engineering. We arrived via scripting data analyses — simple, procedural
+  code.
 - Then suddenly we're reasoning about every possible ordering of state changes in
   an interactive app.
 - ⚠ *Consultancy line ("small data science consultancy, many Shiny apps over the
@@ -38,9 +39,9 @@ Consequence: the GUI is not the point, it's a consequence.
 
 ### 2 · Complication — 35 s
 - Reasonable initial clarity. Then: feature requests, shifting understanding of the
-  problem, fixes layered on hacks layered on workarounds.
-- The code base spirals. Everything is tailor-made, so nothing carries over to the
-  next project.
+  problem, fixes layered on workarounds.
+- The code base gets harder to reason about. Everything is tailor-made, so nothing
+  carries over to the next project.
 - ⚠ *Optional: the dataset-manipulation client app, one sentence only. It's a
   garnish here, not evidence — the rewrite isn't validated and you don't have time
   to say so properly.*
@@ -66,7 +67,7 @@ Consequence: the GUI is not the point, it's a consequence.
 - Small, well-scoped units of computation with a simple, stable API.
 - So logic lives in general-purpose blocks; the framework handles communication and
   reactivity; per-app work collapses to configuration.
-- A well-maintained, reused component is a component that doesn't rot.
+- A component you reuse across projects is a component that stays maintained.
 - ⚠ *This is the sentence that connects your complication to your payoff. If it
   takes more than one breath, you can't afford both ends of the argument.*
 
