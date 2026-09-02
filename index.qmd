@@ -32,8 +32,8 @@ Pristine colors in frame *together with* the mixed lump, so one image carries
 before and after.
 :::
 
-::: {.caption}
-Play-doh: endlessly re-formable, never reusable
+::: {.takeaway}
+Everything is tailor-made. Every new app starts from scratch.
 :::
 
 ::: {.notes}
@@ -82,6 +82,10 @@ Fixed shapes, endless reuse
 :::
 :::
 
+::: {.takeaway}
+What limits the shape is what lets the pieces connect.
+:::
+
 ::: {.notes}
 **Beat 3 · Question + hook — 20 s**
 
@@ -112,8 +116,8 @@ picture, not a labelled schematic: the many-armed module beside the block's thre
 ports.
 :::
 
-::: {.caption}
-Data inputs, user parameters, one data output
+::: {.takeaway}
+**Data inputs. User parameters. One data output.**
 :::
 
 ::: {.notes}
@@ -174,8 +178,10 @@ Fresh capture of the current UI. The point it has to make visually is *small
 vocabulary*: few kinds of thing, connected simply.
 :::
 
-::: {.caption}
-Blocks, and the links between them
+::: {.takeaway}
+The tailoring lives in configuration — the code carries over.
+
+Authoring becomes assembly.
 :::
 
 ::: {.notes}
@@ -264,12 +270,16 @@ and eats the clock.*
 
 Build a block.
 
-[nicolas@cynkra.com]{style="font-size: 0.7em;"}
+::: {.takeaway}
+Look out for what you *don't* have to decide.
+:::
 
 ::: {.placeholder}
 [Slide content — to settle]{.ph-label}
 Whatever the room should still see while the close lands: your name, where to find
-you, repo/package links. It stays up through the joke, so keep it quiet.
+you, repo or package links. It stays up through the joke, so keep it quiet.
+An email address may be the wrong furniture for a close that asks people to find
+you here — worth settling.
 :::
 
 ::: {.notes}

@@ -39,3 +39,14 @@
   text-align: center;
   margin-top: 0.5em;
 }
+
+.takeaway {
+  color: #1a1a1a;
+  font-size: 0.78em;
+  text-align: center;
+  margin: 0.7em auto 0;
+  max-width: 85%;
+  line-height: 1.3;
+}
+
+.takeaway em { font-style: italic; }
