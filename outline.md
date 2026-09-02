@@ -108,7 +108,9 @@ clause somewhere — the bricks are things you write, in R — keeps it out.*
 
 ### 7 · Ask + close — 25 s
 - The assistant assembles. Someone still has to author the parts.
-- Your turn: build a block.
+- Your turn: build a block — with a coding assistant or without, however you prefer.
+- ⚠ *Say "coding assistant" here rather than just "assistant". The line before it is
+  about the board assistant, and the two blur badly under one word.*
 - Testimony, honestly bounded: this worked for us. YMMV — but keep the epistemic
   humility and drop the shrug.
 - Landing: that's the five minutes, and there's no Q&A. There's a lot more to show,
