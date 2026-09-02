@@ -71,3 +71,12 @@
   display: block;
   margin: 0 auto;
 }
+
+.handles {
+  text-align: left;
+  font-size: 0.62em;
+  line-height: 1.85;
+  margin-top: 0.9em;
+}
+
+.handles a { display: block; }

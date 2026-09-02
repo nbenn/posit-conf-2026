@@ -293,7 +293,7 @@ Look out for what you *don't* have to decide.
 :::
 
 ::: columns
-::: {.column width="38%"}
+::: {.column width="42%"}
 
 ```{r}
 #| echo: false
@@ -303,15 +303,21 @@ qr_url <- "https://blockr.site"
 plot(qrcode::qr_code(qr_url))
 ```
 
+::: {.caption}
+blockr.site
 :::
-::: {.column width="62%"}
 
-::: {.links}
-[blockr.cloud](https://blockr.cloud)
+:::
+::: {.column width="58%"}
 
-[blockr.site](https://blockr.site)
+::: {.handles}
+[\@DivadNojnarg](https://github.com/DivadNojnarg)
 
-[github.com/BristolMyersSquibb/blockr](https://github.com/BristolMyersSquibb/blockr)
+[\@christophsax](https://github.com/christophsax)
+
+[\@nbenn](https://github.com/nbenn)
+
+[\@MikeJohnPage](https://github.com/MikeJohnPage)
 :::
 
 :::
