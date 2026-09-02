@@ -1,7 +1,6 @@
 ---
 title: "AI-assisted, interactive pipeline building with blockr"
 author: Nicolas Bennett
-date: TBD
 format:
   revealjs:
     progress: true
@@ -113,24 +112,19 @@ That's it. That's the stud.
 
 ## A block {transition="none-in slide-out"}
 
-``` r
+```{.r code-line-numbers="|3|1|5-9"}
 new_join_block <- function(type = "left", by = character(), ...) {
   new_block(
     server = function(id, x, y) {
       moduleServer(id, function(input, output, session) {
-        # ... UI bindings for `type` and `by` ...
         list(
           expr = reactive(
-            bquote(
-              dplyr::join(x, y, by = .(by), type = .(type))
-            )
+            bquote(dplyr::join(x, y, by = .(by), type = .(type)))
           )
         )
       })
     },
-    ui = function(id) {
-      # ... select inputs for join type and join columns ...
-    },
+    ui = function(id) join_inputs(id),
     ...
   )
 }
@@ -141,9 +135,12 @@ new_join_block <- function(type = "left", by = character(), ...) {
 
 Join block: `x`, `y` in; join type and join columns as parameters; one table out.
 
-*Pseudo-code — replace with the real thing, keep it around a dozen lines, and use
-`code-line-numbers` to walk it in three moments (inputs / parameters / the one
-output) the way the 2025 deck walked the dplyr pipeline.*
+*Pseudo-code — replace with the real thing. It has to stay at about fifteen lines:
+more than that and the slide overflows at this font size.*
+
+*`code-line-numbers` walks it in three moments — data inputs (3), user parameters
+(1), the one data output (5-9) — the way the 2025 deck walked the dplyr pipeline.
+Reorder to match how you say it.*
 
 *Biggest time risk in the talk. This is the only place the audience sees what
 "build a block" actually means — if it doesn't feel achievable, the ask doesn't

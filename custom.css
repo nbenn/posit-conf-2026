@@ -9,6 +9,15 @@
   line-height: 1.35;
   text-align: left;
   background: #fafafa;
+  min-height: 45vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reveal .slides section > .placeholder:only-child,
+.reveal .slides section > .columns {
+  margin-top: 4vh;
 }
 
 .placeholder .ph-label {
