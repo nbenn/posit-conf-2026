@@ -50,3 +50,17 @@
 }
 
 .takeaway em { font-style: italic; }
+
+.links {
+  text-align: center;
+  margin-top: 1.4em;
+  font-size: 0.72em;
+  line-height: 1.9;
+}
+
+.links a { display: block; }
+
+.reveal .closing h2,
+.reveal section.closing > p {
+  text-align: center;
+}

@@ -266,7 +266,7 @@ shows the escape hatch. That's the objection a skeptic is already forming.*
 and eats the clock.*
 :::
 
-## Your turn {.center}
+## blockr {.center .closing}
 
 Build a block.
 
@@ -274,12 +274,12 @@ Build a block.
 Look out for what you *don't* have to decide.
 :::
 
-::: {.placeholder}
-[Slide content — to settle]{.ph-label}
-Whatever the room should still see while the close lands: your name, where to find
-you, repo or package links. It stays up through the joke, so keep it quiet.
-An email address may be the wrong furniture for a close that asks people to find
-you here — worth settling.
+::: {.links}
+[blockr.cloud](https://blockr.cloud)
+
+[blockr.site](https://blockr.site)
+
+[github.com/BristolMyersSquibb/blockr](https://github.com/BristolMyersSquibb/blockr)
 :::
 
 ::: {.notes}
@@ -303,4 +303,8 @@ to my laptop.
 
 *A beat before the joke and none after. Land it and stop — no thank-you that steps
 on it.*
+
+*The slide is blockr, not you: it's what they photograph to act on later, while the
+invitation to act now is in your voice. Confirm which URL is which — the labels are
+bare because blockr.cloud and blockr.site aren't referenced in the repos.*
 :::
