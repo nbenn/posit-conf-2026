@@ -22,8 +22,6 @@ restrictions (cause).
 - **Do** — build your own block.
 - **Feel** — recognition (we have all built the app that couldn't be taken apart
   afterwards) → surprise (the counterintuitive turn: less freedom, better apps).
-  ⚠ *Open: you also listed "thrilled at how amazing a blockr app looks vs. how
-  little goes into it". That's the second value proposition. Deliberate or cut.*
 
 ## Audience
 
@@ -104,11 +102,11 @@ clause somewhere — the bricks are things you write, in R — keeps it out.*
 ### 7 · Ask + close — 25 s
 - Your turn: build a block.
 - Testimony, honestly bounded: this worked for us. YMMV — but keep the epistemic
-  humility and drop the shrug. Warm ending, not a cold one.
-- ⚠ *Open: "have the assistant build it — data in, parameters in, one table out is a
-  specification" would close the AI loop and make the ask feel cheap. It also risks
-  making an AI line the last thing they hear. Untested.*
-- ⚠ *Needs a landing line. Yours, not mine.*
+  humility and drop the shrug.
+- Landing: that's the five minutes, and there's no Q&A. There's a lot more to show,
+  so come find me — I'm at this one on my own, and I'd like the company.
+- ⚠ *Deliver that last line light and quick. At pace it's charming; flat, it's a
+  little melancholy — and it is the last thing they hear.*
 
 ## Images
 
@@ -122,24 +120,6 @@ controlled comparison rather than two stock images.
   Loose bricks beside a single model say *modular*; two models say *reused*, which is
   the actual claim. Build them recognizably blocky — if the shape comes out too good,
   the concession stops being honest.
-
-⚠ *img/lego_blocks.jpeg, lego_names.jpeg and lego_stack.jpeg exist from the 2025
-deck — continuity or a deliberate break, your call.*
-
-## Open decisions
-
-1. **Beat 4 vs beat 6 for time.** 70 s + 50 s = 120 s, nearly half the talk, on the
-   two beats that both need screen time. The images buy back some of beat 2, which is
-   the only real slack in the budget.
-2. **Whether "thrill at the app" stays** in the emotional goal, given it pulls
-   against the restriction argument.
-3. **Title.** Not discussed.
-4. **The number.** Rejected, deliberately — LOC is gameable and invites dismissal.
-   Stronger now than when you decided it: lines of code stopped being a cost worth
-   counting the moment generating them got cheap.
-5. **The AI framing is load-bearing but narrow.** It appears in beats 1, 2 and
-   possibly 7, and nowhere else. Deliberate — enough to show the talk isn't arguing
-   from 2021, not so much that it becomes an AI talk.
 
 ## Budget check
 
