@@ -2,20 +2,26 @@
 
 ## Lodestar
 
-**Question:** How do you keep a Shiny data app maintainable as it grows?
+**Question:** How do you make the next app cheaper than this one?
+
+**Premise:** Shiny has always been a framework for rapid prototyping, and a coding
+assistant accelerates that further. But the acceleration applies to *starting* —
+every new app still starts from scratch.
 
 **Answer:** By imposing restrictions — like the ones blockr imposes. Not the only
 solution, not necessarily the best one, but one that has worked really well for us.
 
-**Axis:** maintenance cost (problem) → reuse + a small stable API (mechanism) → restrictions (cause).
+**Axis:** reuse (problem) → bounded contracts + a small stable API (mechanism) →
+restrictions (cause).
 
 ## Three-layer goal
 
 - **Learn** — well-placed restrictions are valuable: they discretize the solution
-  space and save *us* from *ourselves*.
+  space and save *us* from *ourselves*. The same restriction that limits the shape
+  is what lets the pieces connect.
 - **Do** — build your own block.
-- **Feel** — recognition (we all got here the same way) → surprise (the
-  counterintuitive turn: less freedom, better apps).
+- **Feel** — recognition (we have all built the app that couldn't be taken apart
+  afterwards) → surprise (the counterintuitive turn: less freedom, better apps).
   ⚠ *Open: you also listed "thrilled at how amazing a blockr app looks vs. how
   little goes into it". That's the second value proposition. Deliberate or cut.*
 
@@ -24,30 +30,44 @@ solution, not necessarily the best one, but one that has worked really well for 
 Programmers who create data apps. Not the no-code creators, not the viewers.
 Consequence: the GUI is not the point, it's a consequence.
 
+⚠ *The lego image recruits the low-code pitch whether you invite it or not. One
+clause somewhere — the bricks are things you write, in R — keeps it out.*
+
 ## Beats (270 s)
 
-### 1 · Situation — 40 s
-- Shiny lets you build something impressive in an afternoon.
-- Many of us have a stats/data science background rather than software
-  engineering. We arrived via scripting data analyses — simple, procedural
-  code.
-- Then suddenly we're reasoning about every possible ordering of state changes in
-  an interactive app.
+### 1 · Situation — 35 s
+- Shiny has always been a framework for rapid prototyping. You get something
+  impressive in front of someone fast.
+- A coding assistant accelerates that further.
+- But no real problem is solved at prototype speed. The work is what comes after:
+  feature requests, shifting understanding of the problem, fixes layered on
+  workarounds.
 - ⚠ *Consultancy line ("small data science consultancy, many Shiny apps over the
   years") = credibility, not common ground. One clause, not a paragraph — and only
   if it buys you belief for the demo later.*
 
-### 2 · Complication — 35 s
-- Reasonable initial clarity. Then: feature requests, shifting understanding of the
-  problem, fixes layered on workarounds.
-- Everything is tailor-made, so nothing carries over to the next project.
+### 2 · Complication — 40 s
+- 🖼 **play-doh** — colors that started out distinct, now permanently one thing.
+- Everything is tailor-made, so nothing carries over to the next project. The logic
+  you would want to reuse can't be separated from the app it grew inside.
+- What accelerated is the starting. Every new app still starts from scratch.
+- **A coding assistant is a very fast pair of hands. Fast hands don't make play-doh
+  separable.**
+- ⚠ *That last line is the entire AI rebuttal, and it works because it is a claim
+  about the material rather than about anyone's discipline. Don't expand it — it
+  gets weaker the longer it runs.*
 - ⚠ *Optional: the dataset-manipulation client app, one sentence only. It's a
   garnish here, not evidence — the rewrite isn't validated and you don't have time
   to say so properly.*
 
 ### 3 · Question + hook — 20 s
-- So: how do we improve on an already very expressive framework?
+- 🖼 **lego** — two different models, obviously sharing brick types.
+- So: how do you make the next app cheaper than this one?
 - **By taking things away.** By adding restrictions.
+- The stud is the trade: the thing that limits what shapes you can build is the same
+  thing that lets the pieces connect.
+- Concede it out loud — you are building an approximation of the perfect shape. When
+  that is acceptable, you get a material that is far easier to wield.
 - ⚠ *This is the memorable line. It should be short enough to land in one breath
   and quotable enough to survive to the hallway.*
 
@@ -55,7 +75,7 @@ Consequence: the GUI is not the point, it's a consequence.
 - A Shiny module can have arbitrary inputs, arbitrary outputs, side effects, and
   any communication channel you care to invent.
 - A block: one or more **data inputs**, some **user parameters**, exactly **one
-  data output**. That's it.
+  data output**. That's it. That's the stud.
 - Join block: `x`, `y` in; join type + join columns as parameters; one table out.
 - (Pseudo) code for how that block is implemented.
 - ⚠ *This beat is doing double duty: it explains the restriction AND it is the only
@@ -73,8 +93,9 @@ Consequence: the GUI is not the point, it's a consequence.
 ### 6 · Evidence — 50 s
 - A real, complex app we built.
 - Almost entirely general-purpose blocks — the same ones we use across very
-  different projects.
-- **One** custom block, where the problem genuinely demanded it.
+  different projects. **This is the central question answered, on screen.**
+- **One** custom block, where the problem genuinely demanded it. Lego ships
+  specialty pieces too.
 - ⚠ *The custom block is the point, not a footnote: it shows the abstraction holding
   AND shows the escape hatch. That is the objection a skeptic is already forming.*
 - ⚠ *Danger zone: this is where the "look how nice it is" pitch smuggles itself back
@@ -84,17 +105,41 @@ Consequence: the GUI is not the point, it's a consequence.
 - Your turn: build a block.
 - Testimony, honestly bounded: this worked for us. YMMV — but keep the epistemic
   humility and drop the shrug. Warm ending, not a cold one.
+- ⚠ *Open: "have the assistant build it — data in, parameters in, one table out is a
+  specification" would close the AI loop and make the ask feel cheap. It also risks
+  making an AI line the last thing they hear. Untested.*
 - ⚠ *Needs a landing line. Yours, not mine.*
+
+## Images
+
+Two photographs, shot as a pair — same background, same lighting — so they read as a
+controlled comparison rather than two stock images.
+
+- **Play-doh (beat 2).** Pristine colors in frame *together with* the mixed lump.
+  One image then carries before and after; unopened tubs alone would only say
+  "unused", and the point is irreversibility.
+- **Lego (beat 3).** Two different models built from obviously shared brick types.
+  Loose bricks beside a single model say *modular*; two models say *reused*, which is
+  the actual claim. Build them recognizably blocky — if the shape comes out too good,
+  the concession stops being honest.
+
+⚠ *img/lego_blocks.jpeg, lego_names.jpeg and lego_stack.jpeg exist from the 2025
+deck — continuity or a deliberate break, your call.*
 
 ## Open decisions
 
 1. **Beat 4 vs beat 6 for time.** 70 s + 50 s = 120 s, nearly half the talk, on the
-   two beats that both need screen time. One of them will have to give.
+   two beats that both need screen time. The images buy back some of beat 2, which is
+   the only real slack in the budget.
 2. **Whether "thrill at the app" stays** in the emotional goal, given it pulls
    against the restriction argument.
 3. **Title.** Not discussed.
 4. **The number.** Rejected, deliberately — LOC is gameable and invites dismissal.
-   Nothing quantitative replaces it; the demo's shape carries the load instead.
+   Stronger now than when you decided it: lines of code stopped being a cost worth
+   counting the moment generating them got cheap.
+5. **The AI framing is load-bearing but narrow.** It appears in beats 1, 2 and
+   possibly 7, and nowhere else. Deliberate — enough to show the talk isn't arguing
+   from 2021, not so much that it becomes an AI talk.
 
 ## Budget check
 
