@@ -9,6 +9,11 @@ format:
     css: custom.css
 ---
 
+```{r}
+#| include: false
+qr_url <- "https://blockr.site"
+```
+
 ::: {.notes}
 **Beat 1 · Situation — 35 s**
 
@@ -25,12 +30,7 @@ buys belief for the demo later.*
 
 ## Nothing carries over {transition="slide-in none-out"}
 
-::: {.placeholder}
-[Photo — play-doh]{.ph-label}
-The mixed lump: colors that started out distinct, now permanently one thing.
-Pristine colors in frame *together with* the mixed lump, so one image carries
-before and after.
-:::
+![](img/play_doh.png){.r-stretch fig-align="center"}
 
 ::: {.takeaway}
 Everything is tailor-made. Every new app starts from scratch.
@@ -47,6 +47,9 @@ you would want to reuse can't be separated from the app it grew inside.
 
 What accelerated is the starting. Every new app still starts from scratch.
 
+*Shot brief — the lump has to read as MIXED: pristine colors in frame together with
+a visibly muddy lump, so one image carries before and after.*
+
 *No AI line in this beat — the room joins beat 1 to this image unaided.*
 :::
 
@@ -55,11 +58,7 @@ What accelerated is the starting. Every new app still starts from scratch.
 ::: columns
 ::: {.column width="50%"}
 
-::: {.placeholder}
-[Photo — play-doh]{.ph-label}
-Same image as the previous slide. It stays: the contrast is the argument, and it
-needs to be on screen while the hook lands.
-:::
+![](img/play_doh.png){fig-align="center"}
 
 ::: {.caption}
 Re-formable, never reusable
@@ -68,12 +67,7 @@ Re-formable, never reusable
 :::
 ::: {.column width="50%"}
 
-::: {.placeholder}
-[Photo — lego]{.ph-label}
-Two different models built from obviously shared brick types — two models say
-*reused*, where loose bricks would only say *modular*. Recognizably blocky, so the
-approximation stays honest. Same background and lighting as the play-doh shot.
-:::
+![](img/lego_blocks.jpeg){fig-align="center"}
 
 ::: {.caption}
 Fixed shapes, endless reuse
@@ -98,6 +92,9 @@ thing that lets the pieces connect.
 
 You are building an approximation of the perfect shape. When that's acceptable, you
 get a material that is far easier to wield.
+
+*Shot brief — two different models from obviously shared brick types. Loose bricks
+say modular; two models say reused, which is the actual claim.*
 
 *Memorable line — one breath, quotable enough to survive to the hallway. Try it
 with and without the words on screen.*
@@ -274,12 +271,28 @@ Build a block.
 Look out for what you *don't* have to decide.
 :::
 
+::: columns
+::: {.column width="38%"}
+
+```{r}
+#| echo: false
+#| fig-width: 2.4
+#| fig-height: 2.4
+plot(qrcode::qr_code(qr_url))
+```
+
+:::
+::: {.column width="62%"}
+
 ::: {.links}
 [blockr.cloud](https://blockr.cloud)
 
 [blockr.site](https://blockr.site)
 
 [github.com/BristolMyersSquibb/blockr](https://github.com/BristolMyersSquibb/blockr)
+:::
+
+:::
 :::
 
 ::: {.notes}

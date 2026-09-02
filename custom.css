@@ -64,3 +64,10 @@
 .reveal section.closing > p {
   text-align: center;
 }
+
+.reveal .columns img {
+  max-height: 34vh;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
