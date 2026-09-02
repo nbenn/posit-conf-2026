@@ -1,0 +1,267 @@
+---
+title: "AI-assisted, interactive pipeline building with blockr"
+author: Nicolas Bennett
+date: TBD
+format:
+  revealjs:
+    progress: true
+    controls: false
+    transition: slide
+    css: custom.css
+---
+
+::: {.notes}
+**Beat 1 · Situation — 35 s**
+
+Shiny has always been a framework for rapid prototyping. You get something
+impressive in front of someone fast. A coding assistant accelerates that further.
+
+But no real problem is solved at prototype speed. The work is what comes after:
+feature requests, shifting understanding of the problem, fixes layered on
+workarounds.
+
+*Consultancy line is credibility, not common ground — one clause, and only if it
+buys belief for the demo later.*
+:::
+
+## {transition="slide-in none-out"}
+
+::: {.placeholder}
+[Photo — play-doh]{.ph-label}
+The mixed lump: colors that started out distinct, now permanently one thing.
+Pristine colors in frame *together with* the mixed lump, so one image carries
+before and after. Full bleed, no text.
+:::
+
+::: {.notes}
+**Beat 2 · Complication — 35 s**
+
+Play-doh doesn't run out. It just gets browner. Every re-form mixes what used to be
+separate, and nothing un-mixes it.
+
+Everything is tailor-made, so nothing carries over to the next project. The logic
+you would want to reuse can't be separated from the app it grew inside.
+
+What accelerated is the starting. Every new app still starts from scratch.
+
+*No AI line in this beat — the room joins beat 1 to this image unaided.*
+:::
+
+## {transition="none-in slide-out"}
+
+::: columns
+::: {.column width="50%"}
+
+::: {.placeholder}
+[Photo — play-doh]{.ph-label}
+Same image as the previous slide. It stays: the contrast is the argument, and it
+needs to be on screen while the hook lands.
+:::
+
+:::
+::: {.column width="50%"}
+
+::: {.placeholder}
+[Photo — lego]{.ph-label}
+Two different models built from obviously shared brick types — two models say
+*reused*, where loose bricks would only say *modular*. Recognizably blocky, so the
+approximation stays honest. Same background and lighting as the play-doh shot.
+:::
+
+:::
+:::
+
+::: {.notes}
+**Beat 3 · Question + hook — 20 s**
+
+So: how do you make the next app cheaper than this one?
+
+**By taking things away.** By adding restrictions.
+
+The stud is the trade: the thing that limits what shapes you can build is the same
+thing that lets the pieces connect.
+
+You are building an approximation of the perfect shape. When that's acceptable, you
+get a material that is far easier to wield.
+
+*Memorable line — one breath, quotable enough to survive to the hallway. Try it
+with and without the words on screen.*
+:::
+
+## A block {transition="slide-in none-out"}
+
+::: {.placeholder}
+[Diagram — block anatomy]{.ph-label}
+One or more data inputs, some user parameters, exactly one data output. Contrast
+with a Shiny module: arbitrary inputs, arbitrary outputs, side effects, any
+communication channel you care to invent.
+
+To generate fresh — the 2025 diagrams predate the current UI. Wants to read as one
+picture, not a labelled schematic: the many-armed module beside the block's three
+ports.
+:::
+
+::: {.notes}
+**Beat 4a · The restriction — ~25 s**
+
+A Shiny module can have arbitrary inputs, arbitrary outputs, side effects, and any
+communication channel you care to invent.
+
+A block: one or more data inputs, some user parameters, exactly one data output.
+That's it. That's the stud.
+:::
+
+## A block {transition="none-in slide-out"}
+
+``` r
+new_join_block <- function(type = "left", by = character(), ...) {
+  new_block(
+    server = function(id, x, y) {
+      moduleServer(id, function(input, output, session) {
+        # ... UI bindings for `type` and `by` ...
+        list(
+          expr = reactive(
+            bquote(
+              dplyr::join(x, y, by = .(by), type = .(type))
+            )
+          )
+        )
+      })
+    },
+    ui = function(id) {
+      # ... select inputs for join type and join columns ...
+    },
+    ...
+  )
+}
+```
+
+::: {.notes}
+**Beat 4b · The restriction, concretely — ~45 s**
+
+Join block: `x`, `y` in; join type and join columns as parameters; one table out.
+
+*Pseudo-code — replace with the real thing, keep it around a dozen lines, and use
+`code-line-numbers` to walk it in three moments (inputs / parameters / the one
+output) the way the 2025 deck walked the dplyr pipeline.*
+
+*Biggest time risk in the talk. This is the only place the audience sees what
+"build a block" actually means — if it doesn't feel achievable, the ask doesn't
+land.*
+:::
+
+## {transition="slide"}
+
+::: {.placeholder}
+[Screenshot — a board]{.ph-label}
+Blocks and the links between them, visible as a graph. No text on this slide —
+beat 5 carries lines that need to be heard, not read.
+
+Fresh capture of the current UI. The point it has to make visually is *small
+vocabulary*: few kinds of thing, connected simply.
+:::
+
+::: {.notes}
+**Beat 5 · Bridge — 35 s**
+
+Small, well-scoped units of computation with a simple, stable API. So logic lives in
+general-purpose blocks; the framework handles communication and reactivity.
+
+The tailoring lives in configuration now, so the code carries over.
+
+A board is a small vocabulary: blocks, and the links between them. That turns
+authoring into assembly — and assembly doesn't take a big model.
+
+**This is not an impressive use of AI. That's rather the point.**
+
+*"The code carries over" is the sentence connecting complication to payoff — if it
+takes more than one breath, you can't afford both ends of the argument.*
+
+*Don't name the package: blockr.ai is on the way out, blockr.assistant on the way
+in. "The assistant" stays true whichever has shipped.*
+:::
+
+## {transition="slide-in none-out"}
+
+::: {.placeholder}
+[Video 1/3 — the app]{.ph-label}
+A real, complex app we built. Opening section: what the app is and who uses it.
+A few seconds, then it holds on the last frame so the next click advances.
+:::
+
+::: {.notes}
+**Beat 6a · Evidence — ~15 s**
+
+A real, complex app we built.
+:::
+
+## {transition="none"}
+
+::: {.placeholder}
+[Video 2/3 — general-purpose blocks]{.ph-label}
+The board behind the app: almost entirely general-purpose blocks, the same ones we
+use across very different projects. This is the central question answered, on
+screen.
+:::
+
+::: {.notes}
+**Beat 6b · Evidence — ~20 s**
+
+Almost entirely general-purpose blocks — the same ones we use across very different
+projects.
+:::
+
+## {transition="none-in slide-out"}
+
+::: {.placeholder}
+[Video 3/3 — the one custom block]{.ph-label}
+The single custom block, where the problem genuinely demanded it.
+:::
+
+::: {.notes}
+**Beat 6c · Evidence — ~15 s**
+
+One custom block, where the problem genuinely demanded it. Lego ships specialty
+pieces too.
+
+*The custom block is the point, not a footnote: it shows the abstraction holding AND
+shows the escape hatch. That's the objection a skeptic is already forming.*
+
+*Danger zone: this is where the "look how nice it is" pitch smuggles itself back in
+and eats the clock.*
+:::
+
+## Your turn {.center}
+
+Build a block.
+
+[nicolas@cynkra.com]{style="font-size: 0.7em;"}
+
+::: {.placeholder}
+[Slide content — to settle]{.ph-label}
+Whatever the room should still see while the close lands: your name, where to find
+you, repo/package links. It stays up through the joke, so keep it quiet.
+:::
+
+::: {.notes}
+**Beat 7 · Ask + close — 30 s**
+
+The assistant assembles. Someone still has to author the parts.
+
+Your turn: build a block — with a **coding** assistant or without, however you
+prefer. *(Say "coding assistant", not "assistant" — the line before is about the
+board assistant and the two blur under one word.)*
+
+And look out for what you *don't* have to decide — that's normally the expensive
+part of making something reusable.
+
+Testimony, honestly bounded: this worked for us. YMMV. *(First cut if the beat runs
+long — the look-out-for line is already testimony, in the imperative.)*
+
+**Landing:** that's the five minutes, and there's no Q&A. There's a lot more to
+show, so come find me — I'm at this one on my own, and I'd rather talk to you than
+to my laptop.
+
+*A beat before the joke and none after. Land it and stop — no thank-you that steps
+on it.*
+:::

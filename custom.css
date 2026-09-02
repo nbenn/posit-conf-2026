@@ -1,0 +1,25 @@
+.placeholder {
+  border: 3px dashed #b0b0b0;
+  border-radius: 0.4em;
+  color: #707070;
+  padding: 1.2em;
+  margin: 0.4em auto;
+  font-style: italic;
+  font-size: 0.62em;
+  line-height: 1.35;
+  text-align: left;
+  background: #fafafa;
+}
+
+.placeholder .ph-label {
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: #999;
+  margin-bottom: 0.5em;
+}
+
+.reveal .slide-menu-button { opacity: 0.25; }
