@@ -11,7 +11,7 @@ format:
 
 ## Nothing carries over {transition="slide-in none-out"}
 
-![](img/play_doh.png){.r-stretch fig-align="center"}
+![](img/play_doh-1.png){.r-stretch fig-align="center"}
 
 ::: {.takeaway}
 Everything is tailor-made. Every new app starts from scratch.
@@ -53,7 +53,7 @@ a visibly muddy lump, so one image carries before and after.*
 ::: columns
 ::: {.column width="50%"}
 
-![](img/play_doh.png){fig-align="center"}
+![](img/play_doh-2.png){fig-align="center"}
 
 ::: {.caption}
 Re-formable, never reusable
@@ -62,7 +62,7 @@ Re-formable, never reusable
 :::
 ::: {.column width="50%"}
 
-![](img/lego_blocks.jpeg){fig-align="center"}
+![](img/lego-1.png){fig-align="center"}
 
 ::: {.caption}
 Fixed shapes, endless reuse
@@ -97,6 +97,21 @@ with and without the words on screen.*
 
 ## A block {transition="slide-in none-out"}
 
+![](img/lego-2.png){.r-stretch fig-align="center"}
+
+::: {.takeaway}
+One step each, stacked into a pipeline.
+:::
+
+::: {.notes}
+**Beat 4a · Blocks — ~10 s**
+
+Bridge from the toy to the tool: the same bricks, now doing the work. No explanation
+needed — the labels do it.
+:::
+
+## A block {transition="none"}
+
 ::: {.placeholder}
 [Diagram — block anatomy]{.ph-label}
 One or more data inputs, some user parameters, exactly one data output. Contrast
@@ -113,7 +128,7 @@ ports.
 :::
 
 ::: {.notes}
-**Beat 4a · The restriction — ~25 s**
+**Beat 4b · The restriction — ~20 s**
 
 A Shiny module can have arbitrary inputs, arbitrary outputs, side effects, and any
 communication channel you care to invent.
@@ -143,7 +158,7 @@ new_join_block <- function(type = "left", by = character(), ...) {
 ```
 
 ::: {.notes}
-**Beat 4b · The restriction, concretely — ~45 s**
+**Beat 4c · The restriction, concretely — ~40 s**
 
 Join block: `x`, `y` in; join type and join columns as parameters; one table out.
 
@@ -236,9 +251,20 @@ projects.
 
 ## A real app {transition="none-in slide-out"}
 
+::: columns
+::: {.column width="58%"}
+
 ::: {.placeholder}
 [Video 3/3 — the one custom block]{.ph-label}
 The single custom block, where the problem genuinely demanded it.
+:::
+
+:::
+::: {.column width="42%"}
+
+![](img/lego-3.png){fig-align="center"}
+
+:::
 :::
 
 ::: {.caption}
