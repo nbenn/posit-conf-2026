@@ -46,16 +46,16 @@ clause somewhere — the bricks are things you write, in R — keeps it out.*
   years") = credibility, not common ground. One clause, not a paragraph — and only
   if it buys you belief for the demo later.*
 
-### 2 · Complication — 40 s
+### 2 · Complication — 35 s
 - 🖼 **play-doh** — colors that started out distinct, now permanently one thing.
+- Play-doh doesn't run out. It just gets browner. Every re-form mixes what used to be
+  separate, and nothing un-mixes it.
 - Everything is tailor-made, so nothing carries over to the next project. The logic
   you would want to reuse can't be separated from the app it grew inside.
 - What accelerated is the starting. Every new app still starts from scratch.
-- **A coding assistant is a very fast pair of hands. Fast hands don't make play-doh
-  separable.**
-- ⚠ *That last line is the entire AI rebuttal, and it works because it is a claim
-  about the material rather than about anyone's discipline. Don't expand it — it
-  gets weaker the longer it runs.*
+- ⚠ *No AI line in this beat. Beat 1 established the acceleration and the image
+  carries the rest — the room joins them unaided, and a connection they make
+  themselves can't feel staged.*
 - ⚠ *Optional: the dataset-manipulation client app, one sentence only. It's a
   garnish here, not evidence — the rewrite isn't validated and you don't have time
   to say so properly.*
@@ -82,13 +82,18 @@ clause somewhere — the bricks are things you write, in R — keeps it out.*
   place the audience sees what "build a block" actually means. If the code doesn't
   make the ask feel achievable, the ask doesn't land. Biggest time risk in the talk.*
 
-### 5 · Bridge — 30 s
+### 5 · Bridge — 35 s
 - Small, well-scoped units of computation with a simple, stable API.
 - So logic lives in general-purpose blocks; the framework handles communication and
   reactivity.
 - The tailoring lives in configuration now, so the code carries over.
-- ⚠ *This is the sentence that connects your complication to your payoff. If it
+- A board is a small vocabulary: blocks, and the links between them. That turns
+  authoring into assembly — and assembly doesn't take a big model.
+- **This is not an impressive use of AI. That's rather the point.**
+- ⚠ *"The code carries over" is the sentence connecting complication to payoff. If it
   takes more than one breath, you can't afford both ends of the argument.*
+- ⚠ *Don't name the package on the slide — blockr.ai is on the way out,
+  blockr.assistant on the way in. "The assistant" stays true whichever has shipped.*
 
 ### 6 · Evidence — 50 s
 - A real, complex app we built.
@@ -102,6 +107,7 @@ clause somewhere — the bricks are things you write, in R — keeps it out.*
   in and eats the clock.*
 
 ### 7 · Ask + close — 25 s
+- The assistant assembles. Someone still has to author the parts.
 - Your turn: build a block.
 - Testimony, honestly bounded: this worked for us. YMMV — but keep the epistemic
   humility and drop the shrug.
