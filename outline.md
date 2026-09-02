@@ -1,5 +1,7 @@
 # posit::conf 2026 — lightning talk draft (5 min slot, target 4:30–4:45)
 
+**Title (as submitted):** AI-assisted, interactive pipeline building with blockr
+
 ## Lodestar
 
 **Question:** How do you make the next app cheaper than this one?
