@@ -9,13 +9,16 @@ format:
     css: custom.css
 ---
 
-```{r}
-#| include: false
-qr_url <- "https://blockr.site"
-```
+## Nothing carries over {transition="slide-in none-out"}
+
+![](img/play_doh.png){.r-stretch fig-align="center"}
+
+::: {.takeaway}
+Everything is tailor-made. Every new app starts from scratch.
+:::
 
 ::: {.notes}
-**Beat 1 · Situation — 35 s**
+**Beat 1 · Situation — 35 s** *(spoken over the title slide)*
 
 Shiny has always been a framework for rapid prototyping. You get something
 impressive in front of someone fast. A coding assistant accelerates that further.
@@ -26,17 +29,9 @@ workarounds.
 
 *Consultancy line is credibility, not common ground — one clause, and only if it
 buys belief for the demo later.*
-:::
 
-## Nothing carries over {transition="slide-in none-out"}
+---
 
-![](img/play_doh.png){.r-stretch fig-align="center"}
-
-::: {.takeaway}
-Everything is tailor-made. Every new app starts from scratch.
-:::
-
-::: {.notes}
 **Beat 2 · Complication — 35 s**
 
 Play-doh doesn't run out. It just gets browner. Every re-form mixes what used to be
@@ -278,6 +273,7 @@ Look out for what you *don't* have to decide.
 #| echo: false
 #| fig-width: 2.4
 #| fig-height: 2.4
+qr_url <- "https://blockr.site"
 plot(qrcode::qr_code(qr_url))
 ```
 
