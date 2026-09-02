@@ -106,9 +106,10 @@ clause somewhere — the bricks are things you write, in R — keeps it out.*
 - Testimony, honestly bounded: this worked for us. YMMV — but keep the epistemic
   humility and drop the shrug.
 - Landing: that's the five minutes, and there's no Q&A. There's a lot more to show,
-  so come find me — I'm at this one on my own, and I'd like the company.
-- ⚠ *Deliver that last line light and quick. At pace it's charming; flat, it's a
-  little melancholy — and it is the last thing they hear.*
+  so come find me — I'm at this one on my own, and I'd rather talk to you than to
+  my laptop.
+- ⚠ *The joke needs a beat before it and none after. Land it and stop — don't add a
+  thank-you that steps on it.*
 
 ## Images
 
