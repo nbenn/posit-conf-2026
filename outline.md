@@ -40,8 +40,7 @@ Consequence: the GUI is not the point, it's a consequence.
 ### 2 · Complication — 35 s
 - Reasonable initial clarity. Then: feature requests, shifting understanding of the
   problem, fixes layered on workarounds.
-- The code base gets harder to reason about. Everything is tailor-made, so nothing
-  carries over to the next project.
+- Everything is tailor-made, so nothing carries over to the next project.
 - ⚠ *Optional: the dataset-manipulation client app, one sentence only. It's a
   garnish here, not evidence — the rewrite isn't validated and you don't have time
   to say so properly.*
@@ -66,8 +65,8 @@ Consequence: the GUI is not the point, it's a consequence.
 ### 5 · Bridge — 30 s
 - Small, well-scoped units of computation with a simple, stable API.
 - So logic lives in general-purpose blocks; the framework handles communication and
-  reactivity; per-app work collapses to configuration.
-- A component you reuse across projects is a component that stays maintained.
+  reactivity.
+- The tailoring lives in configuration now, so the code carries over.
 - ⚠ *This is the sentence that connects your complication to your payoff. If it
   takes more than one breath, you can't afford both ends of the argument.*
 
