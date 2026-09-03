@@ -95,3 +95,16 @@
 .reveal pre {
   font-size: 0.62em;
 }
+
+/* Emphasise the highlighted line(s) in a code walk. Quarto's plugin only
+   dims the rest (opacity 0.4); this adds weight on top. Deliberately NOT a
+   scale: magnifying a line widens its leading whitespace, which knocks the
+   indent column and the line-number gutter out of alignment. Bold costs
+   nothing here — the monospace bold face has identical advance width. */
+.reveal div.sourceCode pre code.has-line-highlights > span {
+  transition: opacity 0.25s ease;
+}
+
+.reveal div.sourceCode pre code.has-line-highlights > span.highlight-line {
+  font-weight: 700;
+}
