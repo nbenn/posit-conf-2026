@@ -2,6 +2,11 @@
 
 **Title (as submitted):** AI-assisted, interactive pipeline building with blockr
 
+**Title (revised):** Less freedom, more reuse: lessons from building blockr
+The submitted title advertised AI and interactivity; the talk argues that
+restrictions buy reuse. Dropped both from the title, kept the AI claim in the
+script where it is earned. The abstract carries the description of blockr.
+
 ## Lodestar
 
 **Question:** How do you make the next app cheaper than this one?

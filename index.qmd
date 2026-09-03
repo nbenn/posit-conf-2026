@@ -1,5 +1,5 @@
 ---
-title: "AI-assisted, interactive pipeline building with blockr"
+title: "Less freedom, more reuse: lessons from building blockr"
 author: Nicolas Bennett
 format:
   revealjs:
@@ -78,6 +78,7 @@ So: how do you make the next app cheaper than this one?
 
 Well placed restrictions: Abstractions can feel like giving up expressiveness.
 But they also buy you re-usability. They allow you to focus on what matters.
+And this applies to humans as well as current-gen coding assistants.
 :::
 
 ## A block {transition="slide-in none-out"}
