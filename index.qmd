@@ -15,7 +15,7 @@ format:
 ![](img/play_doh-1.png){fig-align="center"}
 
 ::: {.caption}
-Four separate colors, until you start building
+Anything is possible, nothing is provided
 :::
 
 ::: {.notes}
@@ -39,7 +39,7 @@ I was a lego kid, not an arts-and-crafts kid.
 ![](img/play_doh-2.png){fig-align="center"}
 
 ::: {.caption}
-Re-formable, never reusable
+Mix them and they stay mixed
 :::
 
 :::
@@ -48,7 +48,7 @@ Re-formable, never reusable
 ![](img/lego-1.png){fig-align="center"}
 
 ::: {.caption}
-Fixed shapes, endless reuse
+Stack them and they come apart
 :::
 
 :::
@@ -132,7 +132,7 @@ new_join_block <- function(by = character(), ...) {
 ::: {.notes}
 **A block, concretely — ~50 s** *(5 reveals, ~10 s each)*
 
-**(4) Under the hood, it's a shiny module.
+**(4) It's a shiny module.**
 
 **(3) We have data inputs.** In this case there are two, `x` and `y`.
 
@@ -140,111 +140,64 @@ new_join_block <- function(by = character(), ...) {
 entire user surface of this block.
 
 **(5-6) Some block-specific logic.** Whenever the input data changes we need
-to re-compute which colums we can join on.
+to re-compute which columns we can join on.
 
 **(7-9) One data output.** The block does not return a table. It returns the
 *line of R that makes one* — and you can read that line right there.
 :::
 
-## A small vocabulary {transition="slide"}
+## A real app {transition="slide"}
 
-![](img/analysis.png){fig-align="center"}
+![](img/complex.png){fig-align="center"}
 
 ::: {.takeaway}
-The tailoring lives in configuration — the code carries over.
-
-Authoring becomes assembly.
+Roughly 100 blocks across a dozen views — one of them written for this app.
 :::
 
 ::: {.notes}
-**Bridge — 35 s**
+**A real app — ~45 s** *(105 words)*
 
-Small, well-scoped units of computation with a simple, stable API. So logic lives in
-general-purpose blocks; the framework handles communication and reactivity.
+We are using blockr at a pharma client to explore clinical data from studies.
 
-The tailoring lives in configuration now, so the code carries over.
+Our standard frontend is built on a docking layout manager: every block renders
+in a panel you can move and resize freely.
 
-A board is a small vocabulary: blocks, and the links between them. That turns
-authoring into assembly — and assembly doesn't take a big model.
+These apps run to roughly a hundred blocks, spread over a dozen views.
 
-*"The code carries over" is the sentence connecting complication to payoff — if it
-takes more than one breath, you can't afford both ends of the argument.*
+Blocks are not the only extension point. There are *extensions* as well — on the
+left, a graphical overview of the board; on the right, an AI assistant.
 
-*Don't name the package: blockr.ai is on the way out, blockr.assistant on the way
-in. "The assistant" stays true whichever has shipped.*
+Most of those blocks are general purpose: reading data, transforming it, simple
+visualizations, summary tables. One was built specifically for these apps — the
+patient explorer.
+
+*The numbers are the evidence. Say them plainly and do not dress them up: a
+hundred blocks, a dozen views, one written here.*
+
+*Danger zone — this is where the "look how nice it is" pitch smuggles itself
+back in and eats the clock.*
 :::
 
-## A real app {transition="slide-in none-out"}
-
-::: {.placeholder}
-[Video 1/3 — the app]{.ph-label}
-A real, complex app we built. Opening section: what the app is and who uses it.
-A few seconds, then it holds on the last frame so the next click advances.
-:::
-
-::: {.caption}
-Built for a client, in production
-:::
-
-::: {.notes}
-**Evidence — ~15 s**
-
-A real, complex app we built.
-:::
-
-## A real app {transition="none"}
-
-::: {.placeholder}
-[Video 2/3 — general-purpose blocks]{.ph-label}
-The board behind the app: almost entirely general-purpose blocks, the same ones we
-use across very different projects. This is the central question answered, on
-screen.
-:::
-
-::: {.caption}
-The same blocks we use everywhere else
-:::
-
-::: {.notes}
-**Evidence — ~20 s**
-
-Almost entirely general-purpose blocks — the same ones we use across very different
-projects.
-:::
-
-## A real app {transition="none-in slide-out"}
-
-::: columns
-::: {.column width="58%"}
-
-::: {.placeholder}
-[Video 3/3 — the one custom block]{.ph-label}
-The single custom block, where the problem genuinely demanded it.
-:::
-
-:::
-::: {.column width="42%"}
+## Specialty pieces {transition="slide"}
 
 ![](img/lego-3.png){fig-align="center"}
 
-:::
-:::
-
 ::: {.caption}
-One custom block — lego ships specialty pieces too
+Some pieces ship with the set. Some you bring yourself.
 :::
 
 ::: {.notes}
-**Evidence — ~15 s**
+**Specialty pieces — ~20 s** *(52 words)*
 
-One custom block, where the problem genuinely demanded it. Lego ships specialty
-pieces too.
+We have been building out a library of general-purpose blocks.
 
-*The custom block is the point, not a footnote: it shows the abstraction holding AND
-shows the escape hatch. That's the objection a skeptic is already forming.*
+As we have just seen, that will not cover every use case.
 
-*Danger zone: this is where the "look how nice it is" pitch smuggles itself back in
-and eats the clock.*
+And as with the specialty pieces that come with certain lego sets, we have tried
+to make it as easy as we can to drop your own logic into a blockr app.
+
+*This is the objection a skeptic is already forming. Answering it out loud is
+what buys the ask on the next slide.*
 :::
 
 ## blockr {.center .closing}
@@ -287,28 +240,17 @@ blockr.site
 :::
 
 ::: {.notes}
-**Ask + close — 30 s**
+**Ask + close — ~35 s** *(82 words)*
 
-The assistant assembles. Someone still has to author the parts.
-
-Your turn: build a block — with a **coding** assistant or without, however you
-prefer. *(Say "coding assistant", not "assistant" — the line before is about the
-board assistant and the two blur under one word.)*
+Your turn: build a block. Either by hand, or point a **coding** assistant at the
+many examples we have built and see what comes out. *(Say "coding assistant",
+not "assistant" — the line before is about the board assistant and the two blur
+under one word.)*
 
 And look out for what you *don't* have to decide — that's normally the expensive
 part of making something reusable.
 
-Testimony, honestly bounded: this worked for us. YMMV. *(First cut if the beat runs
-long — the look-out-for line is already testimony, in the imperative.)*
-
-**Landing:** that's the five minutes, and there's no Q&A. There's a lot more to
-show, so come find me — I'm at this one on my own, and I'd rather talk to you than
-to my laptop.
-
-*A beat before the joke and none after. Land it and stop — no thank-you that steps
-on it.*
-
-*The slide is blockr, not you: it's what they photograph to act on later, while the
-invitation to act now is in your voice. Confirm which URL is which — the labels are
-bare because blockr.cloud and blockr.site aren't referenced in the repos.*
+That's the five minutes, and there's no Q&A. So if you have questions, or want
+to see more, come find me — I came on my own, and I would much rather talk to
+you than to my laptop.
 :::
