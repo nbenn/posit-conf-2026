@@ -9,7 +9,7 @@
   line-height: 1.35;
   text-align: left;
   background: #fafafa;
-  min-height: 45vh;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,7 +17,7 @@
 
 .reveal .slides section > .placeholder:only-child,
 .reveal .slides section > .columns {
-  margin-top: 4vh;
+  margin-top: 30px;
 }
 
 .placeholder .ph-label {
@@ -74,13 +74,24 @@
 
 .handles a { display: block; }
 
+/* Sizes are in slide coordinates (the deck's 1050x700 box), never vh.
+   Viewport units are measured against the real screen but applied
+   inside the scaled slide, so they make layout depend on the
+   projector's aspect ratio. */
 .reveal section img {
-  max-height: 52vh;
+  max-height: 440px;
   width: auto;
   display: block;
   margin: 0 auto;
 }
 
 .reveal .columns img {
-  max-height: 34vh;
+  max-height: 300px;
+}
+
+/* The theme hardcodes `.reveal pre { font-size: 0.55em }` — it does not read
+   --r-block-code-font-size — and `pre code` is `inherit`, so the size has to
+   be set here on the `pre`. Bounded by the widest line, not slide height. */
+.reveal pre {
+  font-size: 0.62em;
 }
