@@ -65,13 +65,6 @@
   text-align: center;
 }
 
-.reveal .columns img {
-  max-height: 34vh;
-  width: auto;
-  display: block;
-  margin: 0 auto;
-}
-
 .handles {
   text-align: left;
   font-size: 0.62em;
@@ -80,3 +73,14 @@
 }
 
 .handles a { display: block; }
+
+.reveal section img {
+  max-height: 52vh;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.reveal .columns img {
+  max-height: 34vh;
+}

@@ -1,54 +1,51 @@
 ---
 title: "AI-assisted, interactive pipeline building with blockr"
+title-slide-attributes:
+  data-notes: |
+    Situation — 35 s
+
+    Shiny has always been a framework for rapid prototyping. You get something
+    impressive in front of someone fast. A coding assistant accelerates that further.
+
+    But no real problem is solved at prototype speed. The work is what comes after:
+    feature requests, shifting understanding of the problem, fixes layered on
+    workarounds.
+
+    *Consultancy line is credibility, not common ground — one clause, and only if it
+    buys belief for the demo later.*
 author: Nicolas Bennett
 format:
   revealjs:
     progress: true
     controls: false
     transition: slide
+    auto-stretch: false
     css: custom.css
 ---
 
-## Nothing carries over {transition="slide-in none-out"}
+## Any shape you want {transition="slide-in none-out"}
 
-![](img/play_doh-1.png){.r-stretch fig-align="center"}
+![](img/play_doh-1.png){fig-align="center"}
 
-::: {.takeaway}
-Everything is tailor-made. Every new app starts from scratch.
+::: {.caption}
+Four separate colors, until you start building
 :::
 
 ::: {.notes}
-**Beat 1 · Situation — 35 s** *(spoken over the title slide)*
+**Complication — 35 s**
 
-Shiny has always been a framework for rapid prototyping. You get something
-impressive in front of someone fast. A coding assistant accelerates that further.
+On the box there is a parrot. It looks fantastic. I tried — mine did not look like
+the parrot. I was more of a lego kid.
 
-But no real problem is solved at prototype speed. The work is what comes after:
-feature requests, shifting understanding of the problem, fixes layered on
-workarounds.
+Any shape you want, as long as you can make it. Every shape by hand, every time,
+from nothing.
 
-*Consultancy line is credibility, not common ground — one clause, and only if it
-buys belief for the demo later.*
-
----
-
-**Beat 2 · Complication — 35 s**
-
-Play-doh doesn't run out. It just gets browner. Every re-form mixes what used to be
-separate, and nothing un-mixes it.
-
-Everything is tailor-made, so nothing carries over to the next project. The logic
-you would want to reuse can't be separated from the app it grew inside.
-
-What accelerated is the starting. Every new app still starts from scratch.
-
-*Shot brief — the lump has to read as MIXED: pristine colors in frame together with
-a visibly muddy lump, so one image carries before and after.*
-
-*No AI line in this beat — the room joins beat 1 to this image unaided.*
+That is what infinite malleability costs you: nothing you make is reusable.
+Tailor-made pieces don't just fit together, so the logic you would want to carry
+over can't be separated from the app it grew inside.
 :::
 
-## By taking things away {transition="none-in slide-out"}
+## Limit the shape, define the interface {transition="none-in slide-out"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -72,11 +69,11 @@ Fixed shapes, endless reuse
 :::
 
 ::: {.takeaway}
-What limits the shape is what lets the pieces connect.
+How do you make the next app cheaper than this one?
 :::
 
 ::: {.notes}
-**Beat 3 · Question + hook — 20 s**
+**Question + hook — 20 s**
 
 So: how do you make the next app cheaper than this one?
 
@@ -97,30 +94,10 @@ with and without the words on screen.*
 
 ## A block {transition="slide-in none-out"}
 
-![](img/lego-2.png){.r-stretch fig-align="center"}
+![](img/lego-2.png){fig-align="center"}
 
-::: {.takeaway}
-One step each, stacked into a pipeline.
-:::
-
-::: {.notes}
-**Beat 4a · Blocks — ~10 s**
-
-Bridge from the toy to the tool: the same bricks, now doing the work. No explanation
-needed — the labels do it.
-:::
-
-## A block {transition="none"}
-
-::: {.placeholder}
-[Diagram — block anatomy]{.ph-label}
-One or more data inputs, some user parameters, exactly one data output. Contrast
-with a Shiny module: arbitrary inputs, arbitrary outputs, side effects, any
-communication channel you care to invent.
-
-To generate fresh — the 2025 diagrams predate the current UI. Wants to read as one
-picture, not a labelled schematic: the many-armed module beside the block's three
-ports.
+::: {.caption}
+One step each, stacked into a pipeline
 :::
 
 ::: {.takeaway}
@@ -128,7 +105,12 @@ ports.
 :::
 
 ::: {.notes}
-**Beat 4b · The restriction — ~20 s**
+**Blocks — ~10 s**
+
+Bridge from the toy to the tool: the same bricks, now doing the work. No explanation
+needed — the labels do it.
+
+**The restriction — ~20 s**
 
 A Shiny module can have arbitrary inputs, arbitrary outputs, side effects, and any
 communication channel you care to invent.
@@ -158,7 +140,7 @@ new_join_block <- function(type = "left", by = character(), ...) {
 ```
 
 ::: {.notes}
-**Beat 4c · The restriction, concretely — ~40 s**
+**The restriction, concretely — ~40 s**
 
 Join block: `x`, `y` in; join type and join columns as parameters; one table out.
 
@@ -176,14 +158,7 @@ land.*
 
 ## A small vocabulary {transition="slide"}
 
-::: {.placeholder}
-[Screenshot — a board]{.ph-label}
-Blocks and the links between them, visible as a graph. Nothing on the slide beyond
-the title and caption — beat 5 carries lines that need to be heard, not read.
-
-Fresh capture of the current UI. The point it has to make visually is *small
-vocabulary*: few kinds of thing, connected simply.
-:::
+![](img/analysis.png){fig-align="center"}
 
 ::: {.takeaway}
 The tailoring lives in configuration — the code carries over.
@@ -192,7 +167,7 @@ Authoring becomes assembly.
 :::
 
 ::: {.notes}
-**Beat 5 · Bridge — 35 s**
+**Bridge — 35 s**
 
 Small, well-scoped units of computation with a simple, stable API. So logic lives in
 general-purpose blocks; the framework handles communication and reactivity.
@@ -201,8 +176,6 @@ The tailoring lives in configuration now, so the code carries over.
 
 A board is a small vocabulary: blocks, and the links between them. That turns
 authoring into assembly — and assembly doesn't take a big model.
-
-**This is not an impressive use of AI. That's rather the point.**
 
 *"The code carries over" is the sentence connecting complication to payoff — if it
 takes more than one breath, you can't afford both ends of the argument.*
@@ -224,7 +197,7 @@ Built for a client, in production
 :::
 
 ::: {.notes}
-**Beat 6a · Evidence — ~15 s**
+**Evidence — ~15 s**
 
 A real, complex app we built.
 :::
@@ -243,7 +216,7 @@ The same blocks we use everywhere else
 :::
 
 ::: {.notes}
-**Beat 6b · Evidence — ~20 s**
+**Evidence — ~20 s**
 
 Almost entirely general-purpose blocks — the same ones we use across very different
 projects.
@@ -272,7 +245,7 @@ One custom block — lego ships specialty pieces too
 :::
 
 ::: {.notes}
-**Beat 6c · Evidence — ~15 s**
+**Evidence — ~15 s**
 
 One custom block, where the problem genuinely demanded it. Lego ships specialty
 pieces too.
@@ -324,7 +297,7 @@ blockr.site
 :::
 
 ::: {.notes}
-**Beat 7 · Ask + close — 30 s**
+**Ask + close — 30 s**
 
 The assistant assembles. Someone still has to author the parts.
 
