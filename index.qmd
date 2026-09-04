@@ -90,7 +90,7 @@ One step each, stacked into a pipeline
 :::
 
 ::: {.takeaway}
-**Data inputs. User parameters. One data output.**
+Data inputs. User parameters. One data output.
 :::
 
 ::: {.notes}
@@ -152,7 +152,8 @@ to re-compute which columns we can join on.
 ![](img/complex.png){fig-align="center"}
 
 ::: {.takeaway}
-Bristol-Myers Squibb: roughly 100 blocks across a dozen views, one written for this app.
+Bristol-Myers Squibb: roughly 100 blocks across a dozen views, only one created
+specifically for this app.
 :::
 
 ::: {.notes}
@@ -172,12 +173,6 @@ left, a graphical overview of the board; on the right, an AI assistant.
 Most of those blocks are general purpose: reading data, transforming it, simple
 visualizations, summary tables. One was built specifically for these apps — the
 patient explorer.
-
-*The numbers are the evidence. Say them plainly and do not dress them up: a
-hundred blocks, a dozen views, one written here.*
-
-*Danger zone — this is where the "look how nice it is" pitch smuggles itself
-back in and eats the clock.*
 :::
 
 ## Specialty pieces {transition="slide"}
