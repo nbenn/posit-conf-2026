@@ -116,3 +116,12 @@
 .reveal div.sourceCode pre code.has-line-highlights > span.highlight-line {
   font-weight: 700;
 }
+
+/* Quarto puts a 40px margin under every figure, which the caption's own 0.5em
+   and the takeaway's 0.7em then collapse into — so text below an image sat 40px
+   away regardless of what those rules asked for. Zeroing it hands the spacing
+   back to `.caption` / `.takeaway`: 12px under a caption, 22px under a
+   takeaway. */
+.reveal div.quarto-figure {
+  margin-bottom: 0;
+}

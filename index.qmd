@@ -114,10 +114,12 @@ Data inputs. User parameters. One data output.
 The core abstraction we built for blockr is a block: a well-defined unit of
 computation.
 
-You have data inputs, user parameters and a single output. That is the whole
-contract.
+Blocks are connected by links and can be assembled into stacks.
 
-That is what a stud gives you — a simple, well-defined interface.
+Each blocks has data inputs, user parameters and a single output. That is the
+whole contract.
+
+The same a stud gives you: a simple, well-defined interface.
 
 *Optional, if the clock allows:* a Shiny module can have arbitrary inputs,
 arbitrary outputs, side effects, and any communication channel you care to
