@@ -31,7 +31,7 @@ That much freedom was always a burden to me, never a gift.
 I was a lego kid, not an arts-and-crafts kid.
 :::
 
-## Limit the shape, define the interface {transition="none-in slide-out"}
+## Limit the shape, define the interface {.pair transition="none-in slide-out"}
 
 ::: columns
 ::: {.column width="50%"}

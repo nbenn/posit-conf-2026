@@ -89,6 +89,14 @@
   max-height: 300px;
 }
 
+/* The paired play-doh/lego slide has vertical room to spare, so let its two
+   images run to the column width instead of the shared 300px cap. Scoped to
+   the slide: the closing slide is also a .columns layout and its QR code
+   should stay small. */
+.reveal .pair .columns img {
+  max-height: 420px;
+}
+
 /* The theme hardcodes `.reveal pre { font-size: 0.55em }` — it does not read
    --r-block-code-font-size — and `pre code` is `inherit`, so the size has to
    be set here on the `pre`. Bounded by the widest line, not slide height. */
