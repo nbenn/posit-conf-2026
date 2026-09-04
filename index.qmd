@@ -152,7 +152,7 @@ to re-compute which columns we can join on.
 ![](img/complex.png){fig-align="center"}
 
 ::: {.takeaway}
-In production at Bristol-Myers Squibb: roughly 100 blocks, one written for this app.
+Bristol-Myers Squibb: roughly 100 blocks across a dozen views, one written for this app.
 :::
 
 ::: {.notes}
