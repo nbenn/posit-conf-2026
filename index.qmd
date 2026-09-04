@@ -152,13 +152,14 @@ to re-compute which columns we can join on.
 ![](img/complex.png){fig-align="center"}
 
 ::: {.takeaway}
-Roughly 100 blocks across a dozen views — one of them written for this app.
+In production at Bristol-Myers Squibb: roughly 100 blocks, one written for this app.
 :::
 
 ::: {.notes}
 **A real app — ~45 s** *(105 words)*
 
-We are using blockr at a pharma client to explore clinical data from studies.
+We are using blockr at Bristol-Myers Squibb to explore clinical data from
+studies.
 
 Our standard frontend is built on a docking layout manager: every block renders
 in a panel you can move and resize freely.
