@@ -205,7 +205,7 @@ patient explorer.
 ![](img/lego-4.png){fig-align="center"}
 
 ::: {.takeaway}
-Most pieces fit any set. These fit one.
+Special shape, standard stud.
 :::
 
 ::: {.notes}
