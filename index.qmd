@@ -1,6 +1,10 @@
 ---
-title: "Less to decide, more to reuse: the block in blockr"
+title: "Less to decide, more to reuse:<br>the *block* in blockr"
 author: Nicolas Bennett
+# Square brackets escape literal text in a date-format, so the venue renders
+# out of a real date and the year cannot drift away from it.
+date: 2026-09-15
+date-format: "[posit::conf(]YYYY[)]"
 format:
   revealjs:
     progress: true
@@ -218,16 +222,11 @@ to make it as easy as we can to drop your own logic into a blockr app.
 what buys the ask on the next slide.*
 :::
 
-## blockr {.center .closing}
-
-Build a block.
+## Build a block. {.center .closing}
 
 ::: {.takeaway}
 Look out for what you *don't* have to decide.
 :::
-
-::: columns
-::: {.column width="42%"}
 
 ```{r}
 #| echo: false
@@ -236,24 +235,15 @@ Look out for what you *don't* have to decide.
 plot(qrcode::qr_code("https://blockr.site"))
 ```
 
-::: {.caption}
+::: {.meta}
 blockr.site
 :::
 
-:::
-::: {.column width="58%"}
-
-::: {.handles}
-[\@DivadNojnarg](https://github.com/DivadNojnarg)
-
-[\@christophsax](https://github.com/christophsax)
-
-[\@nbenn](https://github.com/nbenn)
-
+::: {.credits}
+[\@DivadNojnarg](https://github.com/DivadNojnarg) ·
+[\@christophsax](https://github.com/christophsax) ·
+[\@nbenn](https://github.com/nbenn) ·
 [\@MikeJohnPage](https://github.com/MikeJohnPage)
-:::
-
-:::
 :::
 
 ::: {.notes}

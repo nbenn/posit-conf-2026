@@ -1,3 +1,25 @@
+/* Title slide. The line break is forced at the colon so the claim keeps a
+   line to itself and "blockr" does not end up orphaned; 72px is the largest
+   size that leaves the longer line clear of the slide width. The venue rides
+   in `date` rather than `subtitle` because Quarto renders `date` after the
+   author, and a last line wider than the author's name is what stops the
+   stack reading as a triangle. */
+.reveal #title-slide h1.title {
+  font-size: 72px;
+  margin-bottom: 1.1em;
+}
+
+/* Both gaps are 1.1em, but of different font sizes — 79px under the title
+   against 37px under the author. That asymmetry is the point: the upper gap
+   separates the title from the metadata, so it has to beat the title's own
+   86px leading, or the author reads as a third line of the title. */
+.reveal #title-slide .date {
+  font-family: var(--r-code-font);
+  font-size: 34px;
+  color: #808080;
+  margin-top: 1.1em;
+}
+
 .placeholder {
   border: 3px dashed #b0b0b0;
   border-radius: 0.4em;
@@ -65,14 +87,45 @@
   text-align: center;
 }
 
-.handles {
-  text-align: left;
-  font-size: 0.62em;
-  line-height: 1.85;
-  margin-top: 0.9em;
+/* Closing slide, built to rhyme with the title slide: one dark statement on
+   top, everything below it metadata in the code font. The credits run on a
+   single line — stacked in a column beside the QR they left the right third
+   of the slide empty, and the two blocks never matched heights. */
+.reveal .closing h2 {
+  font-size: 72px;
+  margin: 0 0 0.5em;
 }
 
-.handles a { display: block; }
+/* Slide coordinates, so this lands at the same size the old two-column
+   layout gave the code. The `auto-stretch: false` in the front matter is
+   what keeps it square — reveal's stretch would leave it unscannable. */
+.reveal .closing img {
+  max-height: 300px;
+}
+
+.reveal .closing .meta,
+.reveal .closing .credits {
+  font-family: var(--r-code-font);
+  color: #808080;
+  text-align: center;
+}
+
+.reveal .closing .meta {
+  font-size: 26px;
+  margin-top: 0.5em;
+}
+
+.reveal .closing .credits {
+  font-size: 22px;
+  color: #9a9a9a;
+  margin-top: 1.5em;
+}
+
+/* The theme colours anchors blue, which would be the only colour in the deck. */
+.reveal .closing a {
+  color: inherit;
+  text-decoration: none;
+}
 
 /* Sizes are in slide coordinates (the deck's 1050x700 box), never vh.
    Viewport units are measured against the real screen but applied
