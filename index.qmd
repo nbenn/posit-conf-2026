@@ -195,7 +195,7 @@ patient explorer.
 ![](img/lego-4.png){fig-align="center"}
 
 ::: {.caption}
-Some pieces ship with the set. Some you bring yourself.
+Most pieces fit any set. These fit one.
 :::
 
 ::: {.notes}
@@ -227,8 +227,7 @@ Look out for what you *don't* have to decide.
 #| echo: false
 #| fig-width: 2.4
 #| fig-height: 2.4
-qr_url <- "https://blockr.site"
-plot(qrcode::qr_code(qr_url))
+plot(qrcode::qr_code("https://blockr.site"))
 ```
 
 ::: {.caption}
