@@ -177,7 +177,7 @@ to re-compute which columns we can join on.
 ![](img/complex.png){fig-align="center"}
 
 ::: {.takeaway}
-Bristol-Myers Squibb: roughly 100 blocks across a dozen views, only one created
+Bristol-Myers Squibb: roughly 100 blocks across a dozen views, one created
 specifically for this app.
 :::
 
