@@ -36,7 +36,7 @@ hand, every time.
 I was a lego kid, not an arts-and-crafts kid.
 :::
 
-## Limit the shape, define the interface {.pair transition="none-in slide-out"}
+## How do you make the next app cheaper than this one? {.pair transition="none-in slide-out"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -44,7 +44,7 @@ I was a lego kid, not an arts-and-crafts kid.
 ![](img/play_doh-2.png){fig-align="center"}
 
 ::: {.caption}
-Mix them and they stay mixed
+Assembly is up to you
 :::
 
 :::
@@ -53,23 +53,23 @@ Mix them and they stay mixed
 ![](img/lego-1.png){fig-align="center"}
 
 ::: {.caption}
-Stack them and they come apart
+Assembly is built in
 :::
 
 :::
 :::
 
 ::: {.takeaway}
-How do you make the next app cheaper than this one?
+Limit the shape, define the interface
 :::
 
 ::: {.notes}
-**Limit the shape, define the interface — ~64 s** *(154 words)*
+**How do you make the next app cheaper than this one? — ~64 s** *(154 words)*
 
 Restrictions and well-defined interfaces made me *more* creative, not less.
 
-Mix two colours of play-doh and they stay mixed. Take a lego model apart and
-you get your bricks back.
+Two lumps of play-doh assemble however you press them. Two bricks assemble
+one way: the stud.
 
 Lego costs you freedom — there are shapes you simply cannot build. What you get
 back is reuse, and, oddly, more ideas: the shaping is already decided, so you
