@@ -2,10 +2,13 @@
 
 **Title (as submitted):** AI-assisted, interactive pipeline building with blockr
 
-**Title (revised):** Less freedom, more reuse: lessons from building blockr
+**Title (revised):** Less to decide, more to reuse: Shiny apps built from blocks
 The submitted title advertised AI and interactivity; the talk argues that
 restrictions buy reuse. Dropped both from the title, kept the AI claim in the
-script where it is earned. The abstract carries the description of blockr.
+script where it is earned. The first half plants the closing line ("look out
+for what you *don't* have to decide") so the ending reads as a callback; the
+second half describes the thing in the audience's word (Shiny) and ours
+(blocks). The abstract carries the description of blockr.
 
 ## Lodestar
 

@@ -1,5 +1,5 @@
 ---
-title: "Less freedom, more reuse: lessons from building blockr"
+title: "Less to decide, more to reuse: Shiny apps built from blocks"
 author: Nicolas Bennett
 format:
   revealjs:
