@@ -106,7 +106,7 @@ One step each, stacked into a pipeline
 ![](img/lego-3.png){fig-align="center"}
 
 ::: {.caption}
-Block, link, stack — the whole vocabulary
+Brick, stud, model
 :::
 
 :::
