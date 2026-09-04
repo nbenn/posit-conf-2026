@@ -14,7 +14,7 @@ format:
 
 ![](img/play_doh-1.png){fig-align="center"}
 
-::: {.caption}
+::: {.takeaway}
 Anything is possible, nothing is provided
 :::
 
@@ -196,7 +196,7 @@ patient explorer.
 
 ![](img/lego-4.png){fig-align="center"}
 
-::: {.caption}
+::: {.takeaway}
 Most pieces fit any set. These fit one.
 :::
 
