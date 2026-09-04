@@ -222,7 +222,7 @@ to make it as easy as we can to drop your own logic into a blockr app.
 what buys the ask on the next slide.*
 :::
 
-## Build a block. {.center .closing}
+## Build a block. {.closing}
 
 ::: {.takeaway}
 Look out for what you *don't* have to decide.
