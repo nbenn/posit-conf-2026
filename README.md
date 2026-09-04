@@ -1,4 +1,4 @@
-# Less to decide, more to reuse: Shiny apps built from blocks
+# Less to decide, more to reuse: the block in blockr
 
 Lightning talk at [posit::conf(2026)](https://posit.co/conference/),
 Hilton Americas-Houston, Houston, TX.
