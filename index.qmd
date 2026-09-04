@@ -36,7 +36,7 @@ hand, every time.
 I was a lego kid, not an arts-and-crafts kid.
 :::
 
-## How do you make the next app cheaper than this one? {.pair transition="none-in slide-out"}
+## What makes the next app cheaper? {.pair transition="none-in slide-out"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -64,7 +64,7 @@ Limit the shape, define the interface
 :::
 
 ::: {.notes}
-**How do you make the next app cheaper than this one? — ~64 s** *(154 words)*
+**What makes the next app cheaper? — ~64 s** *(154 words)*
 
 Restrictions and well-defined interfaces made me *more* creative, not less.
 
