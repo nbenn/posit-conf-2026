@@ -3,7 +3,7 @@
 Lightning talk at [posit::conf(2026)](https://posit.co/conference/),
 Hilton Americas-Houston, Houston, TX.
 
-**When:** Tuesday, September 15, 2026, 1:05–1:10 PM CDT
+**When:** Tuesday, September 15, 2026, 1:05–1:10 PM CDT, Ballroom L & I
 
 **Slides:** <https://nbenn.github.io/posit-conf-2026>
 
