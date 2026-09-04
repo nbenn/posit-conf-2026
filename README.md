@@ -1,9 +1,9 @@
 # Less to decide, more to reuse: Shiny apps built from blocks
 
 Lightning talk at [posit::conf(2026)](https://posit.co/conference/),
-Hilton Americas-Houston, Houston, TX, September 14–16, 2026.
+Hilton Americas-Houston, Houston, TX.
 
-**When:** lightning talks session, <!-- TODO: day, time, room --> (September 15 or 16)
+**When:** Tuesday, September 15, 2026, 1:05–1:10 PM CDT
 
 **Slides:** <https://nbenn.github.io/posit-conf-2026>
 
