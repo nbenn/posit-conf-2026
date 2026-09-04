@@ -5,3 +5,7 @@
 **/*.quarto_ipynb
 img/orig/
 /_site/
+
+# photo sources are kept out of the repo; the PNGs in img/ are what the deck uses
+*.jpg
+*.jpeg
