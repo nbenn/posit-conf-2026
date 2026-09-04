@@ -19,14 +19,15 @@ Anything is possible, nothing is provided
 :::
 
 ::: {.notes}
-**Any shape you want — ~20 s** *(47 words)*
+**Any shape you want — ~22 s** *(53 words)*
 
 Play-doh. You can make any shape you want.
 
 On the box of this kit there was a parrot — intricate, beautifully colored.
 I could never get close.
 
-That much freedom was always a burden to me, never a gift.
+That much freedom was always a burden to me, never a gift — every shape by
+hand, every time.
 
 I was a lego kid, not an arts-and-crafts kid.
 :::
@@ -59,9 +60,12 @@ How do you make the next app cheaper than this one?
 :::
 
 ::: {.notes}
-**Limit the shape, define the interface — ~55 s** *(135 words)*
+**Limit the shape, define the interface — ~64 s** *(154 words)*
 
 Restrictions and well-defined interfaces made me *more* creative, not less.
+
+Mix two colours of play-doh and they stay mixed. Take a lego model apart and
+you get your bricks back.
 
 Lego costs you freedom — there are shapes you simply cannot build. What you get
 back is reuse, and, oddly, more ideas: the shaping is already decided, so you
@@ -116,7 +120,7 @@ computation.
 
 Blocks are connected by links and can be assembled into stacks.
 
-Each blocks has data inputs, user parameters and a single output. That is the
+Each block has data inputs, user parameters and a single output. That is the
 whole contract.
 
 The same a stud gives you: a simple, well-defined interface.
@@ -253,7 +257,7 @@ blockr.site
 :::
 
 ::: {.notes}
-**Ask + close — ~35 s** *(82 words)*
+**Ask + close — ~39 s** *(94 words)*
 
 Your turn: build a block. Either by hand, or point a **coding** assistant at the
 many examples we have built and see what comes out. *(Say "coding assistant",
@@ -262,6 +266,8 @@ under one word.)*
 
 And look out for what you *don't* have to decide — that's normally the expensive
 part of making something reusable.
+
+The handles on the slide are the people who built this with me.
 
 That's the five minutes, and there's no Q&A. So if you have questions, or want
 to see more, come find me — I came on my own, and I would much rather talk to
