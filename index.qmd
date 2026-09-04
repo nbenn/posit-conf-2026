@@ -81,12 +81,27 @@ But they also buy you re-usability. They allow you to focus on what matters.
 And this applies to humans as well as current-gen coding assistants.
 :::
 
-## A block {transition="slide-in none-out"}
+## A block {.pair transition="slide-in none-out"}
+
+::: columns
+::: {.column width="50%"}
 
 ![](img/lego-2.png){fig-align="center"}
 
 ::: {.caption}
 One step each, stacked into a pipeline
+:::
+
+:::
+::: {.column width="50%"}
+
+![](img/lego-3.png){fig-align="center"}
+
+::: {.caption}
+Block, link, stack — the whole vocabulary
+:::
+
+:::
 :::
 
 ::: {.takeaway}
@@ -177,7 +192,7 @@ patient explorer.
 
 ## Specialty pieces {transition="slide"}
 
-![](img/lego-3.png){fig-align="center"}
+![](img/lego-4.png){fig-align="center"}
 
 ::: {.caption}
 Some pieces ship with the set. Some you bring yourself.
