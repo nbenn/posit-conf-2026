@@ -180,7 +180,7 @@ to re-compute which columns we can join on.
 
 ::: {.takeaway}
 Bristol-Myers Squibb: roughly 100 blocks across a dozen views, one created
-specifically for this use-case.
+specifically for this use case.
 :::
 
 ::: {.notes}
@@ -198,8 +198,8 @@ Blocks are not the only extension point. There are *extensions* as well — on t
 left, a graphical overview of the board; on the right, an AI assistant.
 
 Most of those blocks are general purpose: reading data, transforming it,
-visualizations supporting drill-down and summary tables. One block was built
-specifically for this use-case: the patient explorer.
+visualizations and summary tables that support drill-down. One block was built
+specifically for this use case: the patient explorer.
 :::
 
 ## Specialty pieces {transition="slide"}
