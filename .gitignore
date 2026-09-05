@@ -6,8 +6,7 @@
 img/orig/
 /_site/
 
-# photo sources are kept out of the repo; the PNGs in img/ are what the deck uses
-*.jpg
-*.jpeg
+# camera originals stay out of the repo; the processed images in img/ are what
+# the deck uses — photos as JPEG, screenshots as PNG
+img/IMG_*.HEIC
 *.heic
-*.HEIC

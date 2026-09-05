@@ -16,7 +16,7 @@ format:
 
 ## Any shape you want {transition="slide-in none-out"}
 
-![](img/play_doh-1.png){fig-align="center"}
+![](img/play_doh-1.jpg){fig-align="center"}
 
 ::: {.takeaway}
 Anything is possible, everything from scratch
@@ -41,7 +41,7 @@ I was a lego kid, not an arts-and-crafts kid.
 ::: columns
 ::: {.column width="50%"}
 
-![](img/play_doh-2.png){fig-align="center"}
+![](img/play_doh-2.jpg){fig-align="center"}
 
 ::: {.caption}
 Assembly is up to you
@@ -50,7 +50,7 @@ Assembly is up to you
 :::
 ::: {.column width="50%"}
 
-![](img/lego-1.png){fig-align="center"}
+![](img/lego-1.jpg){fig-align="center"}
 
 ::: {.caption}
 Assembly is built in
@@ -94,7 +94,7 @@ coding assistants alike.
 ::: columns
 ::: {.column width="50%"}
 
-![](img/lego-2.png){fig-align="center"}
+![](img/lego-2.jpg){fig-align="center"}
 
 ::: {.caption}
 One step each, stacked into a pipeline
@@ -103,7 +103,7 @@ One step each, stacked into a pipeline
 :::
 ::: {.column width="50%"}
 
-![](img/lego-3.png){fig-align="center"}
+![](img/lego-3.jpg){fig-align="center"}
 
 ::: {.caption}
 Brick, stud, model
@@ -203,7 +203,7 @@ specifically for this use case: the patient explorer.
 
 ## Specialty pieces {transition="slide"}
 
-![](img/lego-4.png){fig-align="center"}
+![](img/lego-4.jpg){fig-align="center"}
 
 ::: {.takeaway}
 Special shape, standard stud.
