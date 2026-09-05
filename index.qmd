@@ -75,7 +75,7 @@ Lego costs you freedom — there are shapes you simply cannot build. What you ge
 back is reuse, and, oddly, more ideas: the shaping is already decided, so you
 spend your attention on the model instead of on the material.
 
-Much of this carries over to what we do. I work at a small consultancy, and we
+Much of this applies to what we do. I work at a small consultancy, and we
 have built a lot of Shiny apps over the years.
 
 Every project felt like it needed tailor-made software, so we solved the same
