@@ -36,7 +36,7 @@ hand, every time.
 I was a lego kid, not an arts-and-crafts kid.
 :::
 
-## What makes your next app cheaper? {.pair transition="none-in slide-out"}
+## What carries over to your next app? {.pair transition="none-in slide-out"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -64,7 +64,7 @@ Limit the shape, define the interface
 :::
 
 ::: {.notes}
-**What makes your next app cheaper? — ~69 s** *(165 words)*
+**What carries over to your next app? — ~69 s** *(165 words)*
 
 Restrictions and well-defined interfaces made me *more* creative, not less.
 
@@ -82,7 +82,7 @@ Every project felt like it needed tailor-made software, so we solved the same
 problems again and again, and the code bases grew large and hard to change.
 Clay, basically.
 
-So: how do you make the next app cheaper than this one?
+So: what carries over from this app to the next one?
 
 Well placed restrictions: limiting the shape by defining an interface. That
 buys you reuse, and it lets you focus on what matters, humans and current-gen
