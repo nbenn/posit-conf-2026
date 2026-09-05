@@ -23,7 +23,7 @@ Anything is possible, everything from scratch
 :::
 
 ::: {.notes}
-**Any shape you want — ~22 s** *(53 words)*
+**Any shape you want — ~23 s** *(56 words)*
 
 Play-doh. You can make any shape you want.
 
@@ -64,7 +64,7 @@ Limit the shape, define the interface
 :::
 
 ::: {.notes}
-**What makes your next app cheaper? — ~64 s** *(154 words)*
+**What makes your next app cheaper? — ~69 s** *(165 words)*
 
 Restrictions and well-defined interfaces made me *more* creative, not less.
 
@@ -84,10 +84,9 @@ Clay, basically.
 
 So: how do you make the next app cheaper than this one?
 
-Well placed restrictions: limiting the shape by defining an interface.
-Abstractions can feel like giving up expressiveness, but they buy you reuse,
-and they let you focus on what matters. That applies to humans as much as to
-current-gen coding assistants.
+Well placed restrictions: limiting the shape by defining an interface. That
+buys you reuse, and it lets you focus on what matters, humans and current-gen
+coding assistants alike.
 :::
 
 ## A block {.pair transition="slide-in none-out"}
@@ -118,7 +117,7 @@ Data inputs. User parameters. One data output.
 :::
 
 ::: {.notes}
-**A block — ~25 s** *(60 words)*
+**A block — ~28 s** *(67 words)*
 
 The core abstraction we built for blockr is a block: a well-defined unit of
 computation.
@@ -184,7 +183,7 @@ specifically for this use case.
 :::
 
 ::: {.notes}
-**A real app — ~45 s** *(105 words)*
+**A real app — ~45 s** *(107 words)*
 
 We are using blockr at Bristol-Myers Squibb to explore clinical data from
 studies.
@@ -211,7 +210,7 @@ Special shape, standard stud.
 :::
 
 ::: {.notes}
-**Specialty pieces — ~20 s** *(52 words)*
+**Specialty pieces — ~26 s** *(62 words)*
 
 We have been building out a library of general-purpose blocks.
 
@@ -249,7 +248,7 @@ blockr.site
 :::
 
 ::: {.notes}
-**Ask + close — ~39 s** *(94 words)*
+**Ask + close — ~40 s** *(96 words)*
 
 Your turn: build a block. Either by hand, or point a **coding** assistant at the
 many examples we have built and see what comes out. *(Say "coding assistant",
