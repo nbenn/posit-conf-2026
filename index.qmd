@@ -84,9 +84,10 @@ Clay, basically.
 
 So: how do you make the next app cheaper than this one?
 
-Well placed restrictions: Abstractions can feel like giving up expressiveness.
-But they also buy you re-usability. They allow you to focus on what matters.
-And this applies to humans as well as current-gen coding assistants.
+Well placed restrictions: limiting the shape by defining an interface.
+Abstractions can feel like giving up expressiveness, but they buy you reuse,
+and they let you focus on what matters. That applies to humans as much as to
+current-gen coding assistants.
 :::
 
 ## A block {.pair transition="slide-in none-out"}
@@ -127,7 +128,8 @@ Blocks are connected by links and can be assembled into stacks.
 Each block has data inputs, user parameters and a single output. That is the
 whole contract.
 
-The same a stud gives you: a simple, well-defined interface.
+The block is the brick, the link is the stud, the stack is the model. And the
+stud is our interface: simple, well-defined.
 
 *Optional, if the clock allows:* a Shiny module can have arbitrary inputs,
 arbitrary outputs, side effects, and any communication channel you care to
@@ -178,7 +180,7 @@ to re-compute which columns we can join on.
 
 ::: {.takeaway}
 Bristol-Myers Squibb: roughly 100 blocks across a dozen views, one created
-specifically for this app.
+specifically for this use-case.
 :::
 
 ::: {.notes}
@@ -195,9 +197,9 @@ These apps run to roughly a hundred blocks, spread over a dozen views.
 Blocks are not the only extension point. There are *extensions* as well — on the
 left, a graphical overview of the board; on the right, an AI assistant.
 
-Most of those blocks are general purpose: reading data, transforming it, simple
-visualizations, summary tables. One was built specifically for these apps — the
-patient explorer.
+Most of those blocks are general purpose: reading data, transforming it,
+visualizations supporting drill-down and summary tables. One block was built
+specifically for this use-case: the patient explorer.
 :::
 
 ## Specialty pieces {transition="slide"}
@@ -213,13 +215,13 @@ Special shape, standard stud.
 
 We have been building out a library of general-purpose blocks.
 
-As we have just seen, that will not cover every use case.
+Of course, this will not cover every use case.
 
-And as with the specialty pieces that come with certain lego sets, we have tried
-to make it as easy as we can to drop your own logic into a blockr app.
+Similar to specialty pieces that come with certain lego sets, sometimes you
+want a specific shape, which still comes with the standard studs.
 
-*This is the objection a skeptic is already forming. Answering it out loud is
-what buys the ask on the next slide.*
+We made it easy for you to do just that by integrating your own blocks into
+a blockr app.
 :::
 
 ## Build a block. {.closing}
