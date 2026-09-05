@@ -13,7 +13,7 @@ keeps it a claim. The abstract carries the description of blockr.
 
 ## Lodestar
 
-**Question:** How do you make the next app cheaper than this one?
+**Question:** What carries over to your next app?
 
 **Premise:** Shiny has always been a framework for rapid prototyping, and a coding
 assistant accelerates that further. But the acceleration applies to *starting* —
@@ -71,7 +71,7 @@ clause somewhere — the bricks are things you write, in R — keeps it out.*
 
 ### 3 · Question + hook — 20 s
 - 🖼 **lego** — two different models, obviously sharing brick types.
-- So: how do you make the next app cheaper than this one?
+- So: what carries over from this app to the next one?
 - **By taking things away.** By adding restrictions.
 - The stud is the trade: the thing that limits what shapes you can build is the same
   thing that lets the pieces connect.
