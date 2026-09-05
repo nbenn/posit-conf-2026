@@ -147,7 +147,7 @@
    the slide: the closing slide is also a .columns layout and its QR code
    should stay small. */
 .reveal .pair .columns img {
-  max-height: 420px;
+  max-height: 450px;
 }
 
 /* The theme hardcodes `.reveal pre { font-size: 0.55em }` — it does not read
