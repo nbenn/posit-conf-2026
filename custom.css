@@ -259,11 +259,23 @@
 
 .reveal .footer img.logo-cynkra { height: calc(29px * var(--chrome-scale)); }
 
-/* Raised 3px because `vertical-align: baseline` aligns image *bottoms*, not the
-   text inside them: cynkra's baseline sits 6.7px above its bottom edge, BMS's
-   only 4.0px. Verified by measuring the ink baseline of a rendered mock. */
+/* Raised 3px because the flex row aligns image *bottoms*, not the text inside
+   them: cynkra's baseline sits 6.7px above its bottom edge, BMS's only 4.0px.
+   Verified by measuring the ink baseline of a rendered mock. */
 .reveal .footer img.logo-bms {
   height: calc(27px * var(--chrome-scale));
   position: relative;
   bottom: calc(3px * var(--chrome-scale));
+}
+
+/* Progress bar. Reveal hardcodes `height: 3px` against the viewport, so it was
+   the one piece of chrome that did not scale — 7.5% of the logo height at
+   1920x1080 against 15% at 787px, thinning as the projection grew.
+   Doubling it and putting it on --chrome-scale makes it read at any size.
+   Grey rather than the theme's link blue, which was the only colour in an
+   otherwise greyscale deck and spent that distinction on furniture. */
+.reveal div.progress {
+  height: calc(6px * var(--chrome-scale));
+  background-color: #ececec;
+  color: #9a9a9a;
 }
