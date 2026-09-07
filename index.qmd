@@ -124,7 +124,7 @@ Data inputs. User parameters. One data output.
 :::
 
 ::: {.notes}
-<!-- A block — ~27 s (65 words, +13 s for the optional aside) -->
+<!-- A block — ~27 s (65 words) -->
 
 The core abstraction we built for blockr is a block: a well-defined unit of
 computation.
@@ -136,10 +136,6 @@ whole contract.
 
 The block is the brick, the link is the stud and the stack is the model. The
 stud is our interface: simple, well-defined.
-
-*Optional, if the clock allows:* a Shiny module can have arbitrary inputs,
-arbitrary outputs, side effects, and any communication channel you care to
-invent. A block cannot, and that is the point.
 :::
 
 ## A block {transition="none-in slide-out"}
@@ -173,7 +169,7 @@ Let's make it a bit more concrete: this is how you could write a join block.
 **(3) Here we have our data inputs.** In this case there are two, `x` and `y`.
 
 **(13) Next are user parameters:** We need a dropdown to select the column to
-join on. That is the entire user surface of this block.
+join on.
 
 **(5-6) We might need some logic too:** Whenever the input data
 changes we need to re-compute which columns we can join on.
