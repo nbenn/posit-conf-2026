@@ -1,21 +1,34 @@
 #!/usr/bin/env python3
 """Speaker notes as wide flash cards, four to a landscape A4 sheet, ready to cut.
 
-Reads the notes straight out of index.qmd so the cards cannot drift from the
-deck. Output is a self-contained HTML page: print it from the browser with
-margins set to None and scale 100%.
+Fronts carry the notes, backs carry a thumbnail of the slide, interleaved so the
+sheets duplex-print. Reads the notes straight out of index.qmd so the cards
+cannot drift from the deck. Print from the browser: margins None, scale 100%.
 
-    python3 make-cards.py        # -> speaker-cards.html
+    python3 make-cards.py                  # -> speaker-cards.html
+    python3 make-cards.py --mirror h       # if the backs land on the wrong cards
+    python3 make-cards.py --force-shots    # re-capture the slide thumbnails
+
+Which way the backs mirror depends on the printer's duplex setting, and the
+"long edge / short edge" labels are not applied consistently across drivers.
+Every card is numbered on both faces, so print two sheets first and look: if
+2/8's notes back onto 3/8's picture, re-run with the other --mirror.
 """
 
+import argparse
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).parent
 QMD = HERE / "index.qmd"
+CSS_SRC = HERE / "custom.css"
 HTML = HERE / "speaker-cards.html"
+SHOTS = HERE / "cards-img"
+SHOT_W, SHOT_H, SHOT_Q = 1200, 800, 80
 
 BODY_PT = 10.4
 FLOOR_PT = 7.4
@@ -135,6 +148,10 @@ body {{
   display: flex; justify-content: space-between; flex: none;
 }}
 .blank {{ border: 0.2mm dashed #c4c4c4; }}
+.back {{ padding-bottom: 5mm; }}
+.back .head {{ margin-bottom: 3mm; }}
+.shot {{ flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }}
+.shot img {{ max-width: 100%; max-height: 100%; object-fit: contain; border: 0.2mm solid #ddd; }}
 table.run {{ width: 100%; border-collapse: collapse; font-size: 9.4pt; }}
 table.run td {{ padding: 0.9mm 0; border-bottom: 0.15mm solid #e6e6e6; }}
 table.run td:first-child {{ width: 6mm; color: #999; }}
@@ -178,6 +195,55 @@ window.addEventListener('beforeprint', fitCards);
 </script>"""
 
 
+def capture(cards, force=False):
+    """One JPEG per slide, via a throwaway render of the deck.
+
+    The deck is rendered into a temp directory rather than in place: the
+    project's own _site is usually being served by a live `quarto preview`,
+    and rendering over it kills that.
+    """
+    SHOTS.mkdir(exist_ok=True)
+    targets = {c["pos"]: SHOTS / f"slide-{c['pos']:02d}.jpg" for c in cards}
+    newest = max(QMD.stat().st_mtime, CSS_SRC.stat().st_mtime)
+    if not force and all(
+        t.exists() and t.stat().st_mtime > newest for t in targets.values()
+    ):
+        return targets
+
+    with tempfile.TemporaryDirectory() as tmp:
+        build = Path(tmp) / "deck"
+        shutil.copytree(
+            HERE, build,
+            ignore=shutil.ignore_patterns("_site", ".quarto", ".git",
+                                          "speaker-cards.html", "cards-img"),
+        )
+        subprocess.run(["quarto", "render", str(build)],
+                       check=True, capture_output=True)
+        site = (build / "_site" / "index.html").as_uri()
+        for pos, jpg in targets.items():
+            png = Path(tmp) / f"{pos}.png"
+            subprocess.run(
+                ["chromium", "--headless", "--no-sandbox", "--disable-gpu",
+                 "--hide-scrollbars", "--window-size=2100,1400",
+                 "--virtual-time-budget=15000", f"--screenshot={png}",
+                 f"{site}#/{pos - 1}"],
+                check=True, capture_output=True,
+            )
+            subprocess.run(
+                ["convert", str(png), "-resize", f"{SHOT_W}x{SHOT_H}",
+                 "-quality", str(SHOT_Q), str(jpg)],
+                check=True, capture_output=True,
+            )
+    return targets
+
+
+# A sheet is 2x2, read top-left, top-right, bottom-left, bottom-right. Turning
+# it over about its horizontal axis swaps the rows; about its vertical axis,
+# the columns. Backs are emitted in whichever order puts each picture behind
+# its own notes.
+MIRRORS = {"v": [2, 3, 0, 1], "h": [1, 0, 3, 2]}
+
+
 def mmss(t):
     return f"{t // 60}:{t % 60:02d}"
 
@@ -197,7 +263,15 @@ def runsheet(cards):
 </div>"""
 
 
-def build(cards):
+def back(card, shot):
+    return f"""<div class="card back">
+<div class="head"><span class="num">{card['pos']}/8</span>
+<span class="title">{card['title']}</span><span class="time">~{card['secs']} s</span></div>
+<div class="shot"><img src="{shot}"></div>
+</div>"""
+
+
+def build(cards, shots, mirror):
     out = [f"<!doctype html><meta charset=utf-8><title>Speaker cards</title>"
            f"<style>{CSS.format(body=BODY_PT)}</style>"]
     total = cards[-1]["elapsed"]
@@ -213,23 +287,41 @@ def build(cards):
 <div class="foot"><span>{c['meta']}</span><span>{mmss(c['elapsed'])} / {mmss(total)}</span></div>
 </div>""")
         spare = PER_SHEET - len(group)
+        extra = []
         if spare and i + PER_SHEET >= len(cards):
             out.append(runsheet(cards))
+            extra.append(None)
             spare -= 1
         out += ['<div class="blank"></div>'] * spare
+        out.append("</div>")
+
+        faces = [back(c, shots[c["pos"]].relative_to(HERE).as_posix()) for c in group]
+        faces += ['<div class="blank"></div>'] * (PER_SHEET - len(faces))
+        out.append('<div class="sheet">')
+        out += [faces[j] for j in MIRRORS[mirror]]
         out.append("</div>")
     out.append(FIT_JS.replace("%BODY%", str(BODY_PT)).replace("%FLOOR%", str(FLOOR_PT)))
     return "\n".join(out)
 
 
 def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--mirror", choices=["v", "h"], default="v",
+                    help="how the sheet turns over: v swaps rows (long-edge "
+                         "flip of a landscape sheet), h swaps columns")
+    ap.add_argument("--force-shots", action="store_true",
+                    help="re-capture the slide thumbnails even if current")
+    args = ap.parse_args()
+
     cards = parse(QMD.read_text(encoding="utf-8"))
     if not cards:
         sys.exit("no notes blocks found in index.qmd")
-    HTML.write_text(build(cards), encoding="utf-8")
-    sheets = -(-len(cards) // PER_SHEET)
-    print(f"{len(cards)} cards on {sheets} landscape A4 sheet(s) -> {HTML.name}, "
-          f"{mmss(cards[-1]['elapsed'])} total")
+    shots = capture(cards, force=args.force_shots)
+    HTML.write_text(build(cards, shots, args.mirror), encoding="utf-8")
+    sheets = -(-len(cards) // PER_SHEET) * 2
+    print(f"{len(cards)} cards, fronts and backs, on {sheets} landscape A4 "
+          f"sheet(s) -> {HTML.name}, {mmss(cards[-1]['elapsed'])} total "
+          f"(mirror: {args.mirror})")
 
 
 if __name__ == "__main__":
