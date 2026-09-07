@@ -65,13 +65,19 @@
 }
 
 /* All three footer items are aligned on the logos' text baseline. Measured
-   from rendered ink, not from boxes: the number sat 17px low and the menu icon
-   30px low, because each element's box relates differently to its visible
-   marks. Values here are the offsets that made the ink line up. */
+   from rendered ink, not from boxes, because each element's box relates
+   differently to its visible marks. The three offsets differ by a few px for
+   that reason alone, and they hold at every scale only because each element's
+   ink now sits at a constant multiple of --chrome-scale above the viewport
+   floor; verified from 640x480 to 2560x1440, where the four baselines land
+   within 2px of each other. Anything absolute left in this band — a margin, a
+   padding, a font metric — breaks that and reappears as drift. */
 .reveal .slide-menu-button.slide-menu-button {
   opacity: 0.25;
-  bottom: calc(47px * var(--chrome-scale));
+  bottom: calc(58.8px * var(--chrome-scale));
   left: calc(55px * var(--chrome-scale));
+  font-size: 0;
+  line-height: 0;
 }
 
 /* Quarto shrinks this icon to 1.3rem under 800px and leaves everything else
@@ -215,9 +221,11 @@
    file at equal specificity, so a plain class selector loses and the logos stay
    centred. The extra type selector wins. */
 .reveal div.footer {
-  bottom: calc(35px * var(--chrome-scale));
+  bottom: calc(59px * var(--chrome-scale));
   right: calc(60px * var(--chrome-scale));
   left: auto;
+  font-size: 0;
+  line-height: 0;
   width: auto;
   text-align: right;
   opacity: 0.55;
@@ -227,25 +235,49 @@
    default, where it would sit on top of the logos. */
 /* Centred along the bottom, not in a corner: the reveal-menu hamburger owns
    the bottom-left (x 8-43) and the logos the bottom-right, so both corners are
-   taken. `div.slide-number` for specificity — reveal's own rule loads later and
-   sets `right: 10px`, which stretches the box across the viewport. */
+   taken. The selector carries `div` for specificity, since reveal's own rule
+   loads later and sets `right: 10px`, which stretches the box across the
+   viewport. Its `padding: 5px` goes too — 5 absolute px under text that
+   scales is exactly the kind of constant this band cannot hold. */
 .reveal div.slide-number {
   right: auto;
   left: 50%;
   transform: translateX(-50%);
-  bottom: calc(51px * var(--chrome-scale));
+  bottom: calc(62.1px * var(--chrome-scale));
   width: auto;
   background: none;
+  padding: 0;
   color: #9a9a9a;
   font-size: calc(20px * var(--chrome-scale));
+  line-height: 1;
 }
 
 .reveal div.slide-number a { color: inherit; }
 
+/* A flex row rather than a line of inline images. Hanging the logos off a text
+   baseline made their position depend on the footer's font metrics and on
+   Chrome's line-box rounding: the `p` came out 53.8px tall around a 29.8px
+   image, centring it with 12px above and below, and that 12px stayed absolute
+   while everything around it scaled. With `align-items: flex-end` each image's
+   bottom edge sits on the container's, so --chrome-scale is the only thing
+   that moves them. Quarto's `max-height: 95%` has to go for the same reason —
+   a percentage of an auto height is one more way for the box to lead the
+   image. The rule targets the `p` pandoc wraps the footer HTML in rather than
+   the footer itself, because reveal writes an inline `display` onto `.footer`
+   that no stylesheet rule can outrank. */
+.reveal div.footer > p {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 0;
+}
+
+/* The theme's `.reveal img { margin: var(--r-block-margin) 0 }` is the 12px,
+   and it survived because the old rule set only `margin-left`. Shorthand it,
+   so the logos have nothing between their ink and the container's floor. */
 .reveal .footer img {
-  display: inline-block;
-  vertical-align: baseline;
-  margin-left: calc(34px * var(--chrome-scale));
+  max-height: none;
+  margin: 0 0 0 calc(34px * var(--chrome-scale));
 }
 
 .reveal .footer img.logo-cynkra { height: calc(29px * var(--chrome-scale)); }
