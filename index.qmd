@@ -70,7 +70,7 @@ Limit the shape, define the interface
 :::
 
 ::: {.notes}
-<!-- What carries over to your next app? — ~72 s (175 words) -->
+<!-- What carries over to your next app? — ~74 s (175 words) -->
 
 Restrictions and well-defined interfaces helped me be *more* creative.
 
@@ -124,7 +124,7 @@ Data inputs. User parameters. One data output.
 :::
 
 ::: {.notes}
-<!-- A block — ~27 s (66 words) -->
+<!-- A block — ~28 s (66 words) -->
 
 The core abstraction we built for blockr is a block: a well-defined unit of
 computation.
@@ -160,7 +160,7 @@ new_join_block <- function(by = character(), ...) {
 ```
 
 ::: {.notes}
-<!-- A block, concretely — ~50 s (5 reveals, ~10 s each) -->
+<!-- A block, concretely — ~38 s (90 words, 5 reveals) -->
 
 Let's make it a bit more concrete: this is how you could write a join block.
 
@@ -193,7 +193,7 @@ specifically for this use case.
 :::
 
 ::: {.notes}
-<!-- A real app — ~52 s (126 words) -->
+<!-- A real app — ~53 s (126 words) -->
 
 We are using blockr at Bristol-Myers Squibb to explore clinical data from
 studies.

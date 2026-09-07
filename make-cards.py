@@ -265,7 +265,7 @@ def runsheet(cards):
 <div class="head"><span class="num">run</span>
 <span class="title">Run sheet</span><span class="time">{mmss(total)}</span></div>
 <table class="run">{rows}</table>
-<div class="foot"><span>at 145 wpm</span><span>5:00 hard stop</span></div>
+<div class="foot"><span>at 142 wpm, timed</span><span>5:00 hard stop</span></div>
 </div>"""
 
 
