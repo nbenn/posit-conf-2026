@@ -59,7 +59,8 @@
    marks. Values here are the offsets that made the ink line up. */
 .reveal .slide-menu-button.slide-menu-button {
   opacity: 0.25;
-  bottom: 38px;
+  bottom: 47px;
+  left: 55px;
 }
 
 .caption {
@@ -195,7 +196,7 @@
    file at equal specificity, so a plain class selector loses and the logos stay
    centred. The extra type selector wins. */
 .reveal div.footer {
-  bottom: 26px;
+  bottom: 35px;
   right: 60px;
   left: auto;
   width: auto;
@@ -213,7 +214,7 @@
   right: auto;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 42px;
+  bottom: 51px;
   width: auto;
   background: none;
   color: #9a9a9a;
