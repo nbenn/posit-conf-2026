@@ -32,7 +32,7 @@ Total freedom, but little help
 :::
 
 ::: {.notes}
-**Any shape you want — ~16 s** *(39 words)*
+<!-- Any shape you want — ~16 s (39 words) -->
 
 Play-doh. It's a fun toy: you can create any shape you want with it.
 
@@ -70,7 +70,7 @@ Limit the shape, define the interface
 :::
 
 ::: {.notes}
-**What carries over to your next app? — ~70 s** *(169 words)*
+<!-- What carries over to your next app? — ~71 s (172 words) -->
 
 Restrictions and well-defined interfaces helped me be *more* creative.
 
@@ -91,9 +91,9 @@ Clay, basically.
 How can we improve? How can we have components carry over from one app to the
 next?
 
-By imposing restrictions. If we limit the shape by defining an interface, this
-enables reuse. It lets you focus on what matters. And it applies to humans and
-current-gen coding assistants alike.
+One way is by imposing restrictions. If we limit the shape by defining an
+interface, this enables reuse. It lets you focus on what matters. And it applies
+to humans and current-gen coding assistants alike.
 :::
 
 ## A block {.pair transition="slide-in none-out"}
@@ -124,7 +124,7 @@ Data inputs. User parameters. One data output.
 :::
 
 ::: {.notes}
-**A block — ~27 s** *(65 words, +13 s for the optional aside)*
+<!-- A block — ~27 s (65 words, +13 s for the optional aside) -->
 
 The core abstraction we built for blockr is a block: a well-defined unit of
 computation.
@@ -164,13 +164,13 @@ new_join_block <- function(by = character(), ...) {
 ```
 
 ::: {.notes}
-**A block, concretely — ~50 s** *(5 reveals, ~10 s each)*
+<!-- A block, concretely — ~50 s (5 reveals, ~10 s each) -->
 
 Let's make it a bit more concrete: this is how you could write a join block.
 
 **(4) It's a shiny module.**
 
-**(3) We have data inputs.** In this case there are two, `x` and `y`.
+**(3) Here we have our data inputs.** In this case there are two, `x` and `y`.
 
 **(13) Next are user parameters:** Here we have one dropdown: The column to join
 on. That is the entire user surface of this block.
@@ -192,7 +192,7 @@ specifically for this use case.
 :::
 
 ::: {.notes}
-**A real app — ~49 s** *(118 words)*
+<!-- A real app — ~49 s (118 words) -->
 
 We are using blockr at Bristol-Myers Squibb to explore clinical data from
 studies.
@@ -220,7 +220,7 @@ Special shape, standard stud.
 :::
 
 ::: {.notes}
-**Specialty pieces — ~22 s** *(53 words)*
+<!-- Specialty pieces — ~22 s (53 words) -->
 
 Our current library of general-purpose blocks cannot cover every use case.
 
@@ -257,7 +257,7 @@ blockr.site
 :::
 
 ::: {.notes}
-**Ask + close — ~43 s** *(104 words)*
+<!-- Ask + close — ~43 s (105 words) -->
 
 Your turn: build a block. Either by hand, or by pointing a **coding** assistant
 at the many examples we have built.
@@ -269,6 +269,7 @@ Five of us have been working on this and I'm the one who got to come here.
 I'd like to thank my collaborators for their contributions. And you for your
 attention.
 
-So, that's the five minutes, and there's no Q&A. If you have questions, or want
-to see more, come find me. I would much rather talk to you than to my laptop.
+So, that's the five minutes, and there's no Q&A. If you have questions, want to
+see or hear more, come find me. I would much rather talk to you than to my
+laptop.
 :::
