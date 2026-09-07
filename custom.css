@@ -190,6 +190,26 @@
   font-size: 0.62em;
 }
 
+/* Quarto's theme caps the code element at `max-height: 500px` and scrolls the
+   overflow. The join block needs 528px at the size set above, so the closing
+   brace sat below the fold behind a scrollbar — on the one slide where the code
+   is the content. Uncapping it costs nothing: the block is 528px inside a
+   700px slide, under a 77px title.
+
+   The scrollbar rules address a separate, cosmetic thing: the 16 line-number
+   anchors push `scrollWidth` 30px past the widest line, which ends 31px inside
+   the box, so a horizontal scrollbar renders under code that is not clipped.
+   Overlay scrollbars mean this never showed on macOS; it does in headless
+   Chrome and on Linux. Nothing here changes what is scrollable. */
+.reveal pre.sourceCode code {
+  max-height: none;
+  scrollbar-width: none;
+}
+
+.reveal pre.sourceCode code::-webkit-scrollbar {
+  display: none;
+}
+
 /* Emphasise the highlighted line(s) in a code walk. Quarto's plugin only
    dims the rest (opacity 0.4); this adds weight on top. Deliberately NOT a
    scale: magnifying a line widens its leading whitespace, which knocks the
@@ -279,3 +299,45 @@
   background-color: #ececec;
   color: #9a9a9a;
 }
+
+/* Highlight boxes over the app screenshot, revealed in the order they are
+   spoken: board overview, assistant, patient profile.
+
+   The frame is sized explicitly rather than shrink-wrapped, because
+   `width: fit-content` measures a replaced element from its *intrinsic* width
+   — 4862px here — so the
+   box came out 55px wider than the rendered screenshot and every percentage
+   inside it landed short. A definite height plus `aspect-ratio` gives a frame
+   that is exactly the image, which is safe because `.slides` is a fixed
+   1050x700 coordinate box: reveal's transform scales it, so px here are stable.
+
+   Lengths are plain px for that same reason. This sits inside the transform,
+   unlike the footer chrome, so multiplying by --chrome-scale would apply the
+   factor twice. Percentages are of the frame, and therefore of the image. */
+.reveal .app-shot {
+  position: relative;
+  height: 440px;
+  aspect-ratio: 4862 / 2510;
+  margin: 0 auto;
+}
+
+.reveal .app-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+}
+
+.reveal .app-shot .hl {
+  position: absolute;
+  box-sizing: border-box;
+  border: 3px solid #e02424;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.reveal .app-shot .hl-board     { left:  4.58%; top: 11.31%; width: 17.75%; height: 82.39%; }
+.reveal .app-shot .hl-assistant { left: 76.08%; top: 11.31%; width: 19.92%; height: 82.07%; }
+.reveal .app-shot .hl-profile   { left: 38.67%; top: 11.31%; width: 37.08%; height: 82.39%; }

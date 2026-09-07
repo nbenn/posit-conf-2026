@@ -166,7 +166,7 @@ Let's make it a bit more concrete: this is how you could write a join block.
 
 **(4) Under the hood, it's a shiny module.**
 
-**(3) Here we have our data inputs.** In this case there are two, `x` and `y`.
+**(3) Here we have our data inputs:** `x` and `y`.
 
 **(13) Next are user parameters:** We need a dropdown to select the column to
 join on.
@@ -180,7 +180,12 @@ expression. So we can calculate the result given data inputs on demand.
 
 ## A real app {transition="slide"}
 
-![](img/complex.png){fig-align="center"}
+<div class="app-shot">
+<img src="img/complex.png">
+<span class="hl hl-board fragment"></span>
+<span class="hl hl-assistant fragment"></span>
+<span class="hl hl-profile fragment"></span>
+</div>
 
 ::: {.takeaway}
 Bristol-Myers Squibb: up to 100 blocks across a dozen views, one created
@@ -199,7 +204,7 @@ render a panel you can move and resize freely.
 These apps pull in up to one hundred blocks, spread over a dozen views. And
 we're rolling out many such apps, specific to studies and their analysis needs.
 
-Blocks are not the only extension point. There are *extensions* as well — on
+Blocks are not the only extension point. There are *extensions* as well: on
 the left, we have a graphical overview of the board and on the right, an AI
 assistant.
 
@@ -262,8 +267,8 @@ assistant at the many examples we have created.
 And look out for what you *don't* have to decide. That's normally the expensive
 part of making something reusable.
 
-I'd like to thank my collaborators for their contributions. And you for your
-attention.
+I'd like to thank my four collaborators for their contributions -- and you for
+your attention.
 
 Unfortunately we don't get a Q&A. If you have questions for me, want to see or
 hear more, come find me.
