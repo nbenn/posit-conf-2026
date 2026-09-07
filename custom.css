@@ -53,14 +53,33 @@
   margin-bottom: 0.5em;
 }
 
+/* Reveal scales `.slides` by --slide-scale but leaves the footer chrome pinned
+   to the viewport in raw pixels. So as the window narrows the logo block keeps
+   its full 338px width and marches inward towards the centred slide number:
+   the gap is `vw/2 - 422`, which reaches zero at a 844px viewport and overlaps
+   below it. Multiplying the whole band by reveal's own factor keeps it in
+   proportion to the slide at every size, and the crossing never happens.
+   The fallback is load-bearing — print-pdf never sets the variable. */
+.reveal {
+  --chrome-scale: var(--slide-scale, 1);
+}
+
 /* All three footer items are aligned on the logos' text baseline. Measured
    from rendered ink, not from boxes: the number sat 17px low and the menu icon
    30px low, because each element's box relates differently to its visible
    marks. Values here are the offsets that made the ink line up. */
 .reveal .slide-menu-button.slide-menu-button {
   opacity: 0.25;
-  bottom: 47px;
-  left: 55px;
+  bottom: calc(47px * var(--chrome-scale));
+  left: calc(55px * var(--chrome-scale));
+}
+
+/* Quarto shrinks this icon to 1.3rem under 800px and leaves everything else
+   alone, which is half a responsive rule; scaling it continuously replaces it. */
+.reveal .slide-menu-button.slide-menu-button .fas::before {
+  height: calc(2.2rem * var(--chrome-scale));
+  width: calc(2.2rem * var(--chrome-scale));
+  background-size: calc(2.2rem * var(--chrome-scale)) calc(2.2rem * var(--chrome-scale));
 }
 
 .caption {
@@ -196,8 +215,8 @@
    file at equal specificity, so a plain class selector loses and the logos stay
    centred. The extra type selector wins. */
 .reveal div.footer {
-  bottom: 35px;
-  right: 60px;
+  bottom: calc(35px * var(--chrome-scale));
+  right: calc(60px * var(--chrome-scale));
   left: auto;
   width: auto;
   text-align: right;
@@ -214,11 +233,11 @@
   right: auto;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 51px;
+  bottom: calc(51px * var(--chrome-scale));
   width: auto;
   background: none;
   color: #9a9a9a;
-  font-size: 20px;
+  font-size: calc(20px * var(--chrome-scale));
 }
 
 .reveal div.slide-number a { color: inherit; }
@@ -226,16 +245,16 @@
 .reveal .footer img {
   display: inline-block;
   vertical-align: baseline;
-  margin-left: 34px;
+  margin-left: calc(34px * var(--chrome-scale));
 }
 
-.reveal .footer img.logo-cynkra { height: 29px; }
+.reveal .footer img.logo-cynkra { height: calc(29px * var(--chrome-scale)); }
 
 /* Raised 3px because `vertical-align: baseline` aligns image *bottoms*, not the
    text inside them: cynkra's baseline sits 6.7px above its bottom edge, BMS's
    only 4.0px. Verified by measuring the ink baseline of a rendered mock. */
 .reveal .footer img.logo-bms {
-  height: 27px;
+  height: calc(27px * var(--chrome-scale));
   position: relative;
-  bottom: 3px;
+  bottom: calc(3px * var(--chrome-scale));
 }
