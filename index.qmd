@@ -9,6 +9,7 @@ format:
   revealjs:
     progress: true
     controls: false
+    slide-number: c/t
     transition: slide
     auto-stretch: false
     css: custom.css

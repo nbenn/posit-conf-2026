@@ -184,13 +184,34 @@
    two marks are matched on cap height, not box height — cynkra has a deep `y`
    descender and BMS almost none, so equal boxes put their baselines ~5px apart
    and they read as shifted. At 29/27 the baselines land within a pixel. */
-.reveal .footer {
-  bottom: 12px;
+/* `div.footer` rather than `.footer`: Quarto's own footer.css loads after this
+   file at equal specificity, so a plain class selector loses and the logos stay
+   centred. The extra type selector wins. */
+.reveal div.footer {
+  bottom: 14px;
   right: 26px;
   left: auto;
+  width: auto;
   text-align: right;
   opacity: 0.55;
 }
+
+/* Slide number to the opposite corner — reveal puts it bottom-right by
+   default, where it would sit on top of the logos. */
+/* `div.slide-number` for the same reason as the footer — reveal's own rule
+   loads later and sets `right: 10px`, which stretches the box across the whole
+   viewport when only `left` is overridden. */
+.reveal div.slide-number {
+  right: auto;
+  left: 26px;
+  bottom: 14px;
+  width: auto;
+  background: none;
+  color: #9a9a9a;
+  font-size: 20px;
+}
+
+.reveal div.slide-number a { color: inherit; }
 
 .reveal .footer img {
   display: inline-block;
