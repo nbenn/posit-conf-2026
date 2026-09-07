@@ -12,6 +12,10 @@ format:
     transition: slide
     auto-stretch: false
     css: custom.css
+    # Attribution rides in the footer so it appears on every slide without
+    # crowding the closing slide, which is the one people photograph.
+    footer: |
+      <img src="img/cynkra.png" class="logo-cynkra"><img src="img/bms.png" class="logo-bms">
 ---
 
 ## Any shape you want {transition="slide-in none-out"}
@@ -245,10 +249,6 @@ blockr.site
 [\@christophsax](https://github.com/christophsax) ·
 [\@nbenn](https://github.com/nbenn) ·
 [\@MikeJohnPage](https://github.com/MikeJohnPage)
-:::
-
-::: {.logos}
-![](img/cynkra.png) ![](img/bms.png)
 :::
 
 ::: {.notes}

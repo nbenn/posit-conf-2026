@@ -179,20 +179,32 @@
   margin-bottom: 0;
 }
 
-/* Attribution row on the closing slide. Both marks are trimmed to their
-   artwork, so one height rule gives them equal optical weight despite very
-   different proportions (cynkra 3.8:1 against BMS 7.1:1). Muted slightly so
-   they sit behind the ask rather than competing with the QR code above. */
-.reveal .closing .logos {
-  margin-top: 0.6em;
-  text-align: center;
+/* Attribution footer, on every slide. The lowest content on any slide ends at
+   y=632, so this band sits clear of everything. Heights differ on purpose: the
+   two marks are matched on cap height, not box height — cynkra has a deep `y`
+   descender and BMS almost none, so equal boxes put their baselines ~5px apart
+   and they read as shifted. At 29/27 the baselines land within a pixel. */
+.reveal .footer {
+  bottom: 12px;
+  right: 26px;
+  left: auto;
+  text-align: right;
+  opacity: 0.55;
 }
 
-.reveal .closing .logos img {
-  max-height: 56px;
-  width: auto;
+.reveal .footer img {
   display: inline-block;
-  vertical-align: middle;
-  margin: 0 45px;
-  opacity: 0.85;
+  vertical-align: baseline;
+  margin-left: 34px;
+}
+
+.reveal .footer img.logo-cynkra { height: 29px; }
+
+/* Raised 3px because `vertical-align: baseline` aligns image *bottoms*, not the
+   text inside them: cynkra's baseline sits 6.7px above its bottom edge, BMS's
+   only 4.0px. Verified by measuring the ink baseline of a rendered mock. */
+.reveal .footer img.logo-bms {
+  height: 27px;
+  position: relative;
+  bottom: 3px;
 }
