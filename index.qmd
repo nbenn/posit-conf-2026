@@ -247,6 +247,10 @@ blockr.site
 [\@MikeJohnPage](https://github.com/MikeJohnPage)
 :::
 
+::: {.logos}
+![](img/cynkra.png) ![](img/bms.svg)
+:::
+
 ::: {.notes}
 **Ask + close — ~40 s** *(96 words)*
 

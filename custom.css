@@ -178,3 +178,26 @@
 .reveal div.quarto-figure {
   margin-bottom: 0;
 }
+
+/* Attribution row on the closing slide. Sized by height so the two marks read
+   as equal weight despite very different proportions (cynkra 3.8:1 against
+   BMS 6.2:1), and muted slightly so they sit behind the ask rather than
+   competing with the QR code above them. */
+.reveal .closing .logos {
+  margin-top: 0.6em;
+  text-align: center;
+}
+
+.reveal .closing .logos img {
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 45px;
+  opacity: 0.85;
+}
+
+/* Sized so the two marks appear the same height. cynkra.png is trimmed to its
+   artwork, but the BMS SVG carries ~7% padding inside its viewBox, so an equal
+   box height would render it visibly smaller. */
+.reveal .closing .logos img[src$="cynkra.png"] { max-height: 56px; }
+.reveal .closing .logos img[src$="bms.svg"]    { max-height: 65px; }
