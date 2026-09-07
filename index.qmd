@@ -24,16 +24,16 @@ format:
 ![](img/play_doh-1.jpg){fig-align="center"}
 
 ::: {.takeaway}
-Nothing is decided for you
+No shape is decided for you
 :::
 
 ::: {.notes}
-**Any shape you want — ~16 s** *(38 words)*
+**Any shape you want — ~16 s** *(39 words)*
 
 Play-doh. It's a fun toy: you can create any shape you want with it.
 
-To me personally that much freedom felt more like a burden. You don't get any
-assistance from the material.
+To me personally that much freedom felt more like a burden. The material won't
+help you get to a shape.
 
 I gravitated more towards lego.
 :::
