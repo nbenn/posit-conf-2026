@@ -52,13 +52,14 @@ body {
 }
 .blank { border: 0.2mm dashed #c4c4c4; }
 /* A landscape sheet flipped about its long edge inverts the vertical axis, so
-   a back printed upright lands upside down. Rotating the whole card — header
-   with picture — is what makes it read correctly once the sheet is turned.
-   On screen the back sheets therefore look inverted, which is the point. */
-.back { transform: rotate(180deg); padding-bottom: 5mm; }
+   a back printed upright lands upside down on the cut card. Only the picture
+   is turned, leaving the header upright on the uncut sheet where it is what
+   you check the alignment against. The rotation is inside the cell, so it
+   moves nothing: which card backs which is set by the grid position alone. */
+.back { padding-bottom: 5mm; }
 .back .head { margin-bottom: 3mm; }
 .shot { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
-.shot img { max-width: 100%; max-height: 100%; object-fit: contain; border: 0.2mm solid #ddd; }
+.shot img { max-width: 100%; max-height: 100%; object-fit: contain; border: 0.2mm solid #ddd; transform: rotate(180deg); }
 table.run { width: 100%; border-collapse: collapse; font-size: 9.4pt; }
 table.run td { padding: 0.9mm 0; border-bottom: 0.15mm solid #e6e6e6; }
 table.run td:first-child { width: 6mm; color: #999; }
