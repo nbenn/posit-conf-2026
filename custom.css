@@ -231,29 +231,6 @@
   opacity: 0.55;
 }
 
-/* Slide number to the opposite corner — reveal puts it bottom-right by
-   default, where it would sit on top of the logos. */
-/* Centred along the bottom, not in a corner: the reveal-menu hamburger owns
-   the bottom-left (x 8-43) and the logos the bottom-right, so both corners are
-   taken. The selector carries `div` for specificity, since reveal's own rule
-   loads later and sets `right: 10px`, which stretches the box across the
-   viewport. Its `padding: 5px` goes too — 5 absolute px under text that
-   scales is exactly the kind of constant this band cannot hold. */
-.reveal div.slide-number {
-  right: auto;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: calc(62.1px * var(--chrome-scale));
-  width: auto;
-  background: none;
-  padding: 0;
-  color: #9a9a9a;
-  font-size: calc(20px * var(--chrome-scale));
-  line-height: 1;
-}
-
-.reveal div.slide-number a { color: inherit; }
-
 /* A flex row rather than a line of inline images. Hanging the logos off a text
    baseline made their position depend on the footer's font metrics and on
    Chrome's line-box rounding: the `p` came out 53.8px tall around a 29.8px

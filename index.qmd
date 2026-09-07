@@ -8,8 +8,12 @@ date-format: "[posit::conf(]YYYY[)]"
 format:
   revealjs:
     progress: true
+    # Off deliberately: reveal centres it on the viewport, but the visual gap
+    # it sits in runs from the menu button to the logo block and is not centred
+    # there — it landed 214px right of that gap's midpoint at 1920x1080. On an
+    # eight-slide talk the progress bar already carries the same information.
+    slide-number: false
     controls: false
-    slide-number: c/t
     transition: slide
     auto-stretch: false
     css: custom.css
