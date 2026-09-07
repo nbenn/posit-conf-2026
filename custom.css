@@ -330,14 +330,21 @@
   margin: 0;
 }
 
+/* The three boxes span the app's content area, so `top` and `bottom` live on
+   the shared rule and only the horizontal extent varies. Stating both edges
+   rather than a top and a height is what keeps them aligned: heights derived
+   separately from three hand-read pixel bounds had already drifted, leaving
+   the assistant's floor 0.3% above the other two. */
 .reveal .app-shot .hl {
   position: absolute;
   box-sizing: border-box;
+  top: 11.31%;
+  bottom: 6.30%;
   border: 3px solid #e02424;
   border-radius: 8px;
   pointer-events: none;
 }
 
-.reveal .app-shot .hl-board     { left:  4.58%; top: 11.31%; width: 17.75%; height: 82.39%; }
-.reveal .app-shot .hl-assistant { left: 76.08%; top: 11.31%; width: 19.92%; height: 82.07%; }
-.reveal .app-shot .hl-profile   { left: 38.67%; top: 11.31%; width: 37.08%; height: 82.39%; }
+.reveal .app-shot .hl-board     { left:  4.58%; width: 17.75%; }
+.reveal .app-shot .hl-assistant { left: 76.08%; width: 19.92%; }
+.reveal .app-shot .hl-profile   { left: 38.67%; width: 37.08%; }

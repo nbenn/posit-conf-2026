@@ -182,9 +182,9 @@ expression. So we can calculate the result given data inputs on demand.
 
 <div class="app-shot">
 <img src="img/complex.png">
-<span class="hl hl-board fragment"></span>
-<span class="hl hl-assistant fragment"></span>
-<span class="hl hl-profile fragment"></span>
+<span class="hl hl-board fragment fade-in-then-out"></span>
+<span class="hl hl-assistant fragment fade-in-then-out"></span>
+<span class="hl hl-profile fragment fade-in-then-out"></span>
 </div>
 
 ::: {.takeaway}
