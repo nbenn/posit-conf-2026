@@ -32,12 +32,12 @@ Total freedom, but little help
 :::
 
 ::: {.notes}
-**Any shape you want — ~16 s** *(38 words)*
+**Any shape you want — ~16 s** *(39 words)*
 
 Play-doh. It's a fun toy: you can create any shape you want with it.
 
-To me personally that much freedom felt more like a burden. You don't get much
-assistance from the material.
+To me personally though, that much freedom felt more like a burden. You don't
+get much assistance from the material.
 
 I gravitated more towards lego.
 :::
@@ -70,16 +70,16 @@ Limit the shape, define the interface
 :::
 
 ::: {.notes}
-**What carries over to your next app? — ~68 s** *(164 words)*
+**What carries over to your next app? — ~70 s** *(169 words)*
 
 Restrictions and well-defined interfaces helped me be *more* creative.
 
 Two lumps of play-doh assemble however you press them. Two bricks assemble
-one way: the stud.
+one way: mediated by the studs.
 
-Lego costs you freedom — there are shapes you simply cannot build. What you get
-back is reuse, and with shaping constraints, you can spend your attention on the
-model instead of on the material.
+On the surface, lego costs you freedom. There are shapes you simply cannot
+build. What you get back is reuse, and with shaping constraints, you can spend
+your attention on the model instead of on the material.
 
 Much of this applies to what we do. I work at a small consultancy, and we
 have built a lot of Shiny apps over the years.
@@ -124,7 +124,7 @@ Data inputs. User parameters. One data output.
 :::
 
 ::: {.notes}
-**A block — ~26 s** *(64 words, +13 s for the optional aside)*
+**A block — ~27 s** *(65 words, +13 s for the optional aside)*
 
 The core abstraction we built for blockr is a block: a well-defined unit of
 computation.
@@ -134,8 +134,8 @@ Blocks are connected by links and can be assembled into stacks.
 Each block has data inputs, user parameters and a single output. That is the
 whole contract.
 
-The block is the brick, the link is the stud, the stack is the model. The stud
-is our interface: simple, well-defined.
+The block is the brick, the link is the stud and the stack is the model. The
+stud is our interface: simple, well-defined.
 
 *Optional, if the clock allows:* a Shiny module can have arbitrary inputs,
 arbitrary outputs, side effects, and any communication channel you care to
@@ -166,7 +166,7 @@ new_join_block <- function(by = character(), ...) {
 ::: {.notes}
 **A block, concretely — ~50 s** *(5 reveals, ~10 s each)*
 
-Let's make it a bit more concrete:
+Let's make it a bit more concrete: this is how you could write a join block.
 
 **(4) It's a shiny module.**
 
