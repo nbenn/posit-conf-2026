@@ -70,7 +70,7 @@ Limit the shape, define the interface
 :::
 
 ::: {.notes}
-<!-- What carries over to your next app? — ~74 s (175 words) -->
+<!-- What carries over to your next app? — ~74 s (176 words) -->
 
 Restrictions and well-defined interfaces helped me be *more* creative.
 
@@ -88,8 +88,8 @@ Every project felt like it needed to be tailor-made, so we ended up solving
 similar problems over and over again. Code bases grew large and hard to change.
 Clay, basically.
 
-How can we improve? How can we have components carry over from one app to the
-next?
+Now how can we improve? How can we have components carry over from one app to
+the next?
 
 One way is by imposing restrictions. If we limit the shape by defining an
 interface, this enables reuse. It lets you focus on what matters. And it applies
@@ -259,7 +259,7 @@ blockr.site
 :::
 
 ::: {.notes}
-<!-- Ask + close — ~33 s (79 words) -->
+<!-- Ask + close — ~34 s (80 words) -->
 
 Now it's your turn: build a block. Either by hand, or by pointing a coding
 assistant at the many examples we have created.
@@ -270,6 +270,6 @@ part of making something reusable.
 I'd like to thank my four collaborators for their contributions -- and you for
 your attention.
 
-Unfortunately we don't get a Q&A. If you have questions for me, want to see or
-hear more, come find me.
+Unfortunately we don't get a Q&A. So if you have questions for me, want to see
+or hear more, come find me.
 :::
