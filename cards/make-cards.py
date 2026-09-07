@@ -5,9 +5,9 @@ Fronts carry the notes, backs carry a thumbnail of the slide, interleaved so the
 sheets duplex-print. Reads the notes straight out of index.qmd so the cards
 cannot drift from the deck. Print from the browser: margins None, scale 100%.
 
-    python3 make-cards.py                  # -> speaker-cards.html
-    python3 make-cards.py --mirror h       # if the backs land on the wrong cards
-    python3 make-cards.py --force-shots    # re-capture the slide thumbnails
+    python3 cards/make-cards.py                # -> cards/speaker-cards.html
+    python3 cards/make-cards.py --mirror h     # backs on the wrong cards
+    python3 cards/make-cards.py --force-shots  # re-capture the thumbnails
 
 Which way the backs mirror depends on the printer's duplex setting, and the
 "long edge / short edge" labels are not applied consistently across drivers.
@@ -24,10 +24,11 @@ import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).parent
-QMD = HERE / "index.qmd"
-CSS_SRC = HERE / "custom.css"
+ROOT = HERE.parent
+QMD = ROOT / "index.qmd"
+CSS_SRC = ROOT / "custom.css"
 HTML = HERE / "speaker-cards.html"
-SHOTS = HERE / "cards-img"
+SHOTS = HERE / "thumbs"
 SHOT_W, SHOT_H, SHOT_Q = 1200, 800, 80
 TITLE_POS = 1
 
@@ -222,9 +223,8 @@ def capture(cards, force=False):
     with tempfile.TemporaryDirectory() as tmp:
         build = Path(tmp) / "deck"
         shutil.copytree(
-            HERE, build,
-            ignore=shutil.ignore_patterns("_site", ".quarto", ".git",
-                                          "speaker-cards.html", "cards-img"),
+            ROOT, build,
+            ignore=shutil.ignore_patterns("_site", ".quarto", ".git", "cards"),
         )
         subprocess.run(["quarto", "render", str(build)],
                        check=True, capture_output=True)
