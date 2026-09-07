@@ -53,7 +53,14 @@
   margin-bottom: 0.5em;
 }
 
-.reveal .slide-menu-button { opacity: 0.25; }
+/* All three footer items are aligned on the logos' text baseline. Measured
+   from rendered ink, not from boxes: the number sat 17px low and the menu icon
+   30px low, because each element's box relates differently to its visible
+   marks. Values here are the offsets that made the ink line up. */
+.reveal .slide-menu-button.slide-menu-button {
+  opacity: 0.25;
+  bottom: 38px;
+}
 
 .caption {
   color: #808080;
@@ -206,7 +213,7 @@
   right: auto;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 26px;
+  bottom: 42px;
   width: auto;
   background: none;
   color: #9a9a9a;
