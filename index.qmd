@@ -248,7 +248,7 @@ blockr.site
 :::
 
 ::: {.logos}
-![](img/cynkra.png) ![](img/bms.svg)
+![](img/cynkra.png) ![](img/bms.png)
 :::
 
 ::: {.notes}
