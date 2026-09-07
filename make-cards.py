@@ -29,6 +29,7 @@ CSS_SRC = HERE / "custom.css"
 HTML = HERE / "speaker-cards.html"
 SHOTS = HERE / "cards-img"
 SHOT_W, SHOT_H, SHOT_Q = 1200, 800, 80
+TITLE_POS = 1
 
 BODY_PT = 10.4
 FLOOR_PT = 7.4
@@ -148,7 +149,11 @@ body {{
   display: flex; justify-content: space-between; flex: none;
 }}
 .blank {{ border: 0.2mm dashed #c4c4c4; }}
-.back {{ padding-bottom: 5mm; }}
+/* A landscape sheet flipped about its long edge inverts the vertical axis, so
+   a back printed upright lands upside down. Rotating the whole card — header
+   with picture — is what makes it read correctly once the sheet is turned.
+   On screen the back sheets therefore look inverted, which is the point. */
+.back {{ transform: rotate(180deg); padding-bottom: 5mm; }}
 .back .head {{ margin-bottom: 3mm; }}
 .shot {{ flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }}
 .shot img {{ max-width: 100%; max-height: 100%; object-fit: contain; border: 0.2mm solid #ddd; }}
@@ -203,7 +208,8 @@ def capture(cards, force=False):
     and rendering over it kills that.
     """
     SHOTS.mkdir(exist_ok=True)
-    targets = {c["pos"]: SHOTS / f"slide-{c['pos']:02d}.jpg" for c in cards}
+    positions = [TITLE_POS] + [c["pos"] for c in cards]
+    targets = {p: SHOTS / f"slide-{p:02d}.jpg" for p in positions}
     newest = max(QMD.stat().st_mtime, CSS_SRC.stat().st_mtime)
     if not force and all(
         t.exists() and t.stat().st_mtime > newest for t in targets.values()
@@ -263,10 +269,11 @@ def runsheet(cards):
 </div>"""
 
 
-def back(card, shot):
+def back(pos, title, secs, shot):
+    time = f"~{secs} s" if secs is not None else ""
     return f"""<div class="card back">
-<div class="head"><span class="num">{card['pos']}/8</span>
-<span class="title">{card['title']}</span><span class="time">~{card['secs']} s</span></div>
+<div class="head"><span class="num">{pos}/8</span>
+<span class="title">{title}</span><span class="time">{time}</span></div>
 <div class="shot"><img src="{shot}"></div>
 </div>"""
 
@@ -286,16 +293,19 @@ def build(cards, shots, mirror):
 <div class="notes">{c['notes']}</div>
 <div class="foot"><span>{c['meta']}</span><span>{mmss(c['elapsed'])} / {mmss(total)}</span></div>
 </div>""")
+        rel = lambda p: shots[p].relative_to(HERE).as_posix()
+        faces = [back(c["pos"], c["title"], c["secs"], rel(c["pos"])) for c in group]
+
         spare = PER_SHEET - len(group)
-        extra = []
         if spare and i + PER_SHEET >= len(cards):
             out.append(runsheet(cards))
-            extra.append(None)
+            # The run sheet has no slide of its own, so its back carries the
+            # one card the notes never cover: the title.
+            faces.append(back(TITLE_POS, "Title", None, rel(TITLE_POS)))
             spare -= 1
         out += ['<div class="blank"></div>'] * spare
         out.append("</div>")
 
-        faces = [back(c, shots[c["pos"]].relative_to(HERE).as_posix()) for c in group]
         faces += ['<div class="blank"></div>'] * (PER_SHEET - len(faces))
         out.append('<div class="sheet">')
         out += [faces[j] for j in MIRRORS[mirror]]

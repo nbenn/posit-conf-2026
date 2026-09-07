@@ -51,7 +51,11 @@ body {
   display: flex; justify-content: space-between; flex: none;
 }
 .blank { border: 0.2mm dashed #c4c4c4; }
-.back { padding-bottom: 5mm; }
+/* A landscape sheet flipped about its long edge inverts the vertical axis, so
+   a back printed upright lands upside down. Rotating the whole card — header
+   with picture — is what makes it read correctly once the sheet is turned.
+   On screen the back sheets therefore look inverted, which is the point. */
+.back { transform: rotate(180deg); padding-bottom: 5mm; }
 .back .head { margin-bottom: 3mm; }
 .shot { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
 .shot img { max-width: 100%; max-height: 100%; object-fit: contain; border: 0.2mm solid #ddd; }
@@ -173,7 +177,11 @@ table.run tr:last-child td { border-bottom: none; }
 <span class="title">Build a block.</span><span class="time">~33 s</span></div>
 <div class="shot"><img src="cards-img/slide-08.jpg"></div>
 </div>
-<div class="blank"></div>
+<div class="card back">
+<div class="head"><span class="num">1/8</span>
+<span class="title">Title</span><span class="time"></span></div>
+<div class="shot"><img src="cards-img/slide-01.jpg"></div>
+</div>
 <div class="card back">
 <div class="head"><span class="num">6/8</span>
 <span class="title">A real app</span><span class="time">~52 s</span></div>
