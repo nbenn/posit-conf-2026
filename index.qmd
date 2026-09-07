@@ -24,7 +24,7 @@ format:
 ![](img/play_doh-1.jpg){fig-align="center"}
 
 ::: {.takeaway}
-Anything is possible, everything from scratch
+Nothing is decided for you
 :::
 
 ::: {.notes}
@@ -183,7 +183,7 @@ expression. So we can calculate the result given data inputs on demand.
 ![](img/complex.png){fig-align="center"}
 
 ::: {.takeaway}
-Bristol-Myers Squibb: roughly 100 blocks across a dozen views, one created
+Bristol-Myers Squibb: up to 100 blocks across a dozen views, one created
 specifically for this use case.
 :::
 
@@ -252,7 +252,7 @@ blockr.site
 :::
 
 ::: {.notes}
-**Ask + close — ~33 s** *(80 words)*
+**Ask + close — ~35 s** *(85 words)*
 
 Your turn: build a block. Either by hand, or by pointing a **coding** assistant
 at the many examples we have built.
@@ -260,7 +260,8 @@ at the many examples we have built.
 And look out for what you *don't* have to decide. That's normally the expensive
 part of making something reusable.
 
+Four of us build blockr — I'm the one who made the trip.
+
 That's the five minutes, and there's no Q&A. So if you have questions, or want
-to see more, come find me — I came here on my own, and I would much rather talk
-to you than to my laptop.
+to see more, come find me. I would much rather talk to you than to my laptop.
 :::
