@@ -28,17 +28,14 @@ Anything is possible, everything from scratch
 :::
 
 ::: {.notes}
-**Any shape you want — ~23 s** *(56 words)*
+**Any shape you want — ~16 s** *(38 words)*
 
-Play-doh. You can make any shape you want.
+Play-doh. It's a fun toy: you can create any shape you want with it.
 
-On the box of this kit there was a parrot — intricate, beautifully colored.
-I could never get close.
+To me personally that much freedom felt more like a burden. You don't get any
+assistance from the material.
 
-That much freedom was always a burden to me, never a gift — every shape by
-hand, every time.
-
-I was a lego kid, not an arts-and-crafts kid.
+I gravitated more towards lego.
 :::
 
 ## What carries over to your next app? {.pair transition="none-in slide-out"}
@@ -69,29 +66,30 @@ Limit the shape, define the interface
 :::
 
 ::: {.notes}
-**What carries over to your next app? — ~69 s** *(165 words)*
+**What carries over to your next app? — ~68 s** *(164 words)*
 
-Restrictions and well-defined interfaces made me *more* creative, not less.
+Restrictions and well-defined interfaces helped me be *more* creative.
 
 Two lumps of play-doh assemble however you press them. Two bricks assemble
 one way: the stud.
 
 Lego costs you freedom — there are shapes you simply cannot build. What you get
-back is reuse, and, oddly, more ideas: the shaping is already decided, so you
-spend your attention on the model instead of on the material.
+back is reuse, and with shaping constraints, you can spend your attention on the
+model instead of on the material.
 
 Much of this applies to what we do. I work at a small consultancy, and we
 have built a lot of Shiny apps over the years.
 
-Every project felt like it needed tailor-made software, so we solved the same
-problems again and again, and the code bases grew large and hard to change.
+Every project felt like it needed to be tailor-made, so we ended up solving
+similar problems over and over again. Code bases grew large and hard to change.
 Clay, basically.
 
-So: what carries over from this app to the next one?
+How can we improve? How can we have components carry over from one app to the
+next?
 
-Well placed restrictions: limiting the shape by defining an interface. That
-buys you reuse, and it lets you focus on what matters, humans and current-gen
-coding assistants alike.
+By imposing restrictions. If we limit the shape by defining an interface, this
+enables reuse. It lets you focus on what matters. And it applies to humans and
+current-gen coding assistants alike.
 :::
 
 ## A block {.pair transition="slide-in none-out"}
@@ -122,7 +120,7 @@ Data inputs. User parameters. One data output.
 :::
 
 ::: {.notes}
-**A block — ~28 s** *(67 words)*
+**A block — ~26 s** *(64 words, +13 s for the optional aside)*
 
 The core abstraction we built for blockr is a block: a well-defined unit of
 computation.
@@ -132,8 +130,8 @@ Blocks are connected by links and can be assembled into stacks.
 Each block has data inputs, user parameters and a single output. That is the
 whole contract.
 
-The block is the brick, the link is the stud, the stack is the model. And the
-stud is our interface: simple, well-defined.
+The block is the brick, the link is the stud, the stack is the model. The stud
+is our interface: simple, well-defined.
 
 *Optional, if the clock allows:* a Shiny module can have arbitrary inputs,
 arbitrary outputs, side effects, and any communication channel you care to
@@ -164,18 +162,20 @@ new_join_block <- function(by = character(), ...) {
 ::: {.notes}
 **A block, concretely — ~50 s** *(5 reveals, ~10 s each)*
 
+Let's make it a bit more concrete:
+
 **(4) It's a shiny module.**
 
 **(3) We have data inputs.** In this case there are two, `x` and `y`.
 
-**(13) User parameters.** One dropdown — which column to join on. That is the
-entire user surface of this block.
+**(13) Next are user parameters:** Here we have one dropdown: The column to join
+on. That is the entire user surface of this block.
 
-**(5-6) Some block-specific logic.** Whenever the input data changes we need
-to re-compute which columns we can join on.
+**(5-6) We might need some block-specific logic.** Whenever the input data
+changes we need to re-compute which columns we can join on.
 
-**(7-9) One data output.** The block does not return a table. It returns the
-*line of R that makes one* — and you can read that line right there.
+**(7-9) Taken together, this produces data output.** We return an interpolated
+expression. So we can calculate the result given data inputs on demand.
 :::
 
 ## A real app {transition="slide"}
@@ -188,7 +188,7 @@ specifically for this use case.
 :::
 
 ::: {.notes}
-**A real app — ~45 s** *(107 words)*
+**A real app — ~49 s** *(118 words)*
 
 We are using blockr at Bristol-Myers Squibb to explore clinical data from
 studies.
@@ -196,14 +196,15 @@ studies.
 Our standard frontend is built on a docking layout manager: every block renders
 in a panel you can move and resize freely.
 
-These apps run to roughly a hundred blocks, spread over a dozen views.
+These apps run on up to one hundred blocks, spread over a dozen views. And we're
+building many such apps, specific to types of studies.
 
 Blocks are not the only extension point. There are *extensions* as well — on the
 left, a graphical overview of the board; on the right, an AI assistant.
 
 Most of those blocks are general purpose: reading data, transforming it,
-summary tables and visualizations that support drill-down. One block was built
-specifically for this use case: the patient explorer.
+displaying summary tables and visualizations that support drill-down. One block
+was built specifically for this use case: the patient explorer.
 :::
 
 ## Specialty pieces {transition="slide"}
@@ -215,11 +216,9 @@ Special shape, standard stud.
 :::
 
 ::: {.notes}
-**Specialty pieces — ~26 s** *(62 words)*
+**Specialty pieces — ~22 s** *(53 words)*
 
-We have been building out a library of general-purpose blocks.
-
-Of course, this will not cover every use case.
+Our current library of general-purpose blocks cannot cover every use case.
 
 Similar to specialty pieces that come with certain lego sets, sometimes you
 want a specific shape, which still comes with the standard studs.
@@ -253,19 +252,15 @@ blockr.site
 :::
 
 ::: {.notes}
-**Ask + close — ~40 s** *(96 words)*
+**Ask + close — ~33 s** *(80 words)*
 
-Your turn: build a block. Either by hand, or point a **coding** assistant at the
-many examples we have built and see what comes out. *(Say "coding assistant",
-not "assistant" — the line before is about the board assistant and the two blur
-under one word.)*
+Your turn: build a block. Either by hand, or by pointing a **coding** assistant
+at the many examples we have built.
 
-And look out for what you *don't* have to decide — that's normally the expensive
+And look out for what you *don't* have to decide. That's normally the expensive
 part of making something reusable.
 
-The handles on the slide are the people who built this with me.
-
 That's the five minutes, and there's no Q&A. So if you have questions, or want
-to see more, come find me — I came on my own, and I would much rather talk to
-you than to my laptop.
+to see more, come find me — I came here on my own, and I would much rather talk
+to you than to my laptop.
 :::
