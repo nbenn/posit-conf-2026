@@ -204,12 +204,12 @@ render a panel you can move and resize freely.
 These apps pull in up to one hundred blocks, spread over a dozen views. And
 we're rolling out many such apps, specific to studies and their analysis needs.
 
-Blocks are not the only extension point. There are *extensions* as well: on
-the left, we have a graphical overview of the board and on the right, an AI
+Blocks are not the only extension point. There are *extensions* as well: (1) on
+the left, we have a graphical overview of the board and (2) on the right, an AI
 assistant.
 
 Most blocks here are general purpose: reading data, transforming it, displaying
-summary tables and visualizations that support drill-down. But one block was
+summary tables and visualizations that support drill-down. (3) But one block was
 built specifically for this use case: the patient profile.
 :::
 
@@ -259,7 +259,7 @@ blockr.site
 :::
 
 ::: {.notes}
-<!-- Ask + close — ~32 s (78 words) -->
+<!-- Ask + close — ~33 s (79 words) -->
 
 Now it's your turn: build a block. Either by hand, or by pointing a coding
 assistant at the many examples we have created.
