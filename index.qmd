@@ -24,7 +24,7 @@ format:
 ![](img/play_doh-1.jpg){fig-align="center"}
 
 ::: {.takeaway}
-Total freedom but little help
+Total freedom, but little help
 :::
 
 ::: {.notes}
