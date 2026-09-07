@@ -188,8 +188,8 @@
    file at equal specificity, so a plain class selector loses and the logos stay
    centred. The extra type selector wins. */
 .reveal div.footer {
-  bottom: 14px;
-  right: 26px;
+  bottom: 26px;
+  right: 60px;
   left: auto;
   width: auto;
   text-align: right;
@@ -198,13 +198,15 @@
 
 /* Slide number to the opposite corner — reveal puts it bottom-right by
    default, where it would sit on top of the logos. */
-/* `div.slide-number` for the same reason as the footer — reveal's own rule
-   loads later and sets `right: 10px`, which stretches the box across the whole
-   viewport when only `left` is overridden. */
+/* Centred along the bottom, not in a corner: the reveal-menu hamburger owns
+   the bottom-left (x 8-43) and the logos the bottom-right, so both corners are
+   taken. `div.slide-number` for specificity — reveal's own rule loads later and
+   sets `right: 10px`, which stretches the box across the viewport. */
 .reveal div.slide-number {
   right: auto;
-  left: 26px;
-  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 26px;
   width: auto;
   background: none;
   color: #9a9a9a;
