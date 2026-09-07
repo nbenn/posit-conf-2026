@@ -70,12 +70,12 @@ Limit the shape, define the interface
 :::
 
 ::: {.notes}
-<!-- What carries over to your next app? — ~71 s (172 words) -->
+<!-- What carries over to your next app? — ~73 s (177 words) -->
 
 Restrictions and well-defined interfaces helped me be *more* creative.
 
-Two lumps of play-doh assemble however you press them. Two bricks assemble
-one way: mediated by the studs.
+Two lumps of play-doh assemble however you press them together. Assembly of two
+bricks on the other hand is mediated by the studs.
 
 On the surface, lego costs you freedom. There are shapes you simply cannot
 build. What you get back is reuse, and with shaping constraints, you can spend
@@ -168,14 +168,14 @@ new_join_block <- function(by = character(), ...) {
 
 Let's make it a bit more concrete: this is how you could write a join block.
 
-**(4) It's a shiny module.**
+**(4) Under the hood, it's a shiny module.**
 
 **(3) Here we have our data inputs.** In this case there are two, `x` and `y`.
 
-**(13) Next are user parameters:** Here we have one dropdown: The column to join
+**(13) Next are user parameters:** We need a dropdown: The column to join
 on. That is the entire user surface of this block.
 
-**(5-6) We might need some block-specific logic.** Whenever the input data
+**(5-6) We might need some logic too:** Whenever the input data
 changes we need to re-compute which columns we can join on.
 
 **(7-9) Taken together, this produces data output.** We return an interpolated
@@ -192,23 +192,24 @@ specifically for this use case.
 :::
 
 ::: {.notes}
-<!-- A real app — ~49 s (118 words) -->
+<!-- A real app — ~52 s (125 words) -->
 
 We are using blockr at Bristol-Myers Squibb to explore clinical data from
 studies.
 
-Our standard frontend is built on a docking layout manager: every block renders
-in a panel you can move and resize freely.
+Our frontend here is built on a docking layout manager and we have every block
+render a panel you can move and resize freely.
 
-These apps run on up to one hundred blocks, spread over a dozen views. And we're
-building many such apps, specific to types of studies.
+These apps pull in up to one hundred blocks, spread over a dozen views. And
+we're rolling out many such apps, specific to studies and their analysis needs.
 
-Blocks are not the only extension point. There are *extensions* as well — on the
-left, a graphical overview of the board; on the right, an AI assistant.
+Blocks are not the only extension point. There are *extensions* as well — on
+the left, we have a graphical overview of the board and on the right, an AI
+assistant.
 
-Most of those blocks are general purpose: reading data, transforming it,
-displaying summary tables and visualizations that support drill-down. One block
-was built specifically for this use case: the patient explorer.
+Most blocks here are general purpose: reading data, transforming it, displaying
+summary tables and visualizations that support drill-down. One block was built
+specifically for this use case: the patient explorer.
 :::
 
 ## Specialty pieces {transition="slide"}
@@ -257,7 +258,7 @@ blockr.site
 :::
 
 ::: {.notes}
-<!-- Ask + close — ~43 s (105 words) -->
+<!-- Ask + close — ~44 s (107 words) -->
 
 Your turn: build a block. Either by hand, or by pointing a **coding** assistant
 at the many examples we have built.
@@ -269,7 +270,7 @@ Five of us have been working on this and I'm the one who got to come here.
 I'd like to thank my collaborators for their contributions. And you for your
 attention.
 
-So, that's the five minutes, and there's no Q&A. If you have questions, want to
-see or hear more, come find me. I would much rather talk to you than to my
+So, that's the five minutes, and we don't get a Q&A. If you have questions, want
+to see or hear more, come find me. I would much rather talk to you than to my
 laptop.
 :::
