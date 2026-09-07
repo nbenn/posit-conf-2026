@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Speaker notes as A6 flash cards, four to an A4 sheet, ready to cut.
+"""Speaker notes as wide flash cards, four to a landscape A4 sheet, ready to cut.
 
 Reads the notes straight out of index.qmd so the cards cannot drift from the
-deck, and prints through headless Chromium — the deck has no LaTeX toolchain
-and does not need one for this.
+deck. Output is a self-contained HTML page: print it from the browser with
+margins set to None and scale 100%.
 
-    python3 make-cards.py        # -> speaker-cards.pdf
+    python3 make-cards.py        # -> speaker-cards.html
 """
 
 import re
@@ -16,10 +16,9 @@ from pathlib import Path
 HERE = Path(__file__).parent
 QMD = HERE / "index.qmd"
 HTML = HERE / "speaker-cards.html"
-PDF = HERE / "speaker-cards.pdf"
 
 BODY_PT = 10.4
-FLOOR_PT = 8.0
+FLOOR_PT = 7.4
 PER_SHEET = 4
 
 
@@ -81,25 +80,28 @@ def parse(src):
     return cards
 
 
+# Landscape A4 quartered into 148.5x105mm cards — the proportions of a 6x4"
+# index card, and the same two sheets the portrait layout needed.
 CSS = """
-@page {{ size: A4 portrait; margin: 0; }}
+@page {{ size: A4 landscape; margin: 0; }}
 * {{ box-sizing: border-box; }}
 body {{
   margin: 0;
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   color: #111;
+  print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
 }}
 .sheet {{
-  width: 210mm; height: 297mm;
+  width: 297mm; height: 210mm;
   display: grid;
-  grid-template-columns: 105mm 105mm;
-  grid-template-rows: 148.5mm 148.5mm;
+  grid-template-columns: 148.5mm 148.5mm;
+  grid-template-rows: 105mm 105mm;
   page-break-after: always;
 }}
 .sheet:last-child {{ page-break-after: auto; }}
 .card {{
-  padding: 6mm 6mm 4.5mm;
+  padding: 5mm 6mm 4mm;
   border: 0.2mm dashed #c4c4c4;
   overflow: hidden;
   display: flex;
@@ -108,55 +110,71 @@ body {{
 .head {{
   display: flex; align-items: baseline; gap: 2.5mm;
   border-bottom: 0.35mm solid #222;
-  padding-bottom: 1.6mm; margin-bottom: 3mm;
+  padding-bottom: 1.2mm; margin-bottom: 1.6mm;
+  flex: none;
 }}
 .num {{
   font-size: 8pt; font-weight: 700; color: #fff; background: #222;
-  border-radius: 1mm; padding: 0.4mm 1.4mm; flex: none;
+  border-radius: 1mm; padding: 0.3mm 1.4mm; flex: none;
 }}
-.title {{ font-size: 12.5pt; font-weight: 700; flex: 1; line-height: 1.15; }}
-.time {{ font-size: 10pt; font-weight: 700; color: #222; flex: none; }}
+.title {{ font-size: 12.5pt; font-weight: 700; flex: 1; line-height: 1.1; }}
+.time {{ font-size: 10.5pt; font-weight: 700; flex: none; }}
 .screen {{
-  font-size: 8.4pt; color: #555; font-style: italic;
-  line-height: 1.3; margin-bottom: 3mm;
+  font-size: 8.4pt; color: #555; line-height: 1.25;
+  margin-bottom: 2.2mm; flex: none;
 }}
-.screen b {{ font-style: normal; font-weight: 700; color: #333; }}
-.notes {{ font-size: {body}pt; line-height: 1.34; flex: 1; }}
-.notes p {{ margin: 0 0 1.7mm; }}
+.screen b {{ font-weight: 700; color: #333; }}
+.screen i, .screen em {{ font-style: italic; }}
+.notes {{ font-size: {body}pt; line-height: 1.33; flex: 1; min-height: 0; overflow: hidden; }}
+.notes p {{ margin: 0 0 1.6mm; }}
 .notes p:last-child {{ margin-bottom: 0; }}
-.notes strong {{ font-weight: 700; }}
 .notes code {{ font-family: "Source Code Pro", monospace; font-size: 0.92em; }}
 .foot {{
   font-size: 7.6pt; color: #888; border-top: 0.2mm solid #ddd;
-  padding-top: 1.4mm; margin-top: 2.5mm;
+  padding-top: 1.2mm; margin-top: 2mm;
   display: flex; justify-content: space-between; flex: none;
 }}
 .blank {{ border: 0.2mm dashed #c4c4c4; }}
-table.run {{ width: 100%; border-collapse: collapse; font-size: 9.6pt; flex: 1; }}
-table.run td {{ padding: 1.5mm 0; border-bottom: 0.15mm solid #e6e6e6; vertical-align: top; }}
+table.run {{ width: 100%; border-collapse: collapse; font-size: 9.4pt; }}
+table.run td {{ padding: 0.9mm 0; border-bottom: 0.15mm solid #e6e6e6; }}
 table.run td:first-child {{ width: 6mm; color: #999; }}
-table.run td.r {{ text-align: right; white-space: nowrap; padding-left: 2mm; }}
+table.run td.r {{ text-align: right; white-space: nowrap; padding-left: 3mm; }}
 table.run tr:last-child td {{ border-bottom: none; }}
 """
 
-
-# Shrink a card's prose until it fits rather than letting `overflow: hidden`
-# eat the last line. Runs before Chromium prints, so the PDF carries the result.
+# Shrink a card's prose until it fits, rather than letting `overflow: hidden`
+# eat the last line. This has to run in the browser that prints, because font
+# metrics differ between machines and a size measured elsewhere proves nothing.
+# It re-runs once fonts have settled and again before printing.
 FIT_JS = """<script>
-for (const card of document.querySelectorAll('.card')) {
-  const notes = card.querySelector('.notes');
-  const cs = getComputedStyle(card);
-  const inner = card.getBoundingClientRect().height
-              - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
-  const used = () => [...card.children]
-      .reduce((s, e) => s + e.getBoundingClientRect().height, 0);
-  let pt = %BODY%;
-  while (used() > inner - 1 && pt > %FLOOR%) {
-    pt -= 0.2;
-    notes.style.fontSize = pt.toFixed(1) + 'pt';
+function fitCards() {
+  for (const card of document.querySelectorAll('.card')) {
+    const notes = card.querySelector('.notes');
+    if (!notes) continue;
+    // `.notes` is the flex filler, so it is exactly the leftover space and its
+    // scrollHeight is the height the prose actually wants. Measuring the card
+    // instead cannot work: a flex item with `min-height: 0` shrinks to fit
+    // whatever is left, so the sum of the children always equals the card.
+    let pt = %BODY%, lh = 1.33;
+    notes.style.fontSize = pt.toFixed(2) + 'pt';
+    notes.style.lineHeight = lh.toFixed(2);
+    const over = () => notes.scrollHeight > notes.clientHeight + 0.5;
+    while (over() && pt > %FLOOR%) {
+      pt -= 0.1;
+      notes.style.fontSize = pt.toFixed(2) + 'pt';
+    }
+    while (over() && lh > 1.14) {
+      lh -= 0.01;
+      notes.style.lineHeight = lh.toFixed(2);
+    }
+    card.dataset.pt = pt.toFixed(2);
+    card.dataset.lh = lh.toFixed(2);
+    card.dataset.slack = Math.round(notes.clientHeight - notes.scrollHeight);
   }
-  card.dataset.pt = pt.toFixed(1);
 }
+fitCards();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitCards);
+window.addEventListener('beforeprint', fitCards);
 </script>"""
 
 
@@ -180,7 +198,8 @@ def runsheet(cards):
 
 
 def build(cards):
-    out = [f"<!doctype html><meta charset=utf-8><style>{CSS.format(body=BODY_PT)}</style>"]
+    out = [f"<!doctype html><meta charset=utf-8><title>Speaker cards</title>"
+           f"<style>{CSS.format(body=BODY_PT)}</style>"]
     total = cards[-1]["elapsed"]
     for i in range(0, len(cards), PER_SHEET):
         out.append('<div class="sheet">')
@@ -208,14 +227,9 @@ def main():
     if not cards:
         sys.exit("no notes blocks found in index.qmd")
     HTML.write_text(build(cards), encoding="utf-8")
-    subprocess.run(
-        ["chromium", "--headless", "--no-sandbox", "--disable-gpu",
-         f"--print-to-pdf={PDF}", "--no-pdf-header-footer", HTML.as_uri()],
-        check=True, capture_output=True,
-    )
     sheets = -(-len(cards) // PER_SHEET)
-    print(f"{len(cards)} cards on {sheets} A4 sheet(s) -> {PDF.name} "
-          f"({PDF.stat().st_size // 1024} KB), {mmss(cards[-1]['elapsed'])} total")
+    print(f"{len(cards)} cards on {sheets} landscape A4 sheet(s) -> {HTML.name}, "
+          f"{mmss(cards[-1]['elapsed'])} total")
 
 
 if __name__ == "__main__":
