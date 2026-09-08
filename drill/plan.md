@@ -10,6 +10,13 @@ Each slide is drilled up a ladder of six views. A rung is passed when you
 get through it twice in a row without a miss. On a miss, drop one rung, not
 to the bottom.
 
+A miss is anything that would show on stage: a wrong or skipped word you
+notice, a sentence out of order, or a stall longer than a breath. Pausing
+to think is not a miss while you are still on the sheets. Being slow is
+what the ladder is for. Once you are running from nothing, a pause you
+would not choose to make on stage counts, because by then the words should
+arrive on their own and the pauses should be yours.
+
 - **Full.** Read aloud, with the deck open, twice.
 - **1 in 5.** Say it, tapping a blank only when stuck.
 - **1 in 3.** Same.
@@ -25,7 +32,7 @@ into the next slide: last sentence, click, first sentence.
 
 ### Tue 8 · freeze and record
 
-- Print the sheets (`cards/drill.html`, print all) and the speaker cards.
+- Print the sheets (`drill/index.html`, print all) and the speaker cards.
 - Two full read-throughs aloud with the deck, timed per slide. Fix any
   sentence you stumble on twice: rewrite it to be sayable. After tonight
   the wording is frozen, since every change costs the memory work done so far.

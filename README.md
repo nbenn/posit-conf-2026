@@ -7,5 +7,11 @@ Hilton Americas-Houston, Houston, TX.
 
 **Slides:** <https://nbenn.github.io/posit-conf-2026>
 
+**Speaker cards:** <https://nbenn.github.io/posit-conf-2026/cards/>
+
+**Drill sheets:** <https://nbenn.github.io/posit-conf-2026/drill/>
+
 The slides are a [Quarto](https://quarto.org) reveal.js deck rendered from
-`index.qmd` and published to GitHub Pages on every push to `main`.
+`index.qmd` and published to GitHub Pages on every push to `main`. The cards
+and the drill sheets are generated from the same notes by `cards/make-cards.py`
+and `drill/make-drill.py`, and published alongside.

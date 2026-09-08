@@ -13,13 +13,14 @@ Six views of the same script, one per level of the fade-out ladder:
 Blanks keep their width and punctuation, so the rhythm of the sentence stays
 visible while the words are gone. On screen a tap reveals one word and the
 level tabs switch views; printed, every level comes out as its own section.
-The rehearsal plan in cards/drill-plan.md is included as the last tab.
+The rehearsal plan in drill/plan.md is included as the last tab.
 
-    python3 cards/make-drill.py                  # -> cards/drill.html
-    python3 cards/make-drill.py --fragment out    # body only, for embedding
+    python3 drill/make-drill.py                  # -> drill/index.html
+    python3 drill/make-drill.py --fragment out    # body only, for embedding
 
-Reads the notes straight out of index.qmd, like make-cards.py, so the sheets
-cannot drift from the deck. Needs pandoc on the PATH, as make-cards.py does.
+Reads the notes straight out of index.qmd, like cards/make-cards.py, so the
+sheets cannot drift from the deck. Needs pandoc on the PATH, as that script
+does. Published with the deck as /drill/, see _quarto.yml.
 """
 
 import argparse
@@ -32,8 +33,8 @@ from pathlib import Path
 HERE = Path(__file__).parent
 ROOT = HERE.parent
 QMD = ROOT / "index.qmd"
-PLAN = HERE / "drill-plan.md"
-OUT = HERE / "drill.html"
+PLAN = HERE / "plan.md"
+OUT = HERE / "index.html"
 
 LEVELS = [
     ("full", "Full", 0),
@@ -325,12 +326,12 @@ def build(sls, plan_md, fragment=False):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--fragment", metavar="FILE",
-                    help="write body-only HTML here instead of cards/drill.html")
+                    help="write body-only HTML here instead of drill/index.html")
     args = ap.parse_args()
     sls = slides(QMD.read_text())
     if not sls:
         sys.exit("no slides with notes found in index.qmd")
-    plan_md = PLAN.read_text() if PLAN.exists() else "# Plan\n\n(no drill-plan.md)"
+    plan_md = PLAN.read_text() if PLAN.exists() else "# Plan\n\n(no plan.md)"
     if args.fragment:
         Path(args.fragment).write_text(build(sls, plan_md, fragment=True))
         print(f"wrote {args.fragment}")

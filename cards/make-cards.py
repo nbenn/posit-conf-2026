@@ -4,8 +4,9 @@
 Fronts carry the notes, backs carry a thumbnail of the slide, interleaved so the
 sheets duplex-print. Reads the notes straight out of index.qmd so the cards
 cannot drift from the deck. Print from the browser: margins None, scale 100%.
+Published with the deck as /cards/, see _quarto.yml.
 
-    python3 cards/make-cards.py                # -> cards/speaker-cards.html
+    python3 cards/make-cards.py                # -> cards/index.html
     python3 cards/make-cards.py --mirror h     # backs on the wrong cards
     python3 cards/make-cards.py --force-shots  # re-capture the thumbnails
 
@@ -27,7 +28,7 @@ HERE = Path(__file__).parent
 ROOT = HERE.parent
 QMD = ROOT / "index.qmd"
 CSS_SRC = ROOT / "custom.css"
-HTML = HERE / "speaker-cards.html"
+HTML = HERE / "index.html"
 SHOTS = HERE / "thumbs"
 SHOT_W, SHOT_H, SHOT_Q = 1200, 800, 80
 TITLE_POS = 1
@@ -224,7 +225,7 @@ def capture(cards, force=False):
         build = Path(tmp) / "deck"
         shutil.copytree(
             ROOT, build,
-            ignore=shutil.ignore_patterns("_site", ".quarto", ".git", "cards"),
+            ignore=shutil.ignore_patterns("_site", ".quarto", ".git", "cards", "drill"),
         )
         subprocess.run(["quarto", "render", str(build)],
                        check=True, capture_output=True)

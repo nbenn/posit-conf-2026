@@ -2,3 +2,9 @@ project:
   type: website
   render:
     - index.qmd
+  # The speaker cards and the drill sheets are generated into the repo by
+  # their scripts and ride along as static pages: /cards/ and /drill/.
+  resources:
+    - cards/index.html
+    - cards/thumbs/*.jpg
+    - drill/index.html
