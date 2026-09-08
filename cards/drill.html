@@ -1,15 +1,29 @@
 <!doctype html>
 <html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width, initial-scale=1'></head><body><title>Talk drill</title><style>
+/* The deck's greys. Dark is a real palette, not an inversion: the blank
+   underline and the muted labels drop contrast on the dark ground too. */
 :root {
-  --ink: #111; --mute: #666; --line: #ccc; --paper: #fff; --tab: #eee;
-  --blank: #999;
+  --ink: #1a1a1a; --mute: #707070; --line: #d4d4d4; --paper: #fff;
+  --tab: #ededed; --blank: #9a9a9a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #e8e8e6; --mute: #9a9a9a; --line: #3a3b3f; --paper: #151618;
+    --tab: #26272b; --blank: #6a6b70;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #e8e8e6; --mute: #9a9a9a; --line: #3a3b3f; --paper: #151618;
+  --tab: #26272b; --blank: #6a6b70;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0; background: var(--paper); color: var(--ink);
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Source Sans 3", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: 15px; line-height: 1.45;
 }
+nav.tabs button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) { nav.tabs button { transition: background .12s; } }
 .wrap { max-width: 720px; margin: 0 auto; padding: 12px 16px 60px; }
 nav.tabs {
   position: sticky; top: 0; background: var(--paper); z-index: 2;
@@ -60,14 +74,14 @@ ol.op li { break-inside: avoid; padding: 1px 0; }
 .plan code { font-family: "Source Code Pro", monospace; font-size: 0.92em; }
 @media print {
   @page { size: A4; margin: 14mm; }
+  :root { --ink: #111; --mute: #666; --line: #ccc; --paper: #fff; --blank: #777; }
   body { font-size: 11pt; }
   .wrap { max-width: none; padding: 0; }
   nav.tabs { display: none; }
   .level { display: block; page-break-before: always; }
   .level:first-of-type { page-break-before: auto; }
   .level > h1 { font-size: 14pt; margin: 0 0 6pt; }
-  .b { border-bottom-color: #777; }
-  .b.on { color: transparent; border-bottom-color: #777; }
+  .b.on { color: transparent; border-bottom-color: var(--blank); }
   .r.on { display: none; }
   .slide { page-break-inside: avoid; }
 }
