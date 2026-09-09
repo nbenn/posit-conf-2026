@@ -76,7 +76,7 @@ table.run tr:last-child td { border-bottom: none; }
 <div class="notes"><p>Play-doh. It’s a fun toy: you can create any shape you want with it.</p>
 <p>To me personally though, that much freedom always felt more like a burden. You don’t get much assistance from the material.</p>
 <p>I gravitated more towards lego.</p></div>
-<div class="foot"><span>40 words</span><span>0:17 / 4:26</span></div>
+<div class="foot"><span>40 words</span><span>0:17 / 4:22</span></div>
 </div>
 <div class="card">
 <div class="head"><span class="num">3/8</span>
@@ -89,7 +89,7 @@ table.run tr:last-child td { border-bottom: none; }
 <p>Every project felt like it needed to be tailor-made, so we ended up solving similar problems over and over again. Code bases grew large and hard to change. Clay, basically.</p>
 <p>Now how can we improve? How can we have components carry over from one app to the next?</p>
 <p>One way is by imposing restrictions. If we limit the shape by defining an interface, this enables reuse. It lets you focus on what matters. And it applies to humans and current-gen coding assistants alike.</p></div>
-<div class="foot"><span>176 words</span><span>1:31 / 4:26</span></div>
+<div class="foot"><span>176 words</span><span>1:31 / 4:22</span></div>
 </div>
 <div class="card">
 <div class="head"><span class="num">4/8</span>
@@ -99,19 +99,18 @@ table.run tr:last-child td { border-bottom: none; }
 <p>Blocks are connected by links and can be assembled into stacks.</p>
 <p>Each block has data inputs, user parameters and a single output. That is the whole contract.</p>
 <p>The block is the brick, the link is the stud and the stack is the model. The stud is our interface: simple and well-defined.</p></div>
-<div class="foot"><span>66 words</span><span>1:59 / 4:26</span></div>
+<div class="foot"><span>66 words</span><span>1:59 / 4:22</span></div>
 </div>
 <div class="card">
 <div class="head"><span class="num">5/8</span>
-<span class="title">A block</span><span class="time">~38 s</span></div>
-<div class="screen"><b>On screen:</b> —</div>
-<div class="notes"><p>Let’s make it a bit more concrete: this is how you could write a join block.</p>
-<p><strong>(4) Under the hood, it’s a shiny module.</strong></p>
-<p><strong>(3) Here we have our data inputs:</strong> <code>x</code> and <code>y</code>.</p>
-<p><strong>(13) Next are user parameters:</strong> We need a dropdown to select the column to join on.</p>
-<p><strong>(5-6) We might need some logic too:</strong> Whenever the input data changes we need to re-compute which columns we can join on.</p>
-<p><strong>(7-9) Taken together, this produces data output.</strong> We return an interpolated expression. So we can calculate the result given data inputs on demand.</p></div>
-<div class="foot"><span>90 words, 5 reveals</span><span>2:37 / 4:26</span></div>
+<span class="title">A real app</span><span class="time">~53 s</span></div>
+<div class="screen"><b>On screen:</b> Bristol-Myers Squibb: up to 100 blocks across a dozen views, one created specifically for this use case.</div>
+<div class="notes"><p>We are using blockr at Bristol-Myers Squibb to explore clinical data from studies.</p>
+<p>Our frontend here is built on a docking layout manager and we have every block render a panel you can move and resize freely.</p>
+<p>These apps pull in up to one hundred blocks, spread over a dozen views. And we’re rolling out many such apps, specific to studies and their analysis needs.</p>
+<p>Blocks are not the only extension point. There are <em>extensions</em> as well: (1) on the left, we have a graphical overview of the board and (2) on the right, an AI assistant.</p>
+<p>Most blocks here are general purpose: reading data, transforming it, displaying summary tables and visualizations that support drill-down. (3) But one block was built specifically for this use case: the patient profile.</p></div>
+<div class="foot"><span>126 words</span><span>2:52 / 4:22</span></div>
 </div>
 </div>
 <div class="sheet">
@@ -122,7 +121,7 @@ table.run tr:last-child td { border-bottom: none; }
 </div>
 <div class="card back">
 <div class="head"><span class="num">5/8</span>
-<span class="title">A block</span><span class="time">~38 s</span></div>
+<span class="title">A real app</span><span class="time">~53 s</span></div>
 <div class="shot"><img src="thumbs/slide-05.jpg"></div>
 </div>
 <div class="card back">
@@ -139,23 +138,24 @@ table.run tr:last-child td { border-bottom: none; }
 <div class="sheet">
 <div class="card">
 <div class="head"><span class="num">6/8</span>
-<span class="title">A real app</span><span class="time">~53 s</span></div>
-<div class="screen"><b>On screen:</b> Bristol-Myers Squibb: up to 100 blocks across a dozen views, one created specifically for this use case.</div>
-<div class="notes"><p>We are using blockr at Bristol-Myers Squibb to explore clinical data from studies.</p>
-<p>Our frontend here is built on a docking layout manager and we have every block render a panel you can move and resize freely.</p>
-<p>These apps pull in up to one hundred blocks, spread over a dozen views. And we’re rolling out many such apps, specific to studies and their analysis needs.</p>
-<p>Blocks are not the only extension point. There are <em>extensions</em> as well: (1) on the left, we have a graphical overview of the board and (2) on the right, an AI assistant.</p>
-<p>Most blocks here are general purpose: reading data, transforming it, displaying summary tables and visualizations that support drill-down. (3) But one block was built specifically for this use case: the patient profile.</p></div>
-<div class="foot"><span>126 words</span><span>3:30 / 4:26</span></div>
-</div>
-<div class="card">
-<div class="head"><span class="num">7/8</span>
-<span class="title">Specialty pieces</span><span class="time">~22 s</span></div>
+<span class="title">Specialty pieces</span><span class="time">~24 s</span></div>
 <div class="screen"><b>On screen:</b> Special shape, standard stud.</div>
 <div class="notes"><p>Our current library of general-purpose blocks cannot cover every use case.</p>
 <p>Similar to specialty pieces that come with certain lego sets, sometimes you want a specific shape, which still comes with the standard studs.</p>
-<p>We made it easy for you to do just that by integrating your own blocks into a blockr app.</p></div>
-<div class="foot"><span>53 words</span><span>3:52 / 4:26</span></div>
+<p>We made it easy for you to do just that by integrating your own blocks into a blockr app. Here is what one looks like.</p></div>
+<div class="foot"><span>59 words</span><span>3:16 / 4:22</span></div>
+</div>
+<div class="card">
+<div class="head"><span class="num">7/8</span>
+<span class="title">Your own block</span><span class="time">~32 s</span></div>
+<div class="screen"><b>On screen:</b> —</div>
+<div class="notes"><p>The smallest block we ship, so you can see the stud with nothing in the way: it takes the first rows of a table.</p>
+<p><strong>(1-4) The user parameter</strong> is one number, and the constructor argument seeds it.</p>
+<p><strong>(6-7) Data inputs</strong> are arguments to what is otherwise a Shiny module. A join block takes <code>x</code> and <code>y</code>.</p>
+<p><strong>(8-9) The data output</strong> is an expression, so the result is computed on demand from whatever comes in.</p>
+<p><strong>(13) Hand both to the constructor.</strong> Communication and reactivity are taken care of.</p>
+<p>Real blocks put logic between input and output. The contract does not change.</p></div>
+<div class="foot"><span>76 words, 4 reveals</span><span>3:48 / 4:22</span></div>
 </div>
 <div class="card">
 <div class="head"><span class="num">8/8</span>
@@ -165,12 +165,12 @@ table.run tr:last-child td { border-bottom: none; }
 <p>And look out for what you <em>don’t</em> have to decide. That’s normally the expensive part of making something reusable.</p>
 <p>I’d like to thank my four collaborators for their contributions – and you for your attention.</p>
 <p>Unfortunately we don’t get a Q&amp;A. So if you have questions for me, want to see or hear more, come find me.</p></div>
-<div class="foot"><span>80 words</span><span>4:26 / 4:26</span></div>
+<div class="foot"><span>80 words</span><span>4:22 / 4:22</span></div>
 </div>
 <div class="card">
 <div class="head"><span class="num">run</span>
-<span class="title">Run sheet</span><span class="time">4:26</span></div>
-<table class="run"><tr><td>2</td><td>Any shape you want</td><td class=r>17 s</td><td class=r>0:17</td></tr><tr><td>3</td><td>What carries over to your next app?</td><td class=r>74 s</td><td class=r>1:31</td></tr><tr><td>4</td><td>A block</td><td class=r>28 s</td><td class=r>1:59</td></tr><tr><td>5</td><td>A block</td><td class=r>38 s</td><td class=r>2:37</td></tr><tr><td>6</td><td>A real app</td><td class=r>53 s</td><td class=r>3:30</td></tr><tr><td>7</td><td>Specialty pieces</td><td class=r>22 s</td><td class=r>3:52</td></tr><tr><td>8</td><td>Build a block.</td><td class=r>34 s</td><td class=r>4:26</td></tr></table>
+<span class="title">Run sheet</span><span class="time">4:22</span></div>
+<table class="run"><tr><td>2</td><td>Any shape you want</td><td class=r>17 s</td><td class=r>0:17</td></tr><tr><td>3</td><td>What carries over to your next app?</td><td class=r>74 s</td><td class=r>1:31</td></tr><tr><td>4</td><td>A block</td><td class=r>28 s</td><td class=r>1:59</td></tr><tr><td>5</td><td>A real app</td><td class=r>53 s</td><td class=r>2:52</td></tr><tr><td>6</td><td>Specialty pieces</td><td class=r>24 s</td><td class=r>3:16</td></tr><tr><td>7</td><td>Your own block</td><td class=r>32 s</td><td class=r>3:48</td></tr><tr><td>8</td><td>Build a block.</td><td class=r>34 s</td><td class=r>4:22</td></tr></table>
 <div class="foot"><span>at 142 wpm, timed</span><span>5:00 hard stop</span></div>
 </div>
 </div>
@@ -187,12 +187,12 @@ table.run tr:last-child td { border-bottom: none; }
 </div>
 <div class="card back">
 <div class="head"><span class="num">6/8</span>
-<span class="title">A real app</span><span class="time">~53 s</span></div>
+<span class="title">Specialty pieces</span><span class="time">~24 s</span></div>
 <div class="shot"><img src="thumbs/slide-06.jpg"></div>
 </div>
 <div class="card back">
 <div class="head"><span class="num">7/8</span>
-<span class="title">Specialty pieces</span><span class="time">~22 s</span></div>
+<span class="title">Your own block</span><span class="time">~32 s</span></div>
 <div class="shot"><img src="thumbs/slide-07.jpg"></div>
 </div>
 </div>
