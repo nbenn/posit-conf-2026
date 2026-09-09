@@ -201,7 +201,7 @@ a blockr app. Here's what one looks like.
 
 ## Anatomy of a block {transition="slide"}
 
-```{.r code-line-numbers="3|1|6|9|10"}
+```{.r code-line-numbers="|3|1|6|9|10"}
 new_head_block <- function(n = 6, ...) {
   ui <- function(id) {
     numericInput(NS(id, "n"), "Rows", n)
@@ -225,11 +225,11 @@ new_head_block <- function(n = 6, ...) {
 
 The head block:
 
-**(1) First are user parameters:** we have a single one, $n$.
+**(1) First are user parameters:** here we need only one, $n$.
 
 **(2) It is seeded** by the corresponding constructor argument.
 
-**(3) Next are data inputs:** we again have only a single one, `x`.
+**(3) Next are data inputs:** we again have only a single one: `x`.
 
 **(4) The data output** is represented by an expression, so the result can be
 computed on demand from input data.
