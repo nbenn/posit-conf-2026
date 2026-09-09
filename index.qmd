@@ -32,7 +32,7 @@ Total freedom, but little help
 :::
 
 ::: {.notes}
-<!-- Any shape you want — ~17 s (40 words) -->
+<!-- Any shape you want — ~18 s (40 words) -->
 
 Play-doh. It's a fun toy: you can create any shape you want with it.
 
@@ -70,7 +70,7 @@ Limit the shape, define the interface
 :::
 
 ::: {.notes}
-<!-- What carries over to your next app? — ~74 s (176 words) -->
+<!-- What carries over to your next app? — ~80 s (176 words) -->
 
 Restrictions and well-defined interfaces helped me be *more* creative.
 
@@ -124,7 +124,7 @@ Data inputs. User parameters. One data output.
 :::
 
 ::: {.notes}
-<!-- A block — ~28 s (66 words) -->
+<!-- A block — ~30 s (66 words) -->
 
 The core abstraction we built for blockr is a block: a well-defined unit of
 computation.
@@ -153,7 +153,7 @@ specifically for this use case.
 :::
 
 ::: {.notes}
-<!-- A real app — ~61 s (146 words) -->
+<!-- A real app — ~66 s (146 words) -->
 
 We are using blockr at Bristol-Myers Squibb to explore clinical data from
 studies.
@@ -166,11 +166,11 @@ we're rolling out many such apps, specific to studies and their analysis needs.
 
 Blocks are not the only extension point. There are *extensions* as well:
 
-**(1) On the left,** a graphical overview of the board, showing blocks, their
+**(1) On the left,** we have a graphical overview, showing blocks, their
 connections and stack membership.
 
-**(2) On the right,** an AI assistant, which can manipulate and interrogate our
-board.
+**(2) And on the right,** an AI assistant, which can manipulate and interrogate
+our app.
 
 Most blocks here are general purpose: reading data, transforming it, displaying
 summary tables and visualizations that support drill-down.
@@ -188,7 +188,7 @@ Special shape, standard stud.
 :::
 
 ::: {.notes}
-<!-- Specialty pieces — ~24 s (59 words) -->
+<!-- Specialty pieces — ~26 s (58 words) -->
 
 Our current library of general-purpose blocks cannot cover every use case.
 
@@ -196,12 +196,12 @@ Similar to specialty pieces that come with certain lego sets, sometimes you
 want a specific shape, which still comes with the standard studs.
 
 We made it easy for you to do just that by integrating your own blocks into
-a blockr app. Here is what one looks like.
+a blockr app. Here's what one looks like.
 :::
 
-## Your own block {transition="slide"}
+## Anatomy of a block {transition="slide"}
 
-```{.r code-line-numbers="1-4|6-7|8-9|13"}
+```{.r code-line-numbers="3|1|6|9|10"}
 new_head_block <- function(n = 6, ...) {
   ui <- function(id) {
     numericInput(NS(id, "n"), "Rows", n)
@@ -209,8 +209,10 @@ new_head_block <- function(n = 6, ...) {
 
   server <- function(id, x) {
     moduleServer(id, function(input, output, session) {
-      expr <- reactive(bquote(utils::head(x, .(input$n))))
-      list(expr = expr, state = list(n = reactive(input$n)))
+      list(
+        expr = reactive(bquote(utils::head(x, .(input$n)))),
+        state = list(n = reactive(input$n))
+      )
     })
   }
 
@@ -219,24 +221,20 @@ new_head_block <- function(n = 6, ...) {
 ```
 
 ::: {.notes}
-<!-- Your own block — ~32 s (76 words, 4 reveals) -->
+<!-- Anatomy of a block — ~31 s (69 words, 5 reveals) -->
 
-The smallest block we ship, so you can see the stud with nothing in the way:
-it takes the first rows of a table.
+The head block:
 
-**(1-4) The user parameter** is one number, and the constructor argument seeds
-it.
+**(1) First are user parameters:** we have a single one, $n$.
 
-**(6-7) Data inputs** are arguments to what is otherwise a Shiny module. A join
-block takes `x` and `y`.
+**(2) It is seeded** by the corresponding constructor argument.
 
-**(8-9) The data output** is an expression, so the result is computed on demand
-from whatever comes in.
+**(3) Next are data inputs:** we again have only a single one, `x`.
 
-**(13) Hand both to the constructor.** Communication and reactivity are taken
-care of.
+**(4) The data output** is represented by an expression, so the result can be
+computed on demand from input data.
 
-Real blocks put logic between input and output. The contract does not change.
+**(5) And finally** we return state: this allows us to save and restore.
 :::
 
 ## Build a block. {.closing}
@@ -265,7 +263,7 @@ blockr.site
 :::
 
 ::: {.notes}
-<!-- Ask + close — ~34 s (80 words) -->
+<!-- Ask + close — ~36 s (80 words) -->
 
 Now it's your turn: build a block. Either by hand, or by pointing a coding
 assistant at the many examples we have created.
