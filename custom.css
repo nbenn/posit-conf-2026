@@ -185,18 +185,21 @@
 
 /* The theme hardcodes `.reveal pre { font-size: 0.55em }` — it does not read
    --r-block-code-font-size — and `pre code` is `inherit`, so the size has to
-   be set here on the `pre`. Bounded by the widest line, not slide height. */
+   be set here on the `pre`. Bounded by the widest line, not slide height: the
+   join block's 64-character line fit at 0.62em, the head block's widest line
+   is 59 characters, which scales to the size set here. */
 .reveal pre {
-  font-size: 0.62em;
+  font-size: 0.67em;
 }
 
 /* Quarto's theme caps the code element at `max-height: 500px` and scrolls the
-   overflow. The join block needs 528px at the size set above, so the closing
-   brace sat below the fold behind a scrollbar — on the one slide where the code
-   is the content. Uncapping it costs nothing: the block is 528px inside a
-   700px slide, under a 77px title.
+   overflow. The join block needed 528px at 0.62em, so the closing brace sat
+   below the fold behind a scrollbar — on the one slide where the code is the
+   content. The head block is 14 lines at a larger size and lands in the same
+   region. Uncapping it costs nothing: the block sits inside a 700px slide,
+   under a 77px title.
 
-   The scrollbar rules address a separate, cosmetic thing: the 16 line-number
+   The scrollbar rules address a separate, cosmetic thing: the line-number
    anchors push `scrollWidth` 30px past the widest line, which ends 31px inside
    the box, so a horizontal scrollbar renders under code that is not clipped.
    Overlay scrollbars mean this never showed on macOS; it does in headless

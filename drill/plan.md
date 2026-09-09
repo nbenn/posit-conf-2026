@@ -38,14 +38,18 @@ into the next slide: last sentence, click, first sentence.
   the wording is frozen, since every change costs the memory work done so far.
 - Record one clean read at the target pace. This is the reference for
   the week.
-- Evening: slides 7 (close) and 6 (specialty) up the ladder to 1 in 3.
+- Evening: slides 7 (close) and 5 (specialty) up the ladder to 1 in 3.
   Backwards, so every later run moves into material you know best.
 
 ### Wed 9 · the back half
 
-- Morning: retest 7 and 6 from first letters. Drop rungs as needed.
-- Learn 5 (real app) and 4 (code) to 1 in 3. Drill 4 with the deck, since
-  the five reveals are part of the wording: click, then speak.
+- The code slide moved this morning: it is now slide 6, between specialty
+  pieces and the close, and shows the head block instead of the join block.
+  Its notes are new, so it is the one slide that starts from zero. Slide 5
+  gained one hand-off sentence at the end; re-read it once.
+- Morning: retest 7 and 5 from first letters. Drop rungs as needed.
+- Learn 6 (code) and 4 (real app) to 1 in 3. Drill 6 with the deck, since
+  the four reveals are part of the wording: click, then speak.
 - Evening: chain 4 through 7 once from the 1 in 3 sheet.
 - Listen to the recording on any walk or commute.
 
@@ -68,9 +72,10 @@ into the next slide: last sentence, click, first sentence.
 - Three runs from nothing, standing, clicker, timed. Vary the room.
 - Rehearse blanking: twice per run, stop mid-slide on purpose, breathe,
   and jump to the next opener. The recovery is a skill, drill it.
-- Check the timer at the click into the real app slide. Target 2:40.
+- Check the timer at the click into the real app slide. Target 2:00.
   Practise the short version of that slide once, so the cut is rehearsed
-  and not improvised.
+  and not improvised. The code slide now sits after it, so an overrun
+  there can only come out of the close.
 
 ### Sun 13 · variance
 
@@ -102,6 +107,8 @@ short it may be dropped.
 - The takeaway echo on each slide, since the audience reads it while you say it.
 - The contract line on the block slide, and the brick, stud, model mapping.
 - The sentence that sets up the custom block on the real app slide.
+- The hand-off from specialty pieces into the code, and the last line of
+  the code slide: the contract does not change.
 - Both closing lines.
 
 Cuttable if the timer says so, in this order: the layout sentence on the

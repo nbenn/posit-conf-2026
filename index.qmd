@@ -96,7 +96,7 @@ interface, this enables reuse. It lets you focus on what matters. And it applies
 to humans and current-gen coding assistants alike.
 :::
 
-## A block {.pair transition="slide-in none-out"}
+## A block {.pair transition="slide"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -136,46 +136,6 @@ whole contract.
 
 The block is the brick, the link is the stud and the stack is the model. The
 stud is our interface: simple and well-defined.
-:::
-
-## A block {transition="none-in slide-out"}
-
-```{.r code-line-numbers="|4|3|13|5-6|7-9"}
-new_join_block <- function(by = character(), ...) {
-  new_transform_block(
-    function(id, x, y) {
-      moduleServer(id, function(input, output, session) {
-        cols <- reactive(intersect(names(x()), names(y())))
-        observe(updateSelectInput("by", choices = cols()))
-        code <- reactive(str2lang(glue::glue(
-          'dplyr::left_join(x, y, by = "{input$by}")'
-        )))
-        list(expr = code, state = list(by = reactive(input$by)))
-      })
-    },
-    function(id) selectInput(NS(id, "by"), "By", by),
-    ...
-  )
-}
-```
-
-::: {.notes}
-<!-- A block, concretely — ~38 s (90 words, 5 reveals) -->
-
-Let's make it a bit more concrete: this is how you could write a join block.
-
-**(4) Under the hood, it's a shiny module.**
-
-**(3) Here we have our data inputs:** `x` and `y`.
-
-**(13) Next are user parameters:** We need a dropdown to select the column to
-join on.
-
-**(5-6) We might need some logic too:** Whenever the input data
-changes we need to re-compute which columns we can join on.
-
-**(7-9) Taken together, this produces data output.** We return an interpolated
-expression. So we can calculate the result given data inputs on demand.
 :::
 
 ## A real app {transition="slide"}
@@ -222,7 +182,7 @@ Special shape, standard stud.
 :::
 
 ::: {.notes}
-<!-- Specialty pieces — ~22 s (53 words) -->
+<!-- Specialty pieces — ~24 s (59 words) -->
 
 Our current library of general-purpose blocks cannot cover every use case.
 
@@ -230,7 +190,47 @@ Similar to specialty pieces that come with certain lego sets, sometimes you
 want a specific shape, which still comes with the standard studs.
 
 We made it easy for you to do just that by integrating your own blocks into
-a blockr app.
+a blockr app. Here is what one looks like.
+:::
+
+## Your own block {transition="slide"}
+
+```{.r code-line-numbers="1-4|6-7|8-9|13"}
+new_head_block <- function(n = 6, ...) {
+  ui <- function(id) {
+    numericInput(NS(id, "n"), "Rows", n)
+  }
+
+  server <- function(id, x) {
+    moduleServer(id, function(input, output, session) {
+      expr <- reactive(bquote(utils::head(x, .(input$n))))
+      list(expr = expr, state = list(n = reactive(input$n)))
+    })
+  }
+
+  new_transform_block(server, ui, ...)
+}
+```
+
+::: {.notes}
+<!-- Your own block — ~32 s (76 words, 4 reveals) -->
+
+The smallest block we ship, so you can see the stud with nothing in the way:
+it takes the first rows of a table.
+
+**(1-4) The user parameter** is one number, and the constructor argument seeds
+it.
+
+**(6-7) Data inputs** are arguments to what is otherwise a Shiny module. A join
+block takes `x` and `y`.
+
+**(8-9) The data output** is an expression, so the result is computed on demand
+from whatever comes in.
+
+**(13) Hand both to the constructor.** Communication and reactivity are taken
+care of.
+
+Real blocks put logic between input and output. The contract does not change.
 :::
 
 ## Build a block. {.closing}
