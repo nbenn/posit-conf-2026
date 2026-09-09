@@ -302,17 +302,21 @@
   margin-left: 0;
 }
 
-/* The block has no baseline, so it is placed against BMS's. That baseline sits
-   7px above the flex floor — BMS is raised 3px and its own baseline is 4.0px
-   above its box bottom — and the BMS symbol tops out 30px up. Hence 23px tall
-   and raised 7px: the block's bottom edge lands on the baseline and its top
-   flush with the symbol, so the two marks fill one band. Measured from a
-   rendered mock, as the BMS offset below was. Note that the wordmark inside
-   the block does not resolve at this size; that is accepted for now. */
+/* The block has no baseline of its own, so putting its bottom edge on the text
+   baseline sat it on a line it has no business on: the BMS hand drops below
+   that line, and against it the block read as lifted. Matched to the hand's
+   box instead — same 27px height, same 3px raise — so the two marks occupy one
+   box and read as a pair of symbols rather than a mark and a stray square.
+   Both now dip below the text baseline together, which is what a symbol set in
+   a line of type should do. The two rules are deliberately kept apart despite
+   holding equal values: they agree by construction, not by coincidence, and a
+   change to the BMS mark should not silently drag cynkra with it. Note that
+   the wordmark inside the block does not resolve at this size; that is
+   accepted for now. */
 .reveal .footer img.logo-cynkra {
-  height: calc(23px * var(--chrome-scale));
+  height: calc(27px * var(--chrome-scale));
   position: relative;
-  bottom: calc(7px * var(--chrome-scale));
+  bottom: calc(3px * var(--chrome-scale));
 }
 
 /* Raised 3px, which is what fixes where that shared baseline falls: the flex
