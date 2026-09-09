@@ -280,32 +280,51 @@
   margin: 0 0 0 calc(20px * var(--chrome-scale));
 }
 
-/* The cynkra mark is a small solid square where the other is a wide wordmark,
-   so side by side the square reads as a stray swatch rather than a logo.
-   Setting both into a phrase gives it a job in a line of text and evens the
-   row's rhythm; the gap above drops from 34px to 20px because the words now
-   do the separating. Text at 15px is large enough to read as a sentence and
-   small enough not to compete with either mark. With `line-height: 1` Source
-   Sans Pro puts its baseline 0.177em above the box bottom — measured off a
-   render, not the 0.25em you would guess — which is 2.65px at this size, so
-   4.35px of lift lands the words on the same 7px baseline as the two marks. */
-.reveal .footer .foot-by {
-  font-size: calc(15px * var(--chrome-scale));
-  line-height: 1;
-  margin: 0 0 0 calc(20px * var(--chrome-scale));
-  position: relative;
-  bottom: calc(4.35px * var(--chrome-scale));
-  white-space: nowrap;
+/* Whichever mark leads takes no gap in front of it. The row is right-aligned
+   and auto-width, so a leading margin would not show as a visible gap — it
+   would just widen the group leftwards — but it makes the two flanking gaps
+   unequal in the box model, which is the sort of thing that resurfaces later. */
+.reveal .footer img:first-child {
+  margin-left: 0;
 }
 
-.reveal .footer .foot-by:first-child {
-  margin-left: 0;
+/* The two marks are a solid square and a wide lockup, so butted together they
+   read as one object with a swatch stuck to its end. A separator gives each
+   its own territory. A bar rather than an ampersand on purpose: `&` is a
+   conjunction and quietly asserts that the two parties go together, which is
+   the claim the earlier "Developed by … and …" wording made and which this
+   footer is meant to stop making. A bar is punctuation and asserts nothing.
+   It is also the quieter glyph, which is what a band designed to recede wants.
+
+   Glyph and size sit here rather than in the footer markup, so trying another
+   is a one-line change and the markup carries an empty span.
+
+   Centred on the marks, not on a text baseline: there is no other type in the
+   band any more, so `align-self: center` puts it on the images' own centre,
+   and the lift is theirs — `position: relative` offsets are visual only and do
+   not move the flex box the centring is measured against. The extra 1.1px on
+   top of the marks' 3px is the glyph's own doing: a bar runs from below the
+   baseline to about cap height, so its ink centre sits below the line box's,
+   and centring the box left it 2px low against the marks. Measured, not
+   derived — the figure is specific to this glyph in this face. */
+.reveal .footer .foot-sep {
+  align-self: center;
+  position: relative;
+  bottom: calc(4.1px * var(--chrome-scale));
+  margin: 0 0 0 calc(20px * var(--chrome-scale));
+  font-size: calc(20px * var(--chrome-scale));
+  line-height: 1;
+  color: #4d4d4d;
+}
+
+.reveal .footer .foot-sep::before {
+  content: "|";
 }
 
 /* The block has no baseline of its own, so putting its bottom edge on the text
    baseline sat it on a line it has no business on: the BMS hand drops below
    that line, and against it the block read as lifted. Matched to the hand's
-   box instead — same 27px height, same 3px raise — so the two marks occupy one
+   box instead — same 30px height, same 3px raise — so the two marks occupy one
    box and read as a pair of symbols rather than a mark and a stray square.
    Both now dip below the text baseline together, which is what a symbol set in
    a line of type should do. The two rules are deliberately kept apart despite
@@ -314,17 +333,17 @@
    the wordmark inside the block does not resolve at this size; that is
    accepted for now. */
 .reveal .footer img.logo-cynkra {
-  height: calc(27px * var(--chrome-scale));
+  height: calc(30px * var(--chrome-scale));
   position: relative;
   bottom: calc(3px * var(--chrome-scale));
 }
 
-/* Raised 3px, which is what fixes where that shared baseline falls: the flex
-   row aligns image *bottoms*, and BMS's own baseline sits 4.0px above its box
-   bottom. The lift is kept at the value the wordmark pair was tuned to, so the
-   band has not moved on the slide. */
+/* Raised 3px, which is what fixes where the band sits: the flex row aligns
+   image *bottoms*, and BMS's own baseline is 4.0px above its box bottom. The
+   lift is unchanged from the wordmark pair; only the height has grown, 27px
+   to 30px, so the band gained 3px at the top and none at the bottom. */
 .reveal .footer img.logo-bms {
-  height: calc(27px * var(--chrome-scale));
+  height: calc(30px * var(--chrome-scale));
   position: relative;
   bottom: calc(3px * var(--chrome-scale));
 }

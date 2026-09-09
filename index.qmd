@@ -18,9 +18,12 @@ format:
     auto-stretch: false
     css: custom.css
     # Attribution rides in the footer so it appears on every slide without
-    # crowding the closing slide, which is the one people photograph.
+    # crowding the closing slide, which is the one people photograph. BMS
+    # leads so its own lockup — pink hand plus wordmark — stays contiguous:
+    # with the square first it abutted the hand, and the three marks read as
+    # one composite. The two coloured marks now bracket the row instead.
     footer: |
-      <span class="foot-by">Developed by</span><img src="img/cynkra.png" class="logo-cynkra"><span class="foot-by">and</span><img src="img/bms.png" class="logo-bms">
+      <img src="img/bms.png" class="logo-bms"><span class="foot-sep"></span><img src="img/cynkra.png" class="logo-cynkra">
 ---
 
 ## Any shape you want {transition="slide-in none-out"}
