@@ -277,7 +277,29 @@
    so the logos have nothing between their ink and the container's floor. */
 .reveal .footer img {
   max-height: none;
-  margin: 0 0 0 calc(34px * var(--chrome-scale));
+  margin: 0 0 0 calc(20px * var(--chrome-scale));
+}
+
+/* The cynkra mark is a small solid square where the other is a wide wordmark,
+   so side by side the square reads as a stray swatch rather than a logo.
+   Setting both into a phrase gives it a job in a line of text and evens the
+   row's rhythm; the gap above drops from 34px to 20px because the words now
+   do the separating. Text at 15px is large enough to read as a sentence and
+   small enough not to compete with either mark. With `line-height: 1` Source
+   Sans Pro puts its baseline 0.177em above the box bottom — measured off a
+   render, not the 0.25em you would guess — which is 2.65px at this size, so
+   4.35px of lift lands the words on the same 7px baseline as the two marks. */
+.reveal .footer .foot-by {
+  font-size: calc(15px * var(--chrome-scale));
+  line-height: 1;
+  margin: 0 0 0 calc(20px * var(--chrome-scale));
+  position: relative;
+  bottom: calc(4.35px * var(--chrome-scale));
+  white-space: nowrap;
+}
+
+.reveal .footer .foot-by:first-child {
+  margin-left: 0;
 }
 
 /* The block has no baseline, so it is placed against BMS's. That baseline sits

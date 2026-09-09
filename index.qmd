@@ -20,7 +20,7 @@ format:
     # Attribution rides in the footer so it appears on every slide without
     # crowding the closing slide, which is the one people photograph.
     footer: |
-      <img src="img/cynkra.png" class="logo-cynkra"><img src="img/bms.png" class="logo-bms">
+      <span class="foot-by">Developed by</span><img src="img/cynkra.png" class="logo-cynkra"><span class="foot-by">and</span><img src="img/bms.png" class="logo-bms">
 ---
 
 ## Any shape you want {transition="slide-in none-out"}
