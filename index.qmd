@@ -153,7 +153,7 @@ specifically for this use case.
 :::
 
 ::: {.notes}
-<!-- A real app — ~53 s (126 words) -->
+<!-- A real app — ~61 s (146 words) -->
 
 We are using blockr at Bristol-Myers Squibb to explore clinical data from
 studies.
@@ -165,16 +165,18 @@ These apps pull in up to one hundred blocks, spread over a dozen views. And
 we're rolling out many such apps, specific to studies and their analysis needs.
 
 Blocks are not the only extension point. There are *extensions* as well:
-- (1) On the left, we have a graphical overview of the board, showing blocks,
-their connections and stack membership and
-- (2) on the right, an AI assistant, which can manipulate and interrogate our
+
+**(1) On the left,** a graphical overview of the board, showing blocks, their
+connections and stack membership.
+
+**(2) On the right,** an AI assistant, which can manipulate and interrogate our
 board.
 
 Most blocks here are general purpose: reading data, transforming it, displaying
 summary tables and visualizations that support drill-down.
 
-(3) But one block was built specifically for this use case: the patient profile
-you can see in the middle.
+**(3) But one block** was built specifically for this use case: the patient
+profile you can see in the middle.
 :::
 
 ## Specialty pieces {transition="slide"}
