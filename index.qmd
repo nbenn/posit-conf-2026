@@ -70,7 +70,7 @@ Limit the shape, define the interface
 :::
 
 ::: {.notes}
-<!-- What carries over to your next app? — ~80 s (176 words) -->
+<!-- What carries over to your next app? — ~78 s (176 words) -->
 
 Restrictions and well-defined interfaces helped me be *more* creative.
 
@@ -124,7 +124,7 @@ Data inputs. User parameters. One data output.
 :::
 
 ::: {.notes}
-<!-- A block — ~30 s (66 words) -->
+<!-- A block — ~29 s (66 words) -->
 
 The core abstraction we built for blockr is a block: a well-defined unit of
 computation.
@@ -153,7 +153,7 @@ specifically for this use case.
 :::
 
 ::: {.notes}
-<!-- A real app — ~66 s (146 words) -->
+<!-- A real app — ~65 s (146 words) -->
 
 We are using blockr at Bristol-Myers Squibb to explore clinical data from
 studies.
