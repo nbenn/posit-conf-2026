@@ -236,10 +236,10 @@
 }
 
 /* Attribution footer, on every slide. The lowest content on any slide ends at
-   y=632, so this band sits clear of everything. Heights differ on purpose: the
-   two marks are matched on cap height, not box height — cynkra has a deep `y`
-   descender and BMS almost none, so equal boxes put their baselines ~5px apart
-   and they read as shifted. At 29/27 the baselines land within a pixel. */
+   y=632, so this band sits clear of everything. The cynkra mark is the blue
+   block rather than the wordmark, so it carries no ink baseline of its own to
+   match against. Heights still differ on purpose, but the pair is now aligned
+   by band rather than by baseline — see the two rules further down. */
 /* `div.footer` rather than `.footer`: Quarto's own footer.css loads after this
    file at equal specificity, so a plain class selector loses and the logos stay
    centred. The extra type selector wins. */
@@ -280,11 +280,23 @@
   margin: 0 0 0 calc(34px * var(--chrome-scale));
 }
 
-.reveal .footer img.logo-cynkra { height: calc(29px * var(--chrome-scale)); }
+/* The block has no baseline, so it is placed against BMS's. That baseline sits
+   7px above the flex floor — BMS is raised 3px and its own baseline is 4.0px
+   above its box bottom — and the BMS symbol tops out 30px up. Hence 23px tall
+   and raised 7px: the block's bottom edge lands on the baseline and its top
+   flush with the symbol, so the two marks fill one band. Measured from a
+   rendered mock, as the BMS offset below was. Note that the wordmark inside
+   the block does not resolve at this size; that is accepted for now. */
+.reveal .footer img.logo-cynkra {
+  height: calc(23px * var(--chrome-scale));
+  position: relative;
+  bottom: calc(7px * var(--chrome-scale));
+}
 
-/* Raised 3px because the flex row aligns image *bottoms*, not the text inside
-   them: cynkra's baseline sits 6.7px above its bottom edge, BMS's only 4.0px.
-   Verified by measuring the ink baseline of a rendered mock. */
+/* Raised 3px, which is what fixes where that shared baseline falls: the flex
+   row aligns image *bottoms*, and BMS's own baseline sits 4.0px above its box
+   bottom. The lift is kept at the value the wordmark pair was tuned to, so the
+   band has not moved on the slide. */
 .reveal .footer img.logo-bms {
   height: calc(27px * var(--chrome-scale));
   position: relative;
