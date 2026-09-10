@@ -14,4 +14,5 @@ Hilton Americas-Houston, Houston, TX.
 The slides are a [Quarto](https://quarto.org) reveal.js deck rendered from
 `index.qmd` and published to GitHub Pages on every push to `main`. The cards
 and the drill sheets are generated from the same notes by `cards/make-cards.py`
-and `drill/make-drill.py`, and published alongside.
+and `drill/make-drill.py`, and published alongside. The drill sheets also read
+`drill/beats.md`, the notes split into beats and clauses with a keyword each.
