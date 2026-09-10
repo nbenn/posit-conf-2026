@@ -480,15 +480,21 @@ def data(sls, cards):
     }
 
 
-def view_paper(sl):
-    """One numbered sentence per line, a small gap where a new beat starts."""
-    out, n = [], 0
+def paper_slide(sl):
+    """One numbered sentence per line, a small gap where a new beat starts.
+
+    Printed, the sheet flows across the page break rather than keeping each
+    slide whole, which left a slide's worth of blank paper. Only a line and
+    the heading with its first line are kept together.
+    """
+    rows, n = [], 0
     for bi, b in enumerate(sl["beats"]):
         for si, s in enumerate(b["sents"]):
             n += 1
             nb = " nb" if si == 0 and bi else ""
-            out.append(f"<div class='ps{nb}'><span class=n>{n}</span>{dot(s)}{sent_html(s)}</div>")
-    return "".join(out)
+            rows.append(f"<div class='ps{nb}'><span class=n>{n}</span>{dot(s)}{sent_html(s)}</div>")
+    return (f"<section class='slide paper'><div class=keep>{head(sl)}{rows[0]}</div>"
+            + "".join(rows[1:]) + "</section>")
 
 
 def paper_head(sls, nwords, total):
@@ -499,9 +505,8 @@ def paper_head(sls, nwords, total):
     )
 
 
-def render_slide(sl, inner, cls=""):
-    return (f"<section class='slide{' ' + cls if cls else ''}'>{head(sl)}"
-            f"<div class=notes>{inner}</div></section>")
+def render_slide(sl, inner):
+    return f"<section class=slide>{head(sl)}<div class=notes>{inner}</div></section>"
 
 
 CSS = """
@@ -631,7 +636,7 @@ ol.sk li { padding: 1px 0; }
 .plan code { font-family: "Source Code Pro", monospace; font-size: 0.92em; }
 @media screen { .level > h1.lv { display: none; } }
 @media print {
-  @page { size: A4; margin: 14mm; }
+  @page { size: A4; margin: 12mm; }
   :root { --ink: #111; --mute: #666; --line: #ccc; --paper: #fff; --tab: #fff; }
   body { font-size: 11pt; }
   .wrap { max-width: none; padding: 0; }
@@ -642,14 +647,14 @@ ol.sk li { padding: 1px 0; }
   body.one .level:not(.on) { display: none; }
   body.one .level { page-break-before: auto; }
   #lv-paper > h1.lv, #lv-paper > .hint { display: none; }
-  #lv-paper { font-size: 10.5pt; line-height: 1.5; }
-  #lv-paper .slide { margin: 0 0 4mm; }
-  #lv-paper .slide.pbreak { page-break-before: always; }
-  #lv-paper .head { margin-bottom: 1.5mm; }
-  .ps { padding: 0 24mm 0 8mm; }
-  .ps .n { width: 6mm; top: 0; font-size: 8pt; }
-  .ps.nb { margin-top: 2mm; }
-  .paper-h { color: var(--ink); font-size: 10pt; margin-bottom: 4mm; }
+  #lv-paper { font-size: 10pt; line-height: 1.38; }
+  #lv-paper .slide { margin: 0 0 2.5mm; page-break-inside: auto; break-inside: auto; }
+  #lv-paper .keep, .ps { page-break-inside: avoid; break-inside: avoid; }
+  #lv-paper .head { margin-bottom: 1mm; }
+  .ps { padding: 0 20mm 0 7mm; }
+  .ps .n { width: 5mm; top: 0; font-size: 8pt; }
+  .ps.nb { margin-top: 1.5mm; }
+  .paper-h { color: var(--ink); font-size: 10pt; margin-bottom: 3mm; }
   .blank { width: 18mm; border-bottom-color: var(--ink); margin: 0 5mm 0 1.5mm; }
   .level > h1.lv { font-size: 14pt; margin: 0 0 6pt; }
   .slide { page-break-inside: avoid; }
@@ -828,16 +833,8 @@ def build(sls, plan_md, fragment=False):
         elif k == "starts":
             body.append(view_starts())
         elif k == "paper":
-            # Two pages: the break falls before the first slide that starts in
-            # the second half of the sentences.
             body.append(paper_head(sls, nwords, total))
-            cum, broken = 0, False
-            for sl in sls:
-                cls = ""
-                if not broken and cum >= nsent / 2:
-                    cls, broken = "pbreak", True
-                body.append(render_slide(sl, view_paper(sl), cls))
-                cum += sum(len(b["sents"]) for b in sl["beats"])
+            body.extend(paper_slide(sl) for sl in sls)
         else:
             body.extend(render_slide(sl, views[k](sl)) for sl in sls)
             if k == "nothing":
