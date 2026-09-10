@@ -27,12 +27,16 @@ or at a beat heading. The words are checked against the notes in index.qmd and t
 so the annotations cannot lag the deck. After a rewrite, `--template` prints
 a fresh, unannotated split of the notes to start from.
 
-    python3 drill/make-drill.py                  # -> drill/index.html
+    python3 drill/make-drill.py                  # -> drill/index.html, drill/paper.pdf
     python3 drill/make-drill.py --template       # the notes split, no keywords
     python3 drill/make-drill.py --fragment out    # body only, for embedding
 
-Needs pandoc on the PATH, as cards/make-cards.py does. Published with the
-deck as /drill/, see _quarto.yml; the pictures come from cards/thumbs/.
+Needs pandoc on the PATH, as cards/make-cards.py does, and Chromium for the
+PDF of the paper sheet, which is skipped with a note if it is missing. The
+PDF exists because browsers paginate the same HTML differently, and a sheet
+that must land on two A4 pages cannot be left to the reader's print dialog.
+Published with the deck as /drill/, see _quarto.yml; the pictures come from
+cards/thumbs/.
 """
 
 import argparse
@@ -40,8 +44,11 @@ import html
 import json
 import random
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
+from datetime import datetime, timezone
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -50,6 +57,7 @@ QMD = ROOT / "index.qmd"
 BEATS = HERE / "beats.md"
 PLAN = HERE / "plan.md"
 OUT = HERE / "index.html"
+PDF = HERE / "paper.pdf"
 
 # Slide pictures, captured by cards/make-cards.py. Position 1 in the deck is
 # the title slide, so notes slide n is slide-{n+1:02d}.jpg.
@@ -497,11 +505,12 @@ def paper_slide(sl):
             + "".join(rows[1:]) + "</section>")
 
 
-def paper_head(sls, nwords, total):
+def paper_head(nwords, total, stamp):
     blank = "<span class=blank></span>"
     return (
-        f"<div class=paper-h><span>{nwords} words · {clock(total)} at pace</span>"
-        f"<span class=sp></span><span>Run{blank}Time{blank}Slips{blank}</span></div>"
+        f"<div class=paper-h><span>{nwords} words · {clock(total)} at pace · "
+        f"built {stamp}</span><span class=sp></span>"
+        f"<span>Run{blank}Time{blank}Slips{blank}</span></div>"
     )
 
 
@@ -655,6 +664,9 @@ ol.sk li { padding: 1px 0; }
   .ps .n { width: 5mm; top: 0; font-size: 8pt; }
   .ps.nb { margin-top: 1.5mm; }
   .paper-h { color: var(--ink); font-size: 10pt; margin-bottom: 3mm; }
+  /* The PDF is paginated here, not by the reader's browser, so it can afford
+     larger type; the build checks that it still comes out at two pages. */
+  body.pdf #lv-paper { font-size: 11pt; line-height: 1.45; }
   .blank { width: 18mm; border-bottom-color: var(--ink); margin: 0 5mm 0 1.5mm; }
   .level > h1.lv { font-size: 14pt; margin: 0 0 6pt; }
   .slide { page-break-inside: avoid; }
@@ -808,8 +820,10 @@ JS = """<script>
 </script>"""
 
 
-def build(sls, plan_md, fragment=False):
+def build(sls, plan_md, fragment=False, one=False):
+    """The page. With `one`, the body prints only the open tab, for the PDF."""
     cards = join_cards(sls)
+    stamp = datetime.now(timezone.utc).strftime("%-d %b %H:%M UTC")
     total = sum(s["secs"] for s in sls)
     nwords = sum(len([t for t in tokens(p) if t[1] and not t[1].isdigit()])
                  for s in sls for p in s["paras"])
@@ -833,7 +847,10 @@ def build(sls, plan_md, fragment=False):
         elif k == "starts":
             body.append(view_starts())
         elif k == "paper":
-            body.append(paper_head(sls, nwords, total))
+            body.append("<p class=hint>Or print <a href=paper.pdf>paper.pdf</a>: the "
+                        "same two pages, laid out here rather than by your browser, "
+                        "so they need no scaling.</p>")
+            body.append(paper_head(nwords, total, stamp))
             body.extend(paper_slide(sl) for sl in sls)
         else:
             body.extend(render_slide(sl, views[k](sl)) for sl in sls)
@@ -843,7 +860,7 @@ def build(sls, plan_md, fragment=False):
     body.append(f"<div class='level plan' id=lv-plan>{pandoc(plan_md, 'html')}</div>")
     body.append(
         f"<p class=hint>{len(sls)} slides · {nwords} words · {nsent} sentences · "
-        f"{clock(total)} at the pace marked in the notes.</p></div>"
+        f"{clock(total)} at the pace marked in the notes · built {stamp}.</p></div>"
     )
     blob = json.dumps(data(sls, cards), ensure_ascii=False).replace("</", "<\\/")
     body.append(f"<script type=application/json id=data>{blob}</script>")
@@ -854,7 +871,29 @@ def build(sls, plan_md, fragment=False):
         return fonts + inner
     return ("<!doctype html>\n<html lang=en><head><meta charset=utf-8>"
             "<meta name=viewport content='width=device-width, initial-scale=1'>"
-            f"{fonts}</head><body>{inner}</body></html>\n")
+            f"{fonts}</head><body{' class=\"one pdf\"' if one else ''}>{inner}</body></html>\n")
+
+
+def print_pdf(page):
+    """The paper sheet as drill/paper.pdf, via headless Chromium if there is one."""
+    exe = next((shutil.which(x) for x in
+                ("chromium", "chromium-browser", "google-chrome", "chrome")
+                if shutil.which(x)), None)
+    if not exe:
+        print("no chromium on the PATH, so drill/paper.pdf was not rebuilt", file=sys.stderr)
+        return False
+    with tempfile.TemporaryDirectory() as tmp:
+        src = Path(tmp) / "index.html"
+        src.write_text(page)
+        subprocess.run(
+            [exe, "--headless", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer",
+             "--virtual-time-budget=8000", f"--print-to-pdf={PDF}", src.as_uri() + "#paper"],
+            check=True, capture_output=True,
+        )
+    pages = len(re.findall(rb"/Type\s*/Page[^s]", PDF.read_bytes()))
+    if pages != 2:
+        print(f"warning: drill/paper.pdf came out at {pages} pages, not 2", file=sys.stderr)
+    return True
 
 
 def main():
@@ -882,6 +921,8 @@ def main():
         OUT.write_text(build(sls, plan_md))
         nsent = sum(len(b["sents"]) for s in sls for b in s["beats"])
         print(f"wrote {OUT.relative_to(ROOT)}: {len(sls)} slides, {nsent} sentences")
+        if print_pdf(build(sls, plan_md, one=True)):
+            print(f"wrote {PDF.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

@@ -8,3 +8,4 @@ project:
     - cards/index.html
     - cards/thumbs/*.jpg
     - drill/index.html
+    - drill/paper.pdf

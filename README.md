@@ -16,3 +16,5 @@ The slides are a [Quarto](https://quarto.org) reveal.js deck rendered from
 and the drill sheets are generated from the same notes by `cards/make-cards.py`
 and `drill/make-drill.py`, and published alongside. The drill sheets also read
 `drill/beats.md`, the notes split into beats and clauses with a keyword each.
+The drill build also prints `drill/paper.pdf`, the script on two A4 pages for
+marking slips, which needs Chromium on the PATH.
