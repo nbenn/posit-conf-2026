@@ -53,6 +53,13 @@ Eight views, one tab each. The unit is the slide throughout.
   check. The pocket check at the end is the whole talk as first letters,
   one sentence per line, for the day itself.
 
+**Paper** is not a rung: the whole talk as written, one sentence per line,
+numbered as on the other sheets. Print it from its tab with the Print this
+tab button, two pages, and mark each slip on it during a run. After three
+runs the marks show whether the weak spots are the same ones or wander,
+and that decides the fix: the Joins deck on those sentences, or more of
+everything.
+
 A rung is passed when you get through it twice in a row without a miss.
 On a miss, drop one rung, not to the bottom.
 
@@ -85,7 +92,7 @@ time goes, and a clean jump is invisible from the floor.
   is the long one; give it two separate sessions and lean on its six beats.
 - Joins, all cards, once through, then the missed pile until it is empty.
 - Evening: first full run from the Sentences sheet, standing, with the
-  clicker, timed. Write down the time and the misses per slide.
+  clicker, timed. Mark the slips on a Paper sheet and write the time on it.
 
 ### Sat 12 · joins and starts
 

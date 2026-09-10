@@ -11,7 +11,8 @@ Seven views of the talk, one per rung of the ladder in drill/plan.md:
     sentences  one keyword per sentence
     joins      cards: the end of a sentence in front, the next sentence behind
     starts     draw a slide, a beat or a sentence and go on to the end of the slide
-    nothing    the slide picture alone, plus the protected sentences as first letters
+    nothing    the slide picture alone, plus the whole talk as first letters
+    paper      the talk as written, one sentence per line, to print and mark slips on
 
 The annotations live in drill/beats.md, the notes split by hand:
 
@@ -54,11 +55,12 @@ OUT = HERE / "index.html"
 # the title slide, so notes slide n is slide-{n+1:02d}.jpg.
 THUMBS = "../cards/thumbs"
 
-LEVELS = ["full", "beats", "letters", "clauses", "sentences", "joins", "starts", "nothing"]
+LEVELS = ["full", "beats", "letters", "clauses", "sentences", "joins", "starts",
+          "nothing", "paper"]
 LABELS = {
     "full": "Full", "beats": "Beats", "letters": "Letters", "clauses": "Clauses",
     "sentences": "Sentences", "joins": "Joins", "starts": "Starts",
-    "nothing": "Nothing",
+    "nothing": "Nothing", "paper": "Paper",
 }
 HINTS = {
     "full": "Read aloud with the deck, twice. Then close it and tell each "
@@ -78,6 +80,8 @@ HINTS = {
     "nothing": "The picture and the clicker, nothing else. Tap the picture "
                "to check. The pocket check at the end is the whole talk as "
                "first letters, for the day itself.",
+    "paper": "The talk as written, one sentence per line, numbered as on the "
+             "other sheets. Print this tab on two pages and mark each slip on it.",
 }
 
 e = html.escape
@@ -476,8 +480,28 @@ def data(sls, cards):
     }
 
 
-def render_slide(sl, inner):
-    return f"<section class=slide>{head(sl)}<div class=notes>{inner}</div></section>"
+def view_paper(sl):
+    """One numbered sentence per line, a small gap where a new beat starts."""
+    out, n = [], 0
+    for bi, b in enumerate(sl["beats"]):
+        for si, s in enumerate(b["sents"]):
+            n += 1
+            nb = " nb" if si == 0 and bi else ""
+            out.append(f"<div class='ps{nb}'><span class=n>{n}</span>{dot(s)}{sent_html(s)}</div>")
+    return "".join(out)
+
+
+def paper_head(sls, nwords, total):
+    blank = "<span class=blank></span>"
+    return (
+        f"<div class=paper-h><span>{nwords} words · {clock(total)} at pace</span>"
+        f"<span class=sp></span><span>Run{blank}Time{blank}Slips{blank}</span></div>"
+    )
+
+
+def render_slide(sl, inner, cls=""):
+    return (f"<section class='slide{' ' + cls if cls else ''}'>{head(sl)}"
+            f"<div class=notes>{inner}</div></section>")
 
 
 CSS = """
@@ -586,6 +610,18 @@ ol.sk li { padding: 1px 0; }
 .w { white-space: nowrap; }
 .pocket { margin-top: 30px; }
 .print-only, .joins-print { display: none; }
+/* Paper */
+.ps { position: relative; padding: 1px 0 1px 28px; }
+.ps .n {
+  position: absolute; left: 0; top: 4px; width: 22px; text-align: right;
+  font-size: 11px; color: var(--mute);
+}
+.ps.nb { margin-top: 6px; }
+.paper-h {
+  display: flex; gap: 12px; font-size: 13px; color: var(--mute);
+  border-bottom: 1px solid var(--line); padding-bottom: 6px; margin-bottom: 14px;
+}
+.blank { display: inline-block; width: 52px; border-bottom: 1px solid var(--mute); margin: 0 12px 0 4px; }
 /* Plan */
 .plan h1 { font-size: 20px; margin: 0 0 8px; }
 .plan h2 { font-size: 16px; margin: 20px 0 6px; }
@@ -602,6 +638,19 @@ ol.sk li { padding: 1px 0; }
   nav.tabs, .deck, #lv-starts { display: none; }
   .level { display: block; page-break-before: always; }
   .level:first-of-type { page-break-before: auto; }
+  /* Print this tab: only the open level, starting on the first page. */
+  body.one .level:not(.on) { display: none; }
+  body.one .level { page-break-before: auto; }
+  #lv-paper > h1.lv, #lv-paper > .hint { display: none; }
+  #lv-paper { font-size: 10.5pt; line-height: 1.5; }
+  #lv-paper .slide { margin: 0 0 4mm; }
+  #lv-paper .slide.pbreak { page-break-before: always; }
+  #lv-paper .head { margin-bottom: 1.5mm; }
+  .ps { padding: 0 24mm 0 8mm; }
+  .ps .n { width: 6mm; top: 0; font-size: 8pt; }
+  .ps.nb { margin-top: 2mm; }
+  .paper-h { color: var(--ink); font-size: 10pt; margin-bottom: 4mm; }
+  .blank { width: 18mm; border-bottom-color: var(--ink); margin: 0 5mm 0 1.5mm; }
   .level > h1.lv { font-size: 14pt; margin: 0 0 6pt; }
   .slide { page-break-inside: avoid; }
   .hid, .rv.on > .hid { display: none; }
@@ -636,9 +685,17 @@ JS = """<script>
   }
   tabs.forEach(b => b.addEventListener('click', () => show(b.dataset.level)));
   $('#reveal').addEventListener('click', () => document.body.classList.toggle('reveal'));
-  let start = 'full';
-  try { start = localStorage.getItem('drill-level') || start; } catch (e) {}
+  let start = location.hash.slice(1);
+  if (!$('#lv-' + start)) {
+    start = 'full';
+    try { start = localStorage.getItem('drill-level') || start; } catch (e) {}
+  }
   show($('#lv-' + start) ? start : 'full');
+  $('#print1').addEventListener('click', () => {
+    document.body.classList.add('one');
+    window.print();
+  });
+  window.addEventListener('afterprint', () => document.body.classList.remove('one'));
 
   // Anything with class rv reveals its hidden parts when tapped.
   document.addEventListener('click', e => {
@@ -754,7 +811,8 @@ def build(sls, plan_md, fragment=False):
     nsent = sum(len(b["sents"]) for s in sls for b in s["beats"])
     tabs = "".join(f"<button data-level={k}>{LABELS[k]}</button>" for k in LEVELS)
     tabs += ("<button data-level=plan>Plan</button><span class=sp></span>"
-             "<button id=reveal title='Show everything hidden'>Reveal all</button>")
+             "<button id=reveal title='Show everything hidden'>Reveal all</button>"
+             "<button id=print1 title='Print only the open tab'>Print this tab</button>")
     views = {
         "full": lambda sl: view_full(sl, screen=True),
         "beats": view_beats, "letters": lambda sl: view_clauses(sl, ini=True),
@@ -769,6 +827,17 @@ def build(sls, plan_md, fragment=False):
             body.append(view_joins(cards, sls))
         elif k == "starts":
             body.append(view_starts())
+        elif k == "paper":
+            # Two pages: the break falls before the first slide that starts in
+            # the second half of the sentences.
+            body.append(paper_head(sls, nwords, total))
+            cum, broken = 0, False
+            for sl in sls:
+                cls = ""
+                if not broken and cum >= nsent / 2:
+                    cls, broken = "pbreak", True
+                body.append(render_slide(sl, view_paper(sl), cls))
+                cum += sum(len(b["sents"]) for b in sl["beats"])
         else:
             body.extend(render_slide(sl, views[k](sl)) for sl in sls)
             if k == "nothing":
